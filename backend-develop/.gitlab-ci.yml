@@ -1,0 +1,75 @@
+default:
+  tags:
+    - docker
+
+variables:
+  image_path: ""
+
+stages:
+  - build
+  - deploy
+  - notify
+
+workflow:
+  rules:
+    - if: $CI_COMMIT_BRANCH == ""
+      variables:
+        ip: ""
+        port: ""
+        env_config_name: ""
+        username: ""
+        app_dir: ""
+
+build-redis:
+  stage: build
+  image: docker
+  script:
+    - docker login -u $ACCESS_TOKEN_NAME -p $ACCESS_TOKEN $REGISTRY
+    - docker build . -f docker/redis/Dockerfile -t $REGISTRY/$image_path/redis:$CI_COMMIT_BRANCH
+    - docker push $REGISTRY/$image_path/redis:$CI_COMMIT_BRANCH
+  only:
+    changes:
+      - docker/redis/**/*
+    variables:
+      - $ip
+
+
+build-app:
+  stage: build
+  image: docker
+  script:
+    - docker login -u $ACCESS_TOKEN_NAME -p $ACCESS_TOKEN $REGISTRY
+    - docker build . -f docker/app/Dockerfile -t $REGISTRY/$image_path/app:$CI_COMMIT_BRANCH
+    - docker push $REGISTRY/$image_path/app:$CI_COMMIT_BRANCH
+  only:
+    variables:
+      - $ip
+    changes:
+      - laravel/**/*
+      - docker/app/**/*
+
+
+deploy-job:
+  stage: deploy
+  image: alpine
+  script:
+    - echo "Deploying application..."
+    - chmod 600 $ACCESS_KEY
+    - apk update && apk add openssh
+    - scp -i $ACCESS_KEY -P $port -o StrictHostKeyChecking=no docker-compose.yml $username@$ip:$app_dir
+    - scp -i $ACCESS_KEY -P $port -o StrictHostKeyChecking=no $env_config_name $username@$ip:$app_dir/.env
+    - ssh -i $ACCESS_KEY -p $port -o StrictHostKeyChecking=no $username@$ip "docker login -u $ACCESS_TOKEN_NAME -p $ACCESS_TOKEN $REGISTRY"
+    - ssh -i $ACCESS_KEY -p $port -o StrictHostKeyChecking=no $username@$ip "cd $app_dir; docker-compose pull"
+    - ssh -i $ACCESS_KEY -p $port -o StrictHostKeyChecking=no $username@$ip "cd $app_dir; docker-compose up -d"
+    - ssh -i $ACCESS_KEY -p $port -o StrictHostKeyChecking=no $username@$ip "cd $app_dir; docker-compose exec app php artisan migrate --force --no-interaction"
+  only:
+    variables:
+      - $ip
+      
+notify_error:
+    stage: notify
+    image: alpine
+    script:
+        - apk update && apk add curl
+        - curl -s -X POST https://api.telegram.org/bot$TG_TOKEN/sendMessage -F chat_id=$TG_CHATID -F message_thread_id=$THREAD_ID -F text="❌ pipeline failed $CI_PIPELINE_URL"
+    when: on_failure
