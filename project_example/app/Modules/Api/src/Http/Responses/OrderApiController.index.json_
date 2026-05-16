@@ -1,0 +1,137 @@
+[
+    {
+        "id": 1,
+        "product_id": null,
+        "combo_id": null,
+        "transaction_method": "Оплата банковской картой",
+        "promocode": "PROMOTEST",
+        "comment": "Позвоните перед доставкой",
+        "status": "status",
+        "order_sum_items_price": 5600,
+        "order_quantity": 6,
+        "order_price_delivery": 200.00,
+        "order_promocode_discount": 400.00,
+        "order_personal_discount": 1000.00,
+        "order_price_final": 4000.00,
+        "created_at": "04.09.2025 18:05",
+        "delivery_type": "Самовывоз",
+        "delivery_courier_info": {
+            "city_system":  "Москва",
+            "address": {
+                "city":  "Москва",
+                "street_house":  "Ильинка, 21",
+                "entrance":  "3",
+                "floor":  "2",
+                "apartment":  "26",
+                "final_address":  "Москва, Ильинка, д 21, подъезд 3, этаж 2, квартира 26"
+            }
+        },
+        "delivery_pickup_info": {
+            "title":  "Пункт Самовывоза #3",
+            "phone":  "+79991813729",
+            "working_hours_from":  "9:00",
+            "working_hours_to":  "18:00",
+            "site":  "https://url.com",
+            "city_system":  "Москва",
+            "address": {
+                "city":  "Москва",
+                "street_house":  "Ильинка, 21",
+                "entrance":  "3",
+                "floor":  "2",
+                "apartment":  "26",
+                "postal_code":  "2623443",
+                "final_address":  "Москва, Ильинка, д 21, подъезд 3, этаж 2, квартира 26"
+            }
+        },
+        "user": {
+            "first_name": "Иван",
+            "last_name": "Иванов",
+            "middle_name": "Иванович",
+            "email": "user790@test.com",
+            "phone": "+79991813729"
+        },
+        "items": [
+            {
+                "item_id": 6,
+                "type": "Combo",
+                "price": "4100",
+                "price_for_unit": "2050",
+                "quantity": 2,
+                "weight": "2",
+                "weight_type": "кг",
+                "item_info": {
+                    "article": "article_123",
+                    "name": "Комбо Набор Топ"
+                }
+            },
+            {
+                "item_id": 5,
+                "type": "Product",
+                "price": "8640",
+                "price_for_unit": "2880",
+                "quantity": 3,
+                "weight": "5.42",
+                "weight_type": "кг",
+                "item_info": {
+                    "article": "article_123",
+                    "name": "Название продукта"
+                }
+            },
+            {
+                "item_id": 4,
+                "type": "Product",
+                "price": "5120",
+                "price_for_unit": "5120",
+                "quantity": 1,
+                "weight": "2.82",
+                "weight_type": "кг",
+                "item_info": {
+                    "article": "article_123",
+                    "name": "Название продукта"
+                }
+            }
+        ],
+        "items_1с": [
+            {
+                "item_id": 6,
+                "uuid_1c": "uuid",
+                "type": "Combo",
+                "price": "4100",
+                "price_for_unit": "2050",
+                "quantity": 2,
+                "weight": "2",
+                "weight_type": "кг"
+            },
+            {
+                "item_id": 5,
+                "uuid_1c": "uuid",
+                "type": "Product",
+                "price": "8640",
+                "price_for_unit": "2880",
+                "quantity": 3,
+                "weight": "5.42",
+                "weight_type": "кг"
+            },
+            {
+                "item_id": 4,
+                "uuid_1c": "uuid",
+                "type": "Product",
+                "price": "5120",
+                "price_for_unit": "5120",
+                "quantity": 1,
+                "weight": "2.82",
+                "weight_type": "кг"
+            },
+            {
+                "item_id": 3,
+                "uuid_1c": "uuid",
+                "type": "Combo",
+                "price": "6150",
+                "price_for_unit": "2050",
+                "quantity": 3,
+                "weight": "2",
+                "weight_type": "кг"
+            }
+        ]
+    }
+]

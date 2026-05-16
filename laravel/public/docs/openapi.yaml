@@ -1,0 +1,185 @@
+openapi: 3.0.3
+info:
+  title: 'MRC API'
+  description: 'REST API учебного портала института (LMS).'
+  version: 1.0.0
+servers:
+  -
+    url: 'http://localhost'
+paths:
+  /api/connect/check:
+    post:
+      summary: ''
+      operationId: postApiConnectCheck
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                date_current:
+                  type: string
+                  description: ''
+                  example: aliquid
+              required:
+                - date_current
+      security: []
+  /api/auth/login:
+    post:
+      summary: ''
+      operationId: postApiAuthLogin
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Авторизация
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  description: 'Must be a valid email address.'
+                  example: kstiedemann@example.net
+                password:
+                  type: string
+                  description: ''
+                  example: YxbSxb$F=0
+              required:
+                - email
+                - password
+      security: []
+  /api/auth/logout:
+    post:
+      summary: Выход
+      operationId: ''
+      description: 'Удаляет текущий токен доступа.'
+      parameters: []
+      responses: {  }
+      tags:
+        - Авторизация
+      security: []
+  /api/auth/me:
+    get:
+      summary: 'Текущий пользователь'
+      operationId: ''
+      description: ''
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'Необходима авторизация.'
+                properties:
+                  message:
+                    type: string
+                    example: 'Необходима авторизация.'
+      tags:
+        - Авторизация
+      security: []
+  /api/profile:
+    get:
+      summary: 'Просмотр профиля'
+      operationId: ''
+      description: ''
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'Необходима авторизация.'
+                properties:
+                  message:
+                    type: string
+                    example: 'Необходима авторизация.'
+      tags:
+        - Профиль
+      security: []
+    patch:
+      summary: 'Обновление профиля'
+      operationId: ''
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Профиль
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                phone:
+                  type: string
+                  description: 'Must not be greater than 32 characters.'
+                  example: wyldbxggtrscvvrfesrbyqb
+                second_name:
+                  type: string
+                  description: 'Must not be greater than 255 characters.'
+                  example: odbfdawkputhjjldcehwqi
+      security: []
+  /api/profile/password:
+    put:
+      summary: 'Смена пароля'
+      operationId: ''
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Профиль
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                current_password:
+                  type: string
+                  description: ''
+                  example: doloribus
+                password:
+                  type: string
+                  description: ''
+                  example: "x'r4YiUrL7Ju[/8jjP)"
+              required:
+                - current_password
+                - password
+      security: []
+tags:
+  -
+    name: Endpoints
+    description: ''
+  -
+    name: Авторизация
+    description: ''
+  -
+    name: Профиль
+    description: ''
+components:
+  securitySchemes:
+    default:
+      type: http
+      scheme: bearer
+      description: 'Получите токен через <code>POST /api/auth/login</code> (email и пароль). Передавайте заголовок <code>Authorization: Bearer {TOKEN}</code>.'
+security:
+  -
+    default: []

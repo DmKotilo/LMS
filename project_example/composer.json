@@ -1,0 +1,231 @@
+{
+    "$schema": "https://getcomposer.org/schema.json",
+    "name": "laravel/laravel",
+    "type": "project",
+    "description": "The skeleton application for the Laravel framework.",
+    "keywords": ["laravel", "framework"],
+    "license": "MIT",
+    "require": {
+        "php": "^8.2",
+        "inertiajs/inertia-laravel": "^2.0",
+        "laravel/framework": "^12.0",
+        "laravel/sanctum": "^4.0",
+        "laravel/socialite": "^5.20",
+        "laravel/tinker": "^2.10.1",
+        "livewire/livewire": "^3.6",
+        "moonshine/apexcharts": "^1.0",
+        "moonshine/moonshine": "^3.12",
+        "moonshine/ru": "^1.0",
+        "moonshine/tinymce": "^1.0",
+        "socialiteproviders/vkontakte": "^5.0",
+        "socialiteproviders/yandex": "^4.1",
+        "spatie/laravel-sitemap": "^7.3",
+        "tightenco/ziggy": "^2.0",
+        "ext-dom": "*"
+    },
+    "require-dev": {
+        "barryvdh/laravel-debugbar": "^3.15",
+        "fakerphp/faker": "^1.23",
+        "knuckleswtf/scribe": "^5.2",
+        "laravel/breeze": "^2.3",
+        "laravel/pail": "^1.2.2",
+        "laravel/pint": "^1.13",
+        "laravel/sail": "^1.41",
+        "mockery/mockery": "^1.6",
+        "nunomaduro/collision": "^8.6",
+        "phpunit/phpunit": "^11.5.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "Delivery\\": "app/Modules/Delivery/src",
+            "Delivery\\Database\\Factories\\": "app/Modules/Delivery/database/factories",
+            "Delivery\\Database\\Seeders\\": "app/Modules/Delivery/database/seeders",
+            "Order\\": "app/Modules/Order/src",
+            "Order\\Database\\Factories\\": "app/Modules/Order/database/factories",
+            "Order\\Database\\Seeders\\": "app/Modules/Order/database/seeders",
+            "Catalog\\": "app/Modules/Catalog/src",
+            "Catalog\\Database\\Factories\\": "app/Modules/Catalog/database/factories",
+            "Catalog\\Database\\Seeders\\": "app/Modules/Catalog/database/seeders",
+
+            "Authorization\\": "app/Modules/Authorization/src",
+            "Authorization\\Database\\Seeders\\": "app/Modules/Authorization/database/seeders",
+
+            "Address\\": "app/Modules/General/Address/src",
+            "Address\\Database\\Seeders\\": "app/Modules/General/Address/database/seeders",
+
+            "File\\": "app/Modules/General/File/src",
+            "File\\Database\\Seeders\\": "app/Modules/General/File/database/seeders",
+
+            "User\\": "app/Modules/User/src",
+            "User\\Database\\Seeders\\": "app/Modules/User/database/seeders",
+
+            "Attribute\\": "app/Modules/Product/Attribute/src",
+            "Attribute\\Database\\Seeders\\": "app/Modules/Product/Attribute/database/seeders",
+
+            "Category\\": "app/Modules/Product/Category/src",
+            "Category\\Database\\Seeders\\": "app/Modules/Product/Category/database/seeders",
+
+            "Brand\\": "app/Modules/Product/Brand/src",
+            "Brand\\Database\\Seeders\\": "app/Modules/Product/Brand/database/seeders",
+
+            "Tag\\": "app/Modules/Product/Tag/src",
+            "Tag\\Database\\Seeders\\": "app/Modules/Product/Tag/database/seeders",
+
+            "Manufacturer\\": "app/Modules/Product/Manufacturer/src",
+            "Manufacturer\\Database\\Seeders\\": "app/Modules/Product/Manufacturer/database/seeders",
+
+            "Product\\": "app/Modules/Product/Product/src",
+            "Product\\Database\\Seeders\\": "app/Modules/Product/Product/database/seeders",
+
+            "Review\\": "app/Modules/Review/src",
+            "Review\\Database\\Seeders\\": "app/Modules/Review/database/seeders",
+
+            "Promotion\\": "app/Modules/Promotion/src",
+            "Promotion\\Database\\Seeders\\": "app/Modules/Promotion/database/seeders",
+
+            "Order\\": "app/Modules/Order/src",
+            "Order\\Database\\Seeders\\": "app/Modules/Order/database/seeders",
+
+            "Cart\\": "app/Modules/Cart/src",
+            "Cart\\Database\\Seeders\\": "app/Modules/Cart/database/seeders",
+
+            "List\\": "app/Modules/WhiteList/List/src",
+            "List\\Database\\Seeders\\": "app/Modules/WhiteList/List/database/seeders",
+
+            "Filter\\": "app/Modules/WhiteList/Filter/src",
+            "Filter\\Database\\Seeders\\": "app/Modules/WhiteList/Filter/database/seeders",
+
+            "Log\\": "app/Modules/Log/src",
+            "Log\\Database\\Seeders\\": "app/Modules/Log/database/seeders",
+
+            "Loyalty\\": "app/Modules/Bonus/Loyalty/src",
+            "Loyalty\\Database\\Seeders\\": "app/Modules/Bonus/Loyalty/database/seeders",
+
+            "Bonus\\": "app/Modules/Bonus/Bonus/src",
+            "Bonus\\Database\\Seeders\\": "app/Modules/Bonus/Bonus/database/seeders",
+
+            "Coupon\\": "app/Modules/Bonus/Coupon/src",
+            "Coupon\\Database\\Seeders\\": "app/Modules/Bonus/Coupon/database/seeders",
+
+            "Localization\\": "app/Modules/Localization/src",
+            "Localization\\Database\\Seeders\\": "app/Modules/Localization/database/seeders",
+
+            "ContactForm\\": "app/Modules/ContactForm/src",
+            "ContactForm\\Database\\Seeders\\": "app/Modules/ContactForm/database/seeders",
+
+            "Analitic\\": "app/Modules/Analitic/src",
+            "Analitic\\Database\\Seeders\\": "app/Modules/Analitic/database/seeders",
+
+            "City\\": "app/Modules/City/src",
+            "City\\Database\\Seeders\\": "app/Modules/City/database/seeders",
+
+            "Selection\\": "app/Modules/Blog/Selection/src",
+            "Selection\\Database\\Seeders\\": "app/Modules/Blog/Selection/database/seeders",
+
+            "Article\\": "app/Modules/Blog/Article/src",
+            "Article\\Database\\Seeders\\": "app/Modules/Blog/Article/database/seeders",
+
+            "Recipe\\": "app/Modules/Blog/Recipe/src",
+            "Recipe\\Database\\Seeders\\": "app/Modules/Blog/Recipe/database/seeders",
+
+            "Api\\": "app/Modules/Api/src",
+
+            "Pages\\": "app/Modules/Pages/src",
+            "Pages\\Database\\Seeders\\": "app/Modules/Pages/database/seeders",
+
+            "Banner\\": "app/Modules/Banner/src",
+            "Banner\\Database\\Seeders\\": "app/Modules/Banner/database/seeders",
+
+            "Combo\\": "app/Modules/Combo/src",
+            "Combo\\Database\\Seeders\\": "app/Modules/Combo/database/seeders",
+
+            "Faq\\": "app/Modules/Faq/src",
+            "Faq\\Database\\Seeders\\": "app/Modules/Faq/database/seeders",
+
+            "UserSetting\\": "app/Modules/UserSetting/src",
+            "UserSetting\\Database\\Seeders\\": "app/Modules/UserSetting/database/seeders",
+
+            "Alert\\": "app/Modules/Alert/src",
+            "Alert\\Database\\Seeders\\": "app/Modules/Alert/database/seeders",
+
+            "Notification\\": "app/Modules/Notification/src",
+            "Notification\\Database\\Seeders\\": "app/Modules/Notification/database/seeders",
+
+            "Comment\\": "app/Modules/Comment/src",
+            "Comment\\Database\\Seeders\\": "app/Modules/Comment/database/seeders",
+
+            "Referral\\": "app/Modules/Referral/src",
+            "Referral\\Database\\Seeders\\": "app/Modules/Referral/database/seeders",
+
+            "Combination\\": "app/Modules/Combination/src",
+            "Combination\\Database\\Seeders\\": "app/Modules/Combination/database/seeders",
+
+            "Setting\\": "app/Modules/Setting/src",
+            "Setting\\Database\\Seeders\\": "app/Modules/Setting/database/seeders",
+
+            "SeoPage\\": "app/Modules/SeoPage/src",
+            "SeoPage\\Database\\Seeders\\": "app/Modules/SeoPage/database/seeders",
+
+            "GlobalPromotion\\": "app/Modules/GlobalPromotion/src",
+            "GlobalPromotion\\Database\\Seeders\\": "app/Modules/GlobalPromotion/database/seeders",
+
+            "Robots\\": "app/Modules/Robots/src",
+            "Robots\\Database\\Seeders\\": "app/Modules/Robots/database/seeders",
+
+            "YandexFeed\\": "app/Modules/YandexFeed/src",
+            "YandexFeed\\Database\\Seeders\\": "app/Modules/YandexFeed/database/seeders",
+
+            "Home\\": "app/Modules/Home/src",
+
+            "App\\": "app/",
+            "Database\\Factories\\": "database/factories/",
+            "Database\\Seeders\\": "database/seeders/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "post-autoload-dump": [
+            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
+            "@php artisan package:discover --ansi"
+        ],
+        "post-update-cmd": [
+            "@php artisan vendor:publish --tag=laravel-assets --ansi --force"
+        ],
+        "post-root-package-install": [
+            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+        ],
+        "post-create-project-cmd": [
+            "@php artisan key:generate --ansi",
+            "@php -r \"file_exists('database/database.sqlite') || touch('database/database.sqlite');\"",
+            "@php artisan migrate --graceful --ansi"
+        ],
+        "dev": [
+            "Composer\\Config::disableProcessTimeout",
+            "npx concurrently -c \"#93c5fd,#c4b5fd,#fb7185,#fdba74\" \"php artisan serve\" \"php artisan queue:listen --tries=1\" \"php artisan pail --timeout=0\" \"npm run dev\" --names=server,queue,logs,vite"
+        ],
+        "test": [
+            "@php artisan config:clear --ansi",
+            "@php artisan test"
+        ]
+    },
+    "extra": {
+        "laravel": {
+            "dont-discover": []
+        }
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true,
+            "php-http/discovery": true
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}

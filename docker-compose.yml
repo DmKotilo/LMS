@@ -1,0 +1,108 @@
+version: '3'
+services:
+  app:
+    image: registry.grain.ru/${GROUP}/${PROJECT}-backend/app:$TAG
+    restart: always
+    ports:
+      - "8081:80"
+    environment:
+      - DB_HOST=$DB_HOST
+      - DB_PORT=$DB_PORT
+      - DB_USERNAME=$DB_USERNAME
+      - DB_DATABASE=$DB_DATABASE
+      - DB_PASSWORD=$DB_PASSWORD
+    volumes:
+      - ./data/storage:/var/www/html/storage:rw
+    depends_on:
+      - db
+      - redis
+      # - minio
+    container_name: ${PROJECT}_app
+    hostname: ${PROJECT}_app
+    networks:
+      - appnet
+
+  db:
+    image: postgres:15-bookworm
+    restart: always
+    volumes:
+      - ./data/db:/var/lib/postgresql/data:rw
+    environment:
+      POSTGRES_PASSWORD: $DB_PASSWORD
+      POSTGRES_DB: $DB_DATABASE
+    container_name: ${PROJECT}_db
+    hostname: ${PROJECT}_db
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - "8081:8080"
+    container_name: ${PROJECT}_adminer
+    hostname: ${PROJECT}_adminer
+    networks:
+      - appnet
+
+  redis:
+    image: registry.grain.ru/${GROUP}/${PROJECT}-backend/redis:$TAG
+    restart: always
+    container_name: ${PROJECT}_redis
+    hostname: ${PROJECT}_redis
+#    ports:
+#      - "6379:6379"
+    volumes:
+      - ./data/redis:/root/redis
+    environment:
+#      - REDIS_PASSWORD=${REDIS_PASSWORD}
+      - REDIS_PORT=6379
+#      - REDIS_DATABASES=16
+    networks:
+      - appnet
+
+  # minio:
+  #   image: minio/minio:RELEASE.2023-10-07T15-07-38Z
+  #   container_name: ${PROJECT}_minio
+  #   hostname: ${PROJECT}_minio
+  #   restart: always
+  #   volumes:
+  #     - ./data/s3:/data
+  #   ports:
+  #     - 9001:9000
+  #     - 9002:9001
+  #   environment:
+  #     MINIO_ROOT_USER: ${MINIO_USER}
+  #     MINIO_ROOT_PASSWORD: ${MINIO_PASSWORD}
+  #   command: server --address ":9000" --console-address ":9001" /data
+  #   healthcheck:
+  #     test:
+  #       [ 'CMD', 'curl', '-f', 'http://localhost:9001/minio/health/live' ]
+  #     interval: 10s
+  #     timeout: 10s
+  #     retries: 30
+  #   networks:
+  #     - appnet
+
+  mailhog:
+    image: mailhog/mailhog
+    container_name: ${PROJECT}_mailhog
+    hostname: ${PROJECT}_mailhog
+    ports:
+      - 8026:8025 # web ui
+    networks:
+      - appnet
+
+#  frontend:
+#    image: registry.grain.ru/${GROUP}/${PROJECT}-frontend:$TAG
+#    hostname: frontend
+#    container_name: "${PROJECT}-frontend"
+#    restart: unless-stopped
+#    ports:
+#      - "80:3000"
+#    networks:
+#      - appnet
+
+networks:
+  appnet:
+    name: appnet
+    driver: bridge
+    external: true

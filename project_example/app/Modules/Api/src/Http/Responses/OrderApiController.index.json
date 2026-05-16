@@ -1,0 +1,144 @@
+[
+    {
+        "id": 1,
+        "status": "Доставлен",
+        "created_at": "06.10.2025",
+
+        "user": {
+            "name": "Имя69",
+            "last_name": "Фамилия4222",
+            "second_name": "Отчество1",
+            "email": "user687@test.com",
+            "phone": "+79991955806"
+        },
+
+        "delivery": {
+            "type": "Курьер",
+            "date": "06.10.2025",
+            "time_from": "10:00",
+            "time_to": "12:00",
+            "address": {
+                "city": "Воронеж",
+                "street": "Улица1",
+                "house": "37"
+            }
+        },
+
+        "pickup": {
+            "title": "Пункт выдачи №2",
+            "phone": "+7 (495) 123-45-67",
+            "address": {
+                "city": "Воронеж",
+                "street": "Улица1",
+                "house": "37"
+            }
+        },
+
+        "payment": {
+            "method": "Оплата наличными при получении",
+            "description": "Для самовывоза или курьерской доставки"
+        },
+
+        "pricing": {
+            "order_price": "45734.6",
+            "cart_sum": "45734.6",
+            "delivery_price": "0",
+            "personal_discount": "0",
+            "promocode_discount": "0",
+            "promocode": "TEST_LIMITED",
+            "promocode_percent": "5.5"
+        },
+
+        "meta": {
+            "product_id": null,
+            "combo_id": 2,
+            "comment": null,
+            "order_weight": "55.96",
+            "order_item_count": 13
+        },
+
+        "items": [
+            {
+                "id": 8,
+                "type": "Product",
+                "quantity": 1,
+                "price": "4365",
+                "price_for_unit": "4365",
+                "price_without_sale": 4850,
+                "price_for_unit_without_sale": "4850",
+                "unit_sale_percent": 10,
+                "weight": "4.17",
+                "weight_for_unit": "4.17",
+                "weight_type": "кг",
+                "item_info": {
+                    "name": "Вырезка говяжья A5",
+                    "short_description": "Премиальный отруб с мраморной структурой",
+                    "article_number": "BEEF-001",
+                    "uuid_1c": "a1b2c3d4-e5f6-7890",
+                    "manufacturer": "PrimeBeef Farms",
+                    "categories": ["Говядина", "Премиум", "Стейки"],
+                    "attributes": {
+                        "Степень охлаждения": "Охлаждённое",
+                        "Страна происхождения": "Япония",
+                        "Срок годности": "14 дней"
+                    }
+                }
+            },
+            {
+                "id": 5,
+                "type": "Combo",
+                "quantity": 1,
+                "price": "4560",
+                "price_for_unit": "4560",
+                "price_without_sale": 4800,
+                "price_for_unit_without_sale": "4800",
+                "unit_sale_percent": 5,
+                "weight": "3.8",
+                "weight_for_unit": "3.8",
+                "weight_type": "кг",
+                "item_info": {
+                    "name": "Комбо 'Гриль-мастер'",
+                    "short_description": "Набор для идеального барбекю",
+                    "article_number": "COMBO-005",
+                    "uuid_1c": "x9y8z7w6-v5u4-3210",
+                    "manufacturer": "PrimeBeef",
+                    "categories": ["Комбо", "Гриль", "Акции"],
+                    "attributes": {
+                        "Состав": "Рёбрышки, вырезка, сосиски",
+                        "Вес нетто": "3.8 кг"
+                    }
+                }
+            }
+        ],
+
+        "items_1с": [
+            {
+                "id": 6,
+                "uuid_1c": "uuid",
+                "type": "Product",
+                "quantity": 1,
+                "price": "4365",
+                "price_for_unit": "4365",
+                "price_without_sale": 4850,
+                "price_for_unit_without_sale": "4850",
+                "unit_sale_percent": 10,
+                "weight": "4.17",
+                "weight_for_unit": "4.17",
+                "weight_type": "кг",
+                "item_info": {
+                    "name": "Вырезка говяжья A5",
+                    "short_description": "Премиальный отруб с мраморной структурой",
+                    "article_number": "BEEF-001",
+                    "uuid_1c": "a1b2c3d4-e5f6-7890",
+                    "manufacturer": "PrimeBeef Farms",
+                    "categories": ["Говядина", "Премиум", "Стейки"],
+                    "attributes": {
+                        "Степень охлаждения": "Охлаждённое",
+                        "Страна происхождения": "Япония",
+                        "Срок годности": "14 дней"
+                    }
+                }
+            }
+        ]
+    }
+]

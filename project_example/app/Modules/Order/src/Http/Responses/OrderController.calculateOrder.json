@@ -1,0 +1,54 @@
+{
+    "data": {
+        "delivery_detail": {
+            "delivery_zone_time_min": "1-2 час.",
+            "delivery_date": "17.05.2003 18:20",
+            "delivery_time_from": "18:00",
+            "delivery_time_to": "20:00",
+            "city": null,
+            "address_full": null,
+            "delivery_zone_name": "Автозаводский район",
+            "delivery_zone_description": "Отдалённые районы, доставка до 4 часов.",
+            "pickup_location_name": null,
+            "pickup_location_address": null,
+            "delivery_price": 400
+        },
+        "order_detail": {
+            "cart_sum": 0,
+            "delivery_price": 400,
+            "weight": 0,
+            "quantity": 0,
+            "personal_discount": 0,
+            "promocode_discount": 0,
+            "bonus_spent_limit": 0,
+            "bonus_spent": 0,
+            "price_final": 400
+        }
+    },
+    "data2": {
+        "delivery_detail": {
+            "delivery_zone_time_min": null,
+            "delivery_date": "17.05.2003 18:20",
+            "delivery_time_from": "18:00",
+            "delivery_time_to": "20:00",
+            "city": null,
+            "address_full": null,
+            "delivery_zone_name": null,
+            "delivery_zone_description": null,
+            "pickup_location_name": null,
+            "pickup_location_address": null,
+            "delivery_price": 0
+        },
+        "order_detail": {
+            "cart_sum": 2678.4,
+            "delivery_price": 0,
+            "weight": 5.42,
+            "quantity": 1,
+            "personal_discount": 0,
+            "promocode_discount": 267.84000000000003,
+            "bonus_spent_limit": 669.6,
+            "bonus_spent": 0,
+            "price_final": 2410.56
+        }
+    }
+}
