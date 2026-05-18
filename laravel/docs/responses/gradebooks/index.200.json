@@ -1,0 +1,47 @@
+{
+    "data": [
+        {
+            "id": 1,
+            "title": "Математический анализ — ИВТ-401",
+            "discipline": "Математический анализ",
+            "group_name": "ИВТ-401",
+            "semester": "1",
+            "teacher": {
+                "id": 2,
+                "full_name": "Петров Иван Сергеевич"
+            },
+            "original_filename": "demo-gradebook.xlsx",
+            "rows_count": 1,
+            "uploaded_at": "2026-05-16T12:00:00+00:00"
+        },
+        {
+            "id": 2,
+            "title": "Программирование — ИВТ-401",
+            "discipline": "Программирование",
+            "group_name": "ИВТ-401",
+            "semester": "2",
+            "teacher": {
+                "id": 2,
+                "full_name": "Петров Иван Сергеевич"
+            },
+            "original_filename": null,
+            "rows_count": 1,
+            "uploaded_at": "2026-05-16T12:00:00+00:00"
+        }
+    ],
+    "links": {
+        "first": "http://localhost/api/gradebooks?page=1",
+        "last": "http://localhost/api/gradebooks?page=1",
+        "prev": null,
+        "next": null
+    },
+    "meta": {
+        "current_page": 1,
+        "from": 1,
+        "last_page": 1,
+        "path": "http://localhost/api/gradebooks",
+        "per_page": 15,
+        "to": 2,
+        "total": 2
+    }
+}

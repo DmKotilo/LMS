@@ -6,7 +6,7 @@ return [
     // The HTML <title> for the generated documentation. If this is empty, Scribe will infer it from config('app.name').
     'title' => 'MRC API',
 
-    'description' => 'REST API учебного портала института (LMS).',
+    'description' => 'REST API учебного портала (LMS). Роли: студент, преподаватель, администратор.',
 
     // The base URL displayed in the docs. If this is empty, Scribe will use the value of config('app.url') at generation time.
     // If you're using `laravel` type, you can set this to a dynamic string, like '{{ config("app.tenant_url") }}' to get a dynamic base URL.
@@ -102,10 +102,17 @@ return [
 
     // Text to place in the "Introduction" section, right after the `description`. Markdown and HTML are supported.
     'intro_text' => <<<INTRO
-This documentation aims to provide all the information you need to work with our API.
+## Роли
 
-<aside>As you scroll, you'll see code examples for working with the API in different programming languages in the dark area to the right (or as part of the content on mobile).
-You can switch the language used with the tabs at the top right (or from the nav menu at the top left on mobile).</aside>
+| Роль | `user.role` | Раздел API |
+|------|-------------|------------|
+| Студент | `student` | **Для студента** — оценки и семестры |
+| Преподаватель | `teacher` | **Для преподавателя и администратора** — ведомости (только свои) |
+| Администратор | `administrator` | Ведомости (все), удаление |
+
+После `POST /api/auth/login` смотрите `user.role`, `user.role_label` и `default_path` — по ним определяется тип пользователя.
+
+Один токен Sanctum для всех ролей; доступ к эндпоинтам проверяется политиками Laravel (403 при несовпадении роли).
 INTRO
     ,
 
@@ -148,7 +155,13 @@ INTRO
         // By default, Scribe will sort groups alphabetically, and endpoints in the order their routes are defined.
         // You can override this by listing the groups, subgroups and endpoints here in the order you want them.
         // See https://scribe.knuckles.wtf/blog/laravel-v4#easier-sorting and https://scribe.knuckles.wtf/laravel/reference/config#order for details
-        'order' => [],
+        'order' => [
+            'Авторизация',
+            'Общее',
+            'Для студента',
+            'Для преподавателя и администратора',
+            'Служебные',
+        ],
     ],
 
     // Custom logo path. This will be used as the value of the src attribute for the <img> tag,
@@ -181,19 +194,14 @@ INTRO
     // If you create or install a custom strategy, add it here.
     'strategies' => [
         'metadata' => [
-            Strategies\Metadata\GetFromDocBlocks::class,
             Strategies\Metadata\GetFromMetadataAttributes::class,
         ],
         'urlParameters' => [
             Strategies\UrlParameters\GetFromLaravelAPI::class,
             Strategies\UrlParameters\GetFromUrlParamAttribute::class,
-            Strategies\UrlParameters\GetFromUrlParamTag::class,
         ],
         'queryParameters' => [
-            Strategies\QueryParameters\GetFromFormRequest::class,
-            Strategies\QueryParameters\GetFromInlineValidator::class,
             Strategies\QueryParameters\GetFromQueryParamAttribute::class,
-            Strategies\QueryParameters\GetFromQueryParamTag::class,
         ],
         'headers' => [
             Strategies\Headers\GetFromHeaderAttribute::class,
@@ -207,21 +215,11 @@ INTRO
             ]
         ],
         'bodyParameters' => [
-            Strategies\BodyParameters\GetFromFormRequest::class,
-            Strategies\BodyParameters\GetFromInlineValidator::class,
             Strategies\BodyParameters\GetFromBodyParamAttribute::class,
-            Strategies\BodyParameters\GetFromBodyParamTag::class,
         ],
         'responses' => [
             Strategies\Responses\UseResponseAttributes::class,
-            Strategies\Responses\UseTransformerTags::class,
-            Strategies\Responses\UseApiResourceTags::class,
-            Strategies\Responses\UseResponseTag::class,
             Strategies\Responses\UseResponseFileTag::class,
-            [
-                Strategies\Responses\ResponseCalls::class,
-                ['only' => ['GET *']]
-            ]
         ],
         'responseFields' => [
             Strategies\ResponseFields\GetFromResponseFieldAttribute::class,

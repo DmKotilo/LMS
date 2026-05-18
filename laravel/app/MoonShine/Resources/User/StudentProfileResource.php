@@ -10,7 +10,10 @@ use MoonShine\Laravel\Resources\ModelResource;
 use MoonShine\UI\Components\Layout\Box;
 use MoonShine\UI\Fields\ID;
 use MoonShine\UI\Fields\Text;
+use User\Enums\UserRole;
+use User\Models\StudentGroup;
 use User\Models\StudentProfile;
+use User\Models\User;
 
 /**
  * @extends ModelResource<StudentProfile>
@@ -25,8 +28,18 @@ class StudentProfileResource extends ModelResource
     {
         return [
             ID::make()->sortable(),
-            BelongsTo::make('Пользователь', 'user', formatted: static fn ($user) => $user?->fullName()),
-            BelongsTo::make('Группа', 'group'),
+            BelongsTo::make(
+                'Пользователь',
+                'user',
+                formatted: static fn (?User $user) => $user?->fullName() ?? '—',
+                resource: UserResource::class,
+            ),
+            BelongsTo::make(
+                'Группа',
+                'group',
+                formatted: static fn (?StudentGroup $group) => $group?->name ?? '—',
+                resource: StudentGroupResource::class,
+            ),
             Text::make('№ студ. билета', 'student_id_number'),
         ];
     }
@@ -35,8 +48,13 @@ class StudentProfileResource extends ModelResource
     {
         return [
             Box::make([
-                BelongsTo::make('Пользователь', 'user')->required()->searchable(),
-                BelongsTo::make('Группа', 'group', resource: StudentGroupResource::class)->required(),
+                BelongsTo::make('Пользователь', 'user', resource: UserResource::class)
+                    ->required()
+                    ->searchable()
+                    ->valuesQuery(static fn ($q) => $q->where('role', UserRole::Student->value)),
+                BelongsTo::make('Группа', 'group', resource: StudentGroupResource::class)
+                    ->required()
+                    ->searchable(),
                 Text::make('№ студ. билета', 'student_id_number')->required(),
             ]),
         ];

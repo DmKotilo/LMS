@@ -16,4 +16,12 @@ enum UserRole: string
             self::Administrator => 'Администратор',
         };
     }
+    public function toString(): string
+    {
+        return match ($this) {
+            self::Student => 'Студент',
+            self::Teacher => 'Преподаватель',
+            self::Administrator => 'Администратор',
+        };
+    }
 }

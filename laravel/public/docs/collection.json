@@ -5,59 +5,22 @@
             "key": "baseUrl",
             "type": "string",
             "name": "string",
-            "value": "http:\/\/localhost"
+            "value": "http:\/\/localhost:8085"
         }
     ],
     "info": {
         "name": "MRC API",
-        "_postman_id": "b887df44-929c-4580-842e-df1b05ec93d4",
-        "description": "REST API \u0443\u0447\u0435\u0431\u043d\u043e\u0433\u043e \u043f\u043e\u0440\u0442\u0430\u043b\u0430 \u0438\u043d\u0441\u0442\u0438\u0442\u0443\u0442\u0430 (LMS).",
+        "_postman_id": "5a4a5986-1ef4-4a50-8527-7448458baff2",
+        "description": "REST API \u0443\u0447\u0435\u0431\u043d\u043e\u0433\u043e \u043f\u043e\u0440\u0442\u0430\u043b\u0430 (LMS). \u0420\u043e\u043b\u0438: \u0441\u0442\u0443\u0434\u0435\u043d\u0442, \u043f\u0440\u0435\u043f\u043e\u0434\u0430\u0432\u0430\u0442\u0435\u043b\u044c, \u0430\u0434\u043c\u0438\u043d\u0438\u0441\u0442\u0440\u0430\u0442\u043e\u0440.",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
     },
     "item": [
-        {
-            "name": "Endpoints",
-            "description": "",
-            "item": [
-                {
-                    "name": "POST api\/connect\/check",
-                    "request": {
-                        "url": {
-                            "host": "{{baseUrl}}",
-                            "path": "api\/connect\/check",
-                            "query": [],
-                            "raw": "{{baseUrl}}\/api\/connect\/check"
-                        },
-                        "method": "POST",
-                        "header": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application\/json"
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application\/json"
-                            }
-                        ],
-                        "body": {
-                            "mode": "raw",
-                            "raw": "{\"date_current\":\"aliquid\"}"
-                        },
-                        "description": "",
-                        "auth": {
-                            "type": "noauth"
-                        }
-                    },
-                    "response": []
-                }
-            ]
-        },
         {
             "name": "\u0410\u0432\u0442\u043e\u0440\u0438\u0437\u0430\u0446\u0438\u044f",
             "description": "",
             "item": [
                 {
-                    "name": "POST api\/auth\/login",
+                    "name": "\u0412\u0445\u043e\u0434",
                     "request": {
                         "url": {
                             "host": "{{baseUrl}}",
@@ -78,14 +41,27 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"email\":\"kstiedemann@example.net\",\"password\":\"YxbSxb$F=0\"}"
+                            "raw": "{\"email\":\"teacher@example.com\",\"password\":\"password\"}"
                         },
-                        "description": "",
+                        "description": "\u0410\u0432\u0442\u043e\u0440\u0438\u0437\u0430\u0446\u0438\u044f \u043f\u043e email \u0438 \u043f\u0430\u0440\u043e\u043b\u044e. \u0412\u043e\u0437\u0432\u0440\u0430\u0449\u0430\u0435\u0442 Bearer-\u0442\u043e\u043a\u0435\u043d (Sanctum).\n\n\u0412 \u043e\u0431\u044a\u0435\u043a\u0442\u0435 `user` \u043f\u0440\u0438\u0445\u043e\u0434\u0438\u0442 \u0440\u043e\u043b\u044c:\n- `role`: `student` | `teacher` | `administrator`\n- `role_label`: \u0447\u0435\u043b\u043e\u0432\u0435\u043a\u043e\u0447\u0438\u0442\u0430\u0435\u043c\u043e\u0435 \u043d\u0430\u0437\u0432\u0430\u043d\u0438\u0435\n- `default_path`: \u0441\u0442\u0430\u0440\u0442\u043e\u0432\u044b\u0439 \u043f\u0443\u0442\u044c API \u0434\u043b\u044f \u044d\u0442\u043e\u0439 \u0440\u043e\u043b\u0438 (`\/api\/student\/results`, `\/api\/gradebooks` \u0438 \u0442.\u0434.)\n\n\u041f\u043e \u0440\u043e\u043b\u0438 \u0444\u0440\u043e\u043d\u0442\u0435\u043d\u0434 \u0432\u044b\u0431\u0438\u0440\u0430\u0435\u0442 \u0440\u0430\u0437\u0434\u0435\u043b \u043f\u0440\u0438\u043b\u043e\u0436\u0435\u043d\u0438\u044f; \u043e\u0442\u0434\u0435\u043b\u044c\u043d\u043e\u0433\u043e \u00ab\u0442\u0438\u043f\u0430 \u0432\u0445\u043e\u0434\u0430\u00bb \u043d\u0435\u0442 \u2014 \u043e\u0434\u0438\u043d endpoint \u0434\u043b\u044f \u0432\u0441\u0435\u0445.",
                         "auth": {
                             "type": "noauth"
                         }
                     },
-                    "response": []
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\r\n    \"data\": {\r\n        \"token\": \"1|exampleSanctumTokenForDocumentation\",\r\n        \"token_type\": \"Bearer\",\r\n        \"default_path\": \"\/api\/gradebooks\",\r\n        \"user\": {\r\n            \"id\": 2,\r\n            \"role\": \"teacher\",\r\n            \"role_label\": \"\u041f\u0440\u0435\u043f\u043e\u0434\u0430\u0432\u0430\u0442\u0435\u043b\u044c\",\r\n            \"first_name\": \"\u0418\u0432\u0430\u043d\",\r\n            \"second_name\": \"\u0421\u0435\u0440\u0433\u0435\u0435\u0432\u0438\u0447\",\r\n            \"last_name\": \"\u041f\u0435\u0442\u0440\u043e\u0432\",\r\n            \"full_name\": \"\u041f\u0435\u0442\u0440\u043e\u0432 \u0418\u0432\u0430\u043d \u0421\u0435\u0440\u0433\u0435\u0435\u0432\u0438\u0447\",\r\n            \"email\": \"teacher@institute.local\",\r\n            \"email_verified_at\": \"2026-05-16T12:00:00+00:00\",\r\n            \"phone\": null,\r\n            \"is_active\": true,\r\n            \"default_path\": \"\/api\/gradebooks\",\r\n            \"gradebooks_count\": 2,\r\n            \"created_at\": \"2026-05-16T12:00:00+00:00\",\r\n            \"updated_at\": \"2026-05-16T12:00:00+00:00\"\r\n        }\r\n    }\r\n}\r\n",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 422,
+                            "body": "{\r\n    \"message\": \"\u041d\u0435\u0432\u0435\u0440\u043d\u044b\u0439 email \u0438\u043b\u0438 \u043f\u0430\u0440\u043e\u043b\u044c.\",\r\n    \"errors\": {\r\n        \"email\": [\r\n            \"\u041d\u0435\u0432\u0435\u0440\u043d\u044b\u0439 email \u0438\u043b\u0438 \u043f\u0430\u0440\u043e\u043b\u044c.\"\r\n        ]\r\n    }\r\n}\r\n",
+                            "name": ""
+                        }
+                    ]
                 },
                 {
                     "name": "\u0412\u044b\u0445\u043e\u0434",
@@ -108,12 +84,16 @@
                             }
                         ],
                         "body": null,
-                        "description": "\u0423\u0434\u0430\u043b\u044f\u0435\u0442 \u0442\u0435\u043a\u0443\u0449\u0438\u0439 \u0442\u043e\u043a\u0435\u043d \u0434\u043e\u0441\u0442\u0443\u043f\u0430.",
-                        "auth": {
-                            "type": "noauth"
-                        }
+                        "description": "\u0423\u0434\u0430\u043b\u044f\u0435\u0442 \u0442\u0435\u043a\u0443\u0449\u0438\u0439 \u0442\u043e\u043a\u0435\u043d \u0434\u043e\u0441\u0442\u0443\u043f\u0430."
                     },
-                    "response": []
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\r\n    \"message\": \"\u0412\u044b\u0445\u043e\u0434 \u0432\u044b\u043f\u043e\u043b\u043d\u0435\u043d \u0443\u0441\u043f\u0435\u0448\u043d\u043e.\"\r\n}\r\n",
+                            "name": ""
+                        }
+                    ]
                 },
                 {
                     "name": "\u0422\u0435\u043a\u0443\u0449\u0438\u0439 \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044c",
@@ -136,25 +116,19 @@
                             }
                         ],
                         "body": null,
-                        "description": "",
-                        "auth": {
-                            "type": "noauth"
-                        }
+                        "description": ""
                     },
                     "response": [
                         {
-                            "header": [
-                                {
-                                    "key": "cache-control",
-                                    "value": "no-cache, private"
-                                },
-                                {
-                                    "key": "content-type",
-                                    "value": "application\/json"
-                                }
-                            ],
+                            "header": [],
+                            "code": 200,
+                            "body": "{\r\n    \"data\": {\r\n        \"id\": 3,\r\n        \"role\": \"student\",\r\n        \"role_label\": \"\u0421\u0442\u0443\u0434\u0435\u043d\u0442\",\r\n        \"first_name\": \"\u0410\u043b\u0435\u043a\u0441\u0435\u0439\",\r\n        \"second_name\": \"\u0414\u043c\u0438\u0442\u0440\u0438\u0435\u0432\u0438\u0447\",\r\n        \"last_name\": \"\u0418\u0432\u0430\u043d\u043e\u0432\",\r\n        \"full_name\": \"\u0418\u0432\u0430\u043d\u043e\u0432 \u0410\u043b\u0435\u043a\u0441\u0435\u0439 \u0414\u043c\u0438\u0442\u0440\u0438\u0435\u0432\u0438\u0447\",\r\n        \"email\": \"student@institute.local\",\r\n        \"email_verified_at\": \"2026-05-16T12:00:00+00:00\",\r\n        \"phone\": null,\r\n        \"is_active\": true,\r\n        \"default_path\": \"\/api\/student\/results\",\r\n        \"student_profile\": {\r\n            \"student_id_number\": \"ST-2024-0001\",\r\n            \"group\": {\r\n                \"id\": 1,\r\n                \"name\": \"\u0418\u0412\u0422-401\",\r\n                \"education_form\": \"full_time\",\r\n                \"education_form_label\": \"\u041e\u0447\u043d\u0430\u044f\",\r\n                \"course\": 4\r\n            }\r\n        },\r\n        \"created_at\": \"2026-05-16T12:00:00+00:00\",\r\n        \"updated_at\": \"2026-05-16T12:00:00+00:00\"\r\n    }\r\n}\r\n",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
                             "code": 401,
-                            "body": "{\"message\":\"\\u041d\\u0435\\u043e\\u0431\\u0445\\u043e\\u0434\\u0438\\u043c\\u0430 \\u0430\\u0432\\u0442\\u043e\\u0440\\u0438\\u0437\\u0430\\u0446\\u0438\\u044f.\"}",
+                            "body": "{\r\n    \"message\": \"\u041d\u0435\u043e\u0431\u0445\u043e\u0434\u0438\u043c\u0430 \u0430\u0432\u0442\u043e\u0440\u0438\u0437\u0430\u0446\u0438\u044f.\"\r\n}\r\n",
                             "name": ""
                         }
                     ]
@@ -162,8 +136,8 @@
             ]
         },
         {
-            "name": "\u041f\u0440\u043e\u0444\u0438\u043b\u044c",
-            "description": "",
+            "name": "\u041e\u0431\u0449\u0435\u0435",
+            "description": "\u042d\u043d\u0434\u043f\u043e\u0438\u043d\u0442\u044b, \u0434\u043e\u0441\u0442\u0443\u043f\u043d\u044b\u0435 \u043b\u044e\u0431\u043e\u0439 \u0430\u0432\u0442\u043e\u0440\u0438\u0437\u043e\u0432\u0430\u043d\u043d\u043e\u0439 \u0440\u043e\u043b\u0438 (\u0441\u0442\u0443\u0434\u0435\u043d\u0442, \u043f\u0440\u0435\u043f\u043e\u0434\u0430\u0432\u0430\u0442\u0435\u043b\u044c, \u0430\u0434\u043c\u0438\u043d\u0438\u0441\u0442\u0440\u0430\u0442\u043e\u0440).",
             "item": [
                 {
                     "name": "\u041f\u0440\u043e\u0441\u043c\u043e\u0442\u0440 \u043f\u0440\u043e\u0444\u0438\u043b\u044f",
@@ -186,25 +160,19 @@
                             }
                         ],
                         "body": null,
-                        "description": "",
-                        "auth": {
-                            "type": "noauth"
-                        }
+                        "description": "\u0412 \u043e\u0442\u0432\u0435\u0442\u0435 \u043f\u043e\u043b\u0435 `role` (`student` | `teacher` | `administrator`) \u0438 `role_label` \u2014 \u0442\u0435\u043a\u0443\u0449\u0430\u044f \u0440\u043e\u043b\u044c \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044f."
                     },
                     "response": [
                         {
-                            "header": [
-                                {
-                                    "key": "cache-control",
-                                    "value": "no-cache, private"
-                                },
-                                {
-                                    "key": "content-type",
-                                    "value": "application\/json"
-                                }
-                            ],
+                            "header": [],
+                            "code": 200,
+                            "body": "{\r\n    \"data\": {\r\n        \"id\": 3,\r\n        \"role\": \"student\",\r\n        \"role_label\": \"\u0421\u0442\u0443\u0434\u0435\u043d\u0442\",\r\n        \"first_name\": \"\u0410\u043b\u0435\u043a\u0441\u0435\u0439\",\r\n        \"second_name\": \"\u0414\u043c\u0438\u0442\u0440\u0438\u0435\u0432\u0438\u0447\",\r\n        \"last_name\": \"\u0418\u0432\u0430\u043d\u043e\u0432\",\r\n        \"full_name\": \"\u0418\u0432\u0430\u043d\u043e\u0432 \u0410\u043b\u0435\u043a\u0441\u0435\u0439 \u0414\u043c\u0438\u0442\u0440\u0438\u0435\u0432\u0438\u0447\",\r\n        \"email\": \"student@institute.local\",\r\n        \"email_verified_at\": \"2026-05-16T12:00:00+00:00\",\r\n        \"phone\": \"+79001234567\",\r\n        \"is_active\": true,\r\n        \"default_path\": \"\/api\/student\/results\",\r\n        \"student_profile\": {\r\n            \"student_id_number\": \"ST-2024-0001\",\r\n            \"group\": {\r\n                \"id\": 1,\r\n                \"name\": \"\u0418\u0412\u0422-401\",\r\n                \"education_form\": \"full_time\",\r\n                \"education_form_label\": \"\u041e\u0447\u043d\u0430\u044f\",\r\n                \"course\": 4\r\n            }\r\n        },\r\n        \"created_at\": \"2026-05-16T12:00:00+00:00\",\r\n        \"updated_at\": \"2026-05-16T12:00:00+00:00\"\r\n    }\r\n}\r\n",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
                             "code": 401,
-                            "body": "{\"message\":\"\\u041d\\u0435\\u043e\\u0431\\u0445\\u043e\\u0434\\u0438\\u043c\\u0430 \\u0430\\u0432\\u0442\\u043e\\u0440\\u0438\\u0437\\u0430\\u0446\\u0438\\u044f.\"}",
+                            "body": "{\r\n    \"message\": \"\u041d\u0435\u043e\u0431\u0445\u043e\u0434\u0438\u043c\u0430 \u0430\u0432\u0442\u043e\u0440\u0438\u0437\u0430\u0446\u0438\u044f.\"\r\n}\r\n",
                             "name": ""
                         }
                     ]
@@ -231,14 +199,24 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"phone\":\"wyldbxggtrscvvrfesrbyqb\",\"second_name\":\"odbfdawkputhjjldcehwqi\"}"
+                            "raw": "{\"last_name\":\"\u0418\u0432\u0430\u043d\u043e\u0432\",\"first_name\":\"\u0418\u0432\u0430\u043d\",\"second_name\":\"\u0418\u0432\u0430\u043d\u043e\u0432\u0438\u0447\",\"phone\":\"+79001234567\"}"
                         },
-                        "description": "",
-                        "auth": {
-                            "type": "noauth"
-                        }
+                        "description": "\u041c\u043e\u0436\u043d\u043e \u0438\u0437\u043c\u0435\u043d\u0438\u0442\u044c \u0424\u0418\u041e \u0438 \u0442\u0435\u043b\u0435\u0444\u043e\u043d. \u0421\u043c\u0435\u043d\u0430 email: `POST \/api\/profile\/email` (\u043f\u0430\u0440\u043e\u043b\u044c + \u043d\u043e\u0432\u044b\u0439 email, \u043f\u043e\u0434\u0442\u0432\u0435\u0440\u0436\u0434\u0435\u043d\u0438\u0435 \u043f\u043e \u0441\u0441\u044b\u043b\u043a\u0435 \u0438\u0437 \u043f\u0438\u0441\u044c\u043c\u0430)."
                     },
-                    "response": []
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\r\n    \"data\": {\r\n        \"id\": 3,\r\n        \"role\": \"student\",\r\n        \"role_label\": \"\u0421\u0442\u0443\u0434\u0435\u043d\u0442\",\r\n        \"first_name\": \"\u0410\u043b\u0435\u043a\u0441\u0435\u0439\",\r\n        \"second_name\": \"\u0414\u043c\u0438\u0442\u0440\u0438\u0435\u0432\u0438\u0447\",\r\n        \"last_name\": \"\u0418\u0432\u0430\u043d\u043e\u0432\",\r\n        \"full_name\": \"\u0418\u0432\u0430\u043d\u043e\u0432 \u0410\u043b\u0435\u043a\u0441\u0435\u0439 \u0414\u043c\u0438\u0442\u0440\u0438\u0435\u0432\u0438\u0447\",\r\n        \"email\": \"student@institute.local\",\r\n        \"email_verified_at\": \"2026-05-16T12:00:00+00:00\",\r\n        \"phone\": \"+79001234567\",\r\n        \"is_active\": true,\r\n        \"default_path\": \"\/api\/student\/results\",\r\n        \"student_profile\": {\r\n            \"student_id_number\": \"ST-2024-0001\",\r\n            \"group\": {\r\n                \"id\": 1,\r\n                \"name\": \"\u0418\u0412\u0422-401\",\r\n                \"education_form\": \"full_time\",\r\n                \"education_form_label\": \"\u041e\u0447\u043d\u0430\u044f\",\r\n                \"course\": 4\r\n            }\r\n        },\r\n        \"created_at\": \"2026-05-16T12:00:00+00:00\",\r\n        \"updated_at\": \"2026-05-16T12:10:00+00:00\"\r\n    }\r\n}\r\n",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 401,
+                            "body": "{\r\n    \"message\": \"\u041d\u0435\u043e\u0431\u0445\u043e\u0434\u0438\u043c\u0430 \u0430\u0432\u0442\u043e\u0440\u0438\u0437\u0430\u0446\u0438\u044f.\"\r\n}\r\n",
+                            "name": ""
+                        }
+                    ]
                 },
                 {
                     "name": "\u0421\u043c\u0435\u043d\u0430 \u043f\u0430\u0440\u043e\u043b\u044f",
@@ -262,14 +240,526 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"current_password\":\"doloribus\",\"password\":\"x'r4YiUrL7Ju[\\\/8jjP)\"}"
+                            "raw": "{\"current_password\":\"old-password\",\"password\":\"new-password\",\"password_confirmation\":\"new-password\"}"
                         },
-                        "description": "",
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\r\n    \"message\": \"\u041f\u0430\u0440\u043e\u043b\u044c \u0443\u0441\u043f\u0435\u0448\u043d\u043e \u0438\u0437\u043c\u0435\u043d\u0451\u043d.\"\r\n}\r\n",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 401,
+                            "body": "{\r\n    \"message\": \"\u041d\u0435\u043e\u0431\u0445\u043e\u0434\u0438\u043c\u0430 \u0430\u0432\u0442\u043e\u0440\u0438\u0437\u0430\u0446\u0438\u044f.\"\r\n}\r\n",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "\u0421\u043c\u0435\u043d\u0430 email",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/profile\/email",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/profile\/email"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"email\":\"new.user@example.com\",\"password\":\"password\"}"
+                        },
+                        "description": "\u0421\u043e\u0445\u0440\u0430\u043d\u044f\u0435\u0442 \u043d\u043e\u0432\u044b\u0439 \u0430\u0434\u0440\u0435\u0441 \u0432 `new_email` \u0438 \u043e\u0442\u043f\u0440\u0430\u0432\u043b\u044f\u0435\u0442 \u043f\u0438\u0441\u044c\u043c\u043e \u0441 \u043f\u043e\u0434\u0442\u0432\u0435\u0440\u0436\u0434\u0435\u043d\u0438\u0435\u043c. \u0422\u0435\u043a\u0443\u0449\u0438\u0439 `email` \u043d\u0435 \u043c\u0435\u043d\u044f\u0435\u0442\u0441\u044f, \u043f\u043e\u043a\u0430 \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044c \u043d\u0435 \u043f\u0435\u0440\u0435\u0439\u0434\u0451\u0442 \u043f\u043e \u0441\u0441\u044b\u043b\u043a\u0435 \u0438\u0437 \u043f\u0438\u0441\u044c\u043c\u0430."
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\r\n    \"message\": \"\u041f\u0438\u0441\u044c\u043c\u043e \u0441 \u043f\u043e\u0434\u0442\u0432\u0435\u0440\u0436\u0434\u0435\u043d\u0438\u0435\u043c \u043e\u0442\u043f\u0440\u0430\u0432\u043b\u0435\u043d\u043e \u043d\u0430 \u043d\u043e\u0432\u044b\u0439 \u0430\u0434\u0440\u0435\u0441.\",\r\n    \"user\": {\r\n        \"id\": 2,\r\n        \"role\": \"teacher\",\r\n        \"role_label\": \"\u041f\u0440\u0435\u043f\u043e\u0434\u0430\u0432\u0430\u0442\u0435\u043b\u044c\",\r\n        \"first_name\": \"\u0418\u0432\u0430\u043d\",\r\n        \"second_name\": \"\u0421\u0435\u0440\u0433\u0435\u0435\u0432\u0438\u0447\",\r\n        \"last_name\": \"\u041f\u0435\u0442\u0440\u043e\u0432\",\r\n        \"full_name\": \"\u041f\u0435\u0442\u0440\u043e\u0432 \u0418\u0432\u0430\u043d \u0421\u0435\u0440\u0433\u0435\u0435\u0432\u0438\u0447\",\r\n        \"email\": \"teacher@institute.local\",\r\n        \"new_email\": \"new.teacher@institute.local\",\r\n        \"email_verified_at\": null,\r\n        \"phone\": null,\r\n        \"is_active\": true,\r\n        \"default_path\": \"\/api\/gradebooks\",\r\n        \"gradebooks_count\": 2,\r\n        \"created_at\": \"2026-05-16T12:00:00+00:00\",\r\n        \"updated_at\": \"2026-05-16T12:15:00+00:00\"\r\n    }\r\n}\r\n",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 401,
+                            "body": "{\r\n    \"message\": \"\u041d\u0435\u043e\u0431\u0445\u043e\u0434\u0438\u043c\u0430 \u0430\u0432\u0442\u043e\u0440\u0438\u0437\u0430\u0446\u0438\u044f.\"\r\n}\r\n",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 422,
+                            "body": "{\r\n    \"message\": \"\u042d\u0442\u043e\u0442 email \u0443\u0436\u0435 \u0438\u0441\u043f\u043e\u043b\u044c\u0437\u0443\u0435\u0442\u0441\u044f.\",\r\n    \"errors\": {\r\n        \"email\": [\r\n            \"\u042d\u0442\u043e\u0442 email \u0443\u0436\u0435 \u0438\u0441\u043f\u043e\u043b\u044c\u0437\u0443\u0435\u0442\u0441\u044f.\"\r\n        ]\r\n    }\r\n}\r\n",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "\u041f\u043e\u0434\u0442\u0432\u0435\u0440\u0436\u0434\u0435\u043d\u0438\u0435 email",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/email\/verify\/:id\/:hash",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/email\/verify\/:id\/:hash",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "1",
+                                    "description": "ID \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044f."
+                                },
+                                {
+                                    "id": "hash",
+                                    "key": "hash",
+                                    "value": "abc...",
+                                    "description": "SHA1 \u0445\u0435\u0448 email \u0434\u043b\u044f \u043f\u043e\u0434\u0442\u0432\u0435\u0440\u0436\u0434\u0435\u043d\u0438\u044f."
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "\u0421\u0441\u044b\u043b\u043a\u0430 \u0438\u0437 \u043f\u0438\u0441\u044c\u043c\u0430 (signed URL). \u041f\u0440\u0438 \u0441\u043c\u0435\u043d\u0435 \u043f\u043e\u0447\u0442\u044b \u043f\u0435\u0440\u0435\u043d\u043e\u0441\u0438\u0442 `new_email` \u0432 `email` \u0438 \u0441\u0431\u0440\u0430\u0441\u044b\u0432\u0430\u0435\u0442 `new_email`.",
                         "auth": {
                             "type": "noauth"
                         }
                     },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\r\n    \"message\": \"Email \u0443\u0441\u043f\u0435\u0448\u043d\u043e \u043f\u043e\u0434\u0442\u0432\u0435\u0440\u0436\u0434\u0451\u043d.\",\r\n    \"user\": {\r\n        \"id\": 2,\r\n        \"role\": \"teacher\",\r\n        \"role_label\": \"\u041f\u0440\u0435\u043f\u043e\u0434\u0430\u0432\u0430\u0442\u0435\u043b\u044c\",\r\n        \"first_name\": \"\u0418\u0432\u0430\u043d\",\r\n        \"second_name\": \"\u0421\u0435\u0440\u0433\u0435\u0435\u0432\u0438\u0447\",\r\n        \"last_name\": \"\u041f\u0435\u0442\u0440\u043e\u0432\",\r\n        \"full_name\": \"\u041f\u0435\u0442\u0440\u043e\u0432 \u0418\u0432\u0430\u043d \u0421\u0435\u0440\u0433\u0435\u0435\u0432\u0438\u0447\",\r\n        \"email\": \"new.teacher@institute.local\",\r\n        \"email_verified_at\": \"2026-05-16T12:20:00+00:00\",\r\n        \"phone\": null,\r\n        \"is_active\": true,\r\n        \"default_path\": \"\/api\/gradebooks\",\r\n        \"gradebooks_count\": 2,\r\n        \"created_at\": \"2026-05-16T12:00:00+00:00\",\r\n        \"updated_at\": \"2026-05-16T12:20:00+00:00\"\r\n    }\r\n}\r\n",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 403,
+                            "body": "{\r\n    \"message\": \"This action is unauthorized.\"\r\n}\r\n",
+                            "name": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "\u0414\u043b\u044f \u0441\u0442\u0443\u0434\u0435\u043d\u0442\u0430",
+            "description": "\u0422\u0440\u0435\u0431\u0443\u0435\u0442\u0441\u044f \u0440\u043e\u043b\u044c `student` \u0438 \u043d\u0430\u0441\u0442\u0440\u043e\u0435\u043d\u043d\u044b\u0439 `student_profile`. \u0418\u043d\u0430\u0447\u0435 \u2014 403.",
+            "item": [
+                {
+                    "name": "\u0420\u0435\u0437\u0443\u043b\u044c\u0442\u0430\u0442\u044b",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/student\/results",
+                            "query": [
+                                {
+                                    "key": "semester",
+                                    "value": "2025-%D0%BE%D1%81%D0%B5%D0%BD%D1%8C",
+                                    "description": "\u0424\u0438\u043b\u044c\u0442\u0440 \u043f\u043e \u0441\u0435\u043c\u0435\u0441\u0442\u0440\u0443.",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "per_page",
+                                    "value": "20",
+                                    "description": "\u041a\u043e\u043b\u0438\u0447\u0435\u0441\u0442\u0432\u043e \u0437\u0430\u043f\u0438\u0441\u0435\u0439 \u043d\u0430 \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0435.",
+                                    "disabled": false
+                                }
+                            ],
+                            "raw": "{{baseUrl}}\/api\/student\/results?semester=2025-%D0%BE%D1%81%D0%B5%D0%BD%D1%8C&per_page=20"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "\u0421\u043f\u0438\u0441\u043e\u043a \u043e\u0446\u0435\u043d\u043e\u043a \u0442\u0435\u043a\u0443\u0449\u0435\u0433\u043e \u0441\u0442\u0443\u0434\u0435\u043d\u0442\u0430. \u0414\u043e\u0441\u0442\u0443\u043f\u043d\u043e \u0442\u043e\u043b\u044c\u043a\u043e \u043f\u0440\u0438 `user.role = student`."
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\r\n    \"data\": [\r\n        {\r\n            \"id\": 1,\r\n            \"student_name\": \"\u0418\u0432\u0430\u043d\u043e\u0432 \u0410\u043b\u0435\u043a\u0441\u0435\u0439 \u0414\u043c\u0438\u0442\u0440\u0438\u0435\u0432\u0438\u0447\",\r\n            \"group_name\": \"\u0418\u0412\u0422-401\",\r\n            \"semester\": \"1\",\r\n            \"module1_score\": \"42.00\",\r\n            \"module2_score\": \"45.00\",\r\n            \"total_score\": \"87.00\",\r\n            \"final_grade\": \"\u041e\u0442\u043b\u0438\u0447\u043d\u043e\",\r\n            \"gradebook\": {\r\n                \"id\": 1,\r\n                \"title\": \"\u041c\u0430\u0442\u0435\u043c\u0430\u0442\u0438\u0447\u0435\u0441\u043a\u0438\u0439 \u0430\u043d\u0430\u043b\u0438\u0437 \u2014 \u0418\u0412\u0422-401\",\r\n                \"discipline\": \"\u041c\u0430\u0442\u0435\u043c\u0430\u0442\u0438\u0447\u0435\u0441\u043a\u0438\u0439 \u0430\u043d\u0430\u043b\u0438\u0437\",\r\n                \"group_name\": \"\u0418\u0412\u0422-401\",\r\n                \"semester\": \"1\",\r\n                \"teacher\": {\r\n                    \"id\": 2,\r\n                    \"full_name\": \"\u041f\u0435\u0442\u0440\u043e\u0432 \u0418\u0432\u0430\u043d \u0421\u0435\u0440\u0433\u0435\u0435\u0432\u0438\u0447\"\r\n                },\r\n                \"original_filename\": \"demo-gradebook.xlsx\",\r\n                \"uploaded_at\": \"2026-05-16T12:00:00+00:00\"\r\n            }\r\n        },\r\n        {\r\n            \"id\": 2,\r\n            \"student_name\": \"\u0418\u0432\u0430\u043d\u043e\u0432 \u0410\u043b\u0435\u043a\u0441\u0435\u0439 \u0414\u043c\u0438\u0442\u0440\u0438\u0435\u0432\u0438\u0447\",\r\n            \"group_name\": \"\u0418\u0412\u0422-401\",\r\n            \"semester\": \"2\",\r\n            \"module1_score\": \"38.00\",\r\n            \"module2_score\": \"40.00\",\r\n            \"total_score\": \"78.00\",\r\n            \"final_grade\": \"\u0425\u043e\u0440\u043e\u0448\u043e\",\r\n            \"gradebook\": {\r\n                \"id\": 2,\r\n                \"title\": \"\u041f\u0440\u043e\u0433\u0440\u0430\u043c\u043c\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u0435 \u2014 \u0418\u0412\u0422-401\",\r\n                \"discipline\": \"\u041f\u0440\u043e\u0433\u0440\u0430\u043c\u043c\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u0435\",\r\n                \"group_name\": \"\u0418\u0412\u0422-401\",\r\n                \"semester\": \"2\",\r\n                \"teacher\": {\r\n                    \"id\": 2,\r\n                    \"full_name\": \"\u041f\u0435\u0442\u0440\u043e\u0432 \u0418\u0432\u0430\u043d \u0421\u0435\u0440\u0433\u0435\u0435\u0432\u0438\u0447\"\r\n                },\r\n                \"original_filename\": null,\r\n                \"uploaded_at\": \"2026-05-16T12:00:00+00:00\"\r\n            }\r\n        }\r\n    ],\r\n    \"links\": {\r\n        \"first\": \"http:\/\/localhost\/api\/student\/results?page=1\",\r\n        \"last\": \"http:\/\/localhost\/api\/student\/results?page=1\",\r\n        \"prev\": null,\r\n        \"next\": null\r\n    },\r\n    \"meta\": {\r\n        \"current_page\": 1,\r\n        \"from\": 1,\r\n        \"last_page\": 1,\r\n        \"path\": \"http:\/\/localhost\/api\/student\/results\",\r\n        \"per_page\": 20,\r\n        \"to\": 2,\r\n        \"total\": 2\r\n    }\r\n}\r\n",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 401,
+                            "body": "{\r\n    \"message\": \"\u041d\u0435\u043e\u0431\u0445\u043e\u0434\u0438\u043c\u0430 \u0430\u0432\u0442\u043e\u0440\u0438\u0437\u0430\u0446\u0438\u044f.\"\r\n}\r\n",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 403,
+                            "body": "{\r\n    \"message\": \"This action is unauthorized.\"\r\n}\r\n",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "\u0421\u0435\u043c\u0435\u0441\u0442\u0440\u044b",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/student\/semesters",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/student\/semesters"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "\u0421\u043f\u0438\u0441\u043e\u043a \u0441\u0435\u043c\u0435\u0441\u0442\u0440\u043e\u0432 \u0441 \u0440\u0435\u0437\u0443\u043b\u044c\u0442\u0430\u0442\u0430\u043c\u0438. \u0414\u043e\u0441\u0442\u0443\u043f\u043d\u043e \u0442\u043e\u043b\u044c\u043a\u043e \u043f\u0440\u0438 `user.role = student`."
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\r\n    \"data\": [\r\n        \"1\",\r\n        \"2\"\r\n    ]\r\n}\r\n",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 401,
+                            "body": "{\r\n    \"message\": \"\u041d\u0435\u043e\u0431\u0445\u043e\u0434\u0438\u043c\u0430 \u0430\u0432\u0442\u043e\u0440\u0438\u0437\u0430\u0446\u0438\u044f.\"\r\n}\r\n",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 403,
+                            "body": "{\r\n    \"message\": \"This action is unauthorized.\"\r\n}\r\n",
+                            "name": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "\u0414\u043b\u044f \u043f\u0440\u0435\u043f\u043e\u0434\u0430\u0432\u0430\u0442\u0435\u043b\u044f \u0438 \u0430\u0434\u043c\u0438\u043d\u0438\u0441\u0442\u0440\u0430\u0442\u043e\u0440\u0430",
+            "description": "\u0420\u043e\u043b\u0438 `teacher` \u0438 `administrator`. \u0421\u0442\u0443\u0434\u0435\u043d\u0442 \u043f\u043e\u043b\u0443\u0447\u0438\u0442 403.",
+            "item": [
+                {
+                    "name": "\u0421\u043f\u0438\u0441\u043e\u043a \u0432\u0435\u0434\u043e\u043c\u043e\u0441\u0442\u0435\u0439",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/gradebooks",
+                            "query": [
+                                {
+                                    "key": "search",
+                                    "value": "%D0%9C%D0%B0%D1%82%D0%B5%D0%BC%D0%B0%D1%82%D0%B8%D0%BA%D0%B0",
+                                    "description": "\u041f\u043e\u0438\u0441\u043a \u043f\u043e \u043d\u0430\u0437\u0432\u0430\u043d\u0438\u044e, \u0434\u0438\u0441\u0446\u0438\u043f\u043b\u0438\u043d\u0435 \u0438\u043b\u0438 \u0433\u0440\u0443\u043f\u043f\u0435.",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "discipline",
+                                    "value": "%D0%A4%D0%B8%D0%B7%D0%B8%D0%BA%D0%B0",
+                                    "description": "\u0424\u0438\u043b\u044c\u0442\u0440 \u043f\u043e \u0434\u0438\u0441\u0446\u0438\u043f\u043b\u0438\u043d\u0435.",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "group_name",
+                                    "value": "%D0%98%D0%92%D0%A2-21",
+                                    "description": "\u0424\u0438\u043b\u044c\u0442\u0440 \u043f\u043e \u0433\u0440\u0443\u043f\u043f\u0435.",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "semester",
+                                    "value": "2025-%D0%BE%D1%81%D0%B5%D0%BD%D1%8C",
+                                    "description": "\u0424\u0438\u043b\u044c\u0442\u0440 \u043f\u043e \u0441\u0435\u043c\u0435\u0441\u0442\u0440\u0443.",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "teacher_id",
+                                    "value": "1",
+                                    "description": "\u0424\u0438\u043b\u044c\u0442\u0440 \u043f\u043e \u043f\u0440\u0435\u043f\u043e\u0434\u0430\u0432\u0430\u0442\u0435\u043b\u044e (ID).",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "per_page",
+                                    "value": "15",
+                                    "description": "\u041a\u043e\u043b\u0438\u0447\u0435\u0441\u0442\u0432\u043e \u0437\u0430\u043f\u0438\u0441\u0435\u0439 \u043d\u0430 \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0435.",
+                                    "disabled": false
+                                }
+                            ],
+                            "raw": "{{baseUrl}}\/api\/gradebooks?search=%D0%9C%D0%B0%D1%82%D0%B5%D0%BC%D0%B0%D1%82%D0%B8%D0%BA%D0%B0&discipline=%D0%A4%D0%B8%D0%B7%D0%B8%D0%BA%D0%B0&group_name=%D0%98%D0%92%D0%A2-21&semester=2025-%D0%BE%D1%81%D0%B5%D0%BD%D1%8C&teacher_id=1&per_page=15"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "\u041f\u0440\u0435\u043f\u043e\u0434\u0430\u0432\u0430\u0442\u0435\u043b\u044c \u0432\u0438\u0434\u0438\u0442 \u0442\u043e\u043b\u044c\u043a\u043e \u0441\u0432\u043e\u0438 \u0432\u0435\u0434\u043e\u043c\u043e\u0441\u0442\u0438; \u0430\u0434\u043c\u0438\u043d\u0438\u0441\u0442\u0440\u0430\u0442\u043e\u0440 \u2014 \u0432\u0441\u0435."
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\r\n    \"data\": [\r\n        {\r\n            \"id\": 1,\r\n            \"title\": \"\u041c\u0430\u0442\u0435\u043c\u0430\u0442\u0438\u0447\u0435\u0441\u043a\u0438\u0439 \u0430\u043d\u0430\u043b\u0438\u0437 \u2014 \u0418\u0412\u0422-401\",\r\n            \"discipline\": \"\u041c\u0430\u0442\u0435\u043c\u0430\u0442\u0438\u0447\u0435\u0441\u043a\u0438\u0439 \u0430\u043d\u0430\u043b\u0438\u0437\",\r\n            \"group_name\": \"\u0418\u0412\u0422-401\",\r\n            \"semester\": \"1\",\r\n            \"teacher\": {\r\n                \"id\": 2,\r\n                \"full_name\": \"\u041f\u0435\u0442\u0440\u043e\u0432 \u0418\u0432\u0430\u043d \u0421\u0435\u0440\u0433\u0435\u0435\u0432\u0438\u0447\"\r\n            },\r\n            \"original_filename\": \"demo-gradebook.xlsx\",\r\n            \"rows_count\": 1,\r\n            \"uploaded_at\": \"2026-05-16T12:00:00+00:00\"\r\n        },\r\n        {\r\n            \"id\": 2,\r\n            \"title\": \"\u041f\u0440\u043e\u0433\u0440\u0430\u043c\u043c\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u0435 \u2014 \u0418\u0412\u0422-401\",\r\n            \"discipline\": \"\u041f\u0440\u043e\u0433\u0440\u0430\u043c\u043c\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u0435\",\r\n            \"group_name\": \"\u0418\u0412\u0422-401\",\r\n            \"semester\": \"2\",\r\n            \"teacher\": {\r\n                \"id\": 2,\r\n                \"full_name\": \"\u041f\u0435\u0442\u0440\u043e\u0432 \u0418\u0432\u0430\u043d \u0421\u0435\u0440\u0433\u0435\u0435\u0432\u0438\u0447\"\r\n            },\r\n            \"original_filename\": null,\r\n            \"rows_count\": 1,\r\n            \"uploaded_at\": \"2026-05-16T12:00:00+00:00\"\r\n        }\r\n    ],\r\n    \"links\": {\r\n        \"first\": \"http:\/\/localhost\/api\/gradebooks?page=1\",\r\n        \"last\": \"http:\/\/localhost\/api\/gradebooks?page=1\",\r\n        \"prev\": null,\r\n        \"next\": null\r\n    },\r\n    \"meta\": {\r\n        \"current_page\": 1,\r\n        \"from\": 1,\r\n        \"last_page\": 1,\r\n        \"path\": \"http:\/\/localhost\/api\/gradebooks\",\r\n        \"per_page\": 15,\r\n        \"to\": 2,\r\n        \"total\": 2\r\n    }\r\n}\r\n",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 401,
+                            "body": "{\r\n    \"message\": \"\u041d\u0435\u043e\u0431\u0445\u043e\u0434\u0438\u043c\u0430 \u0430\u0432\u0442\u043e\u0440\u0438\u0437\u0430\u0446\u0438\u044f.\"\r\n}\r\n",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 403,
+                            "body": "{\r\n    \"message\": \"This action is unauthorized.\"\r\n}\r\n",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "\u041f\u0440\u043e\u0441\u043c\u043e\u0442\u0440 \u0432\u0435\u0434\u043e\u043c\u043e\u0441\u0442\u0438",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/gradebooks\/:gradebook_id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/gradebooks\/:gradebook_id",
+                            "variable": [
+                                {
+                                    "id": "gradebook_id",
+                                    "key": "gradebook_id",
+                                    "value": "1",
+                                    "description": "The ID of the gradebook."
+                                },
+                                {
+                                    "id": "gradebook",
+                                    "key": "gradebook",
+                                    "value": "1",
+                                    "description": "ID \u0432\u0435\u0434\u043e\u043c\u043e\u0441\u0442\u0438."
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\r\n    \"data\": {\r\n        \"id\": 1,\r\n        \"title\": \"\u041c\u0430\u0442\u0435\u043c\u0430\u0442\u0438\u0447\u0435\u0441\u043a\u0438\u0439 \u0430\u043d\u0430\u043b\u0438\u0437 \u2014 \u0418\u0412\u0422-401\",\r\n        \"discipline\": \"\u041c\u0430\u0442\u0435\u043c\u0430\u0442\u0438\u0447\u0435\u0441\u043a\u0438\u0439 \u0430\u043d\u0430\u043b\u0438\u0437\",\r\n        \"group_name\": \"\u0418\u0412\u0422-401\",\r\n        \"semester\": \"1\",\r\n        \"teacher\": {\r\n            \"id\": 2,\r\n            \"full_name\": \"\u041f\u0435\u0442\u0440\u043e\u0432 \u0418\u0432\u0430\u043d \u0421\u0435\u0440\u0433\u0435\u0435\u0432\u0438\u0447\"\r\n        },\r\n        \"original_filename\": \"demo-gradebook.xlsx\",\r\n        \"rows_count\": 1,\r\n        \"uploaded_at\": \"2026-05-16T12:00:00+00:00\",\r\n        \"rows\": [\r\n            {\r\n                \"id\": 1,\r\n                \"student_name\": \"\u0418\u0432\u0430\u043d\u043e\u0432 \u0410\u043b\u0435\u043a\u0441\u0435\u0439 \u0414\u043c\u0438\u0442\u0440\u0438\u0435\u0432\u0438\u0447\",\r\n                \"group_name\": \"\u0418\u0412\u0422-401\",\r\n                \"semester\": \"1\",\r\n                \"module1_score\": \"42.00\",\r\n                \"module2_score\": \"45.00\",\r\n                \"total_score\": \"87.00\",\r\n                \"final_grade\": \"\u041e\u0442\u043b\u0438\u0447\u043d\u043e\"\r\n            }\r\n        ]\r\n    }\r\n}\r\n",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 401,
+                            "body": "{\r\n    \"message\": \"\u041d\u0435\u043e\u0431\u0445\u043e\u0434\u0438\u043c\u0430 \u0430\u0432\u0442\u043e\u0440\u0438\u0437\u0430\u0446\u0438\u044f.\"\r\n}\r\n",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 403,
+                            "body": "{\r\n    \"message\": \"This action is unauthorized.\"\r\n}\r\n",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "\u0423\u0434\u0430\u043b\u0435\u043d\u0438\u0435 \u0432\u0435\u0434\u043e\u043c\u043e\u0441\u0442\u0438",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/gradebooks\/:gradebook_id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/gradebooks\/:gradebook_id",
+                            "variable": [
+                                {
+                                    "id": "gradebook_id",
+                                    "key": "gradebook_id",
+                                    "value": "1",
+                                    "description": "The ID of the gradebook."
+                                },
+                                {
+                                    "id": "gradebook",
+                                    "key": "gradebook",
+                                    "value": "1",
+                                    "description": "ID \u0432\u0435\u0434\u043e\u043c\u043e\u0441\u0442\u0438."
+                                }
+                            ]
+                        },
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "\u0422\u043e\u043b\u044c\u043a\u043e \u0440\u043e\u043b\u044c `administrator`."
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\r\n    \"message\": \"\u0412\u0435\u0434\u043e\u043c\u043e\u0441\u0442\u044c \u0443\u0434\u0430\u043b\u0435\u043d\u0430.\"\r\n}\r\n",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 401,
+                            "body": "{\r\n    \"message\": \"\u041d\u0435\u043e\u0431\u0445\u043e\u0434\u0438\u043c\u0430 \u0430\u0432\u0442\u043e\u0440\u0438\u0437\u0430\u0446\u0438\u044f.\"\r\n}\r\n",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 403,
+                            "body": "{\r\n    \"message\": \"This action is unauthorized.\"\r\n}\r\n",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "\u042d\u043a\u0441\u043f\u043e\u0440\u0442 \u0432\u0435\u0434\u043e\u043c\u043e\u0441\u0442\u0438",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/gradebooks\/:gradebook_id\/export",
+                            "query": [
+                                {
+                                    "key": "format",
+                                    "value": "csv",
+                                    "description": "\u0424\u043e\u0440\u043c\u0430\u0442 \u0444\u0430\u0439\u043b\u0430: csv \u0438\u043b\u0438 json.",
+                                    "disabled": false
+                                }
+                            ],
+                            "raw": "{{baseUrl}}\/api\/gradebooks\/:gradebook_id\/export?format=csv",
+                            "variable": [
+                                {
+                                    "id": "gradebook_id",
+                                    "key": "gradebook_id",
+                                    "value": "1",
+                                    "description": "The ID of the gradebook."
+                                },
+                                {
+                                    "id": "gradebook",
+                                    "key": "gradebook",
+                                    "value": "1",
+                                    "description": "ID \u0432\u0435\u0434\u043e\u043c\u043e\u0441\u0442\u0438."
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
                     "response": []
+                }
+            ]
+        },
+        {
+            "name": "\u0421\u043b\u0443\u0436\u0435\u0431\u043d\u044b\u0435",
+            "description": "",
+            "item": [
+                {
+                    "name": "\u041f\u0440\u043e\u0432\u0435\u0440\u043a\u0430 \u0441\u043e\u0435\u0434\u0438\u043d\u0435\u043d\u0438\u044f",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/connect\/check",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/connect\/check"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"date_current\":\"2026-05-16T12:00:00\"}"
+                        },
+                        "description": "\u0421\u043e\u0445\u0440\u0430\u043d\u044f\u0435\u0442 \u043e\u0442\u043c\u0435\u0442\u043a\u0443 \u043f\u0440\u043e\u0432\u0435\u0440\u043a\u0438 \u0434\u043e\u0441\u0442\u0443\u043f\u043d\u043e\u0441\u0442\u0438 API.",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\r\n    \"id\": 1,\r\n    \"date_current\": \"2026-05-16T12:00:00\",\r\n    \"created_at\": \"2026-05-16T12:00:00.000000Z\",\r\n    \"updated_at\": \"2026-05-16T12:00:00.000000Z\"\r\n}\r\n",
+                            "name": ""
+                        }
+                    ]
                 }
             ]
         }

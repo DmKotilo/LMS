@@ -1,13 +1,20 @@
 # Introduction
 
-REST API учебного портала института (LMS).
+REST API учебного портала (LMS). Роли: студент, преподаватель, администратор.
 
 <aside>
-    <strong>Base URL</strong>: <code>http://localhost</code>
+    <strong>Base URL</strong>: <code>http://localhost:8085</code>
 </aside>
 
-This documentation aims to provide all the information you need to work with our API.
+## Роли
 
-<aside>As you scroll, you'll see code examples for working with the API in different programming languages in the dark area to the right (or as part of the content on mobile).
-You can switch the language used with the tabs at the top right (or from the nav menu at the top left on mobile).</aside>
+| Роль | `user.role` | Раздел API |
+|------|-------------|------------|
+| Студент | `student` | **Для студента** — оценки и семестры |
+| Преподаватель | `teacher` | **Для преподавателя и администратора** — ведомости (только свои) |
+| Администратор | `administrator` | Ведомости (все), удаление |
+
+После `POST /api/auth/login` смотрите `user.role`, `user.role_label` и `default_path` — по ним определяется тип пользователя.
+
+Один токен Sanctum для всех ролей; доступ к эндпоинтам проверяется политиками Laravel (403 при несовпадении роли).
 

@@ -13,19 +13,12 @@ class UpdateProfileRequest extends FormRequest
 
     public function rules(): array
     {
-        $user = $this->user();
-
-        $rules = [
-            'phone' => ['sometimes', 'nullable', 'string', 'max:32'],
+        return [
+            'last_name' => ['sometimes', 'string', 'max:255'],
+            'first_name' => ['sometimes', 'string', 'max:255'],
             'second_name' => ['sometimes', 'nullable', 'string', 'max:255'],
+            'phone' => ['sometimes', 'nullable', 'string', 'max:32'],
         ];
-
-        if ($user?->isAdministrator()) {
-            $rules['last_name'] = ['sometimes', 'string', 'max:255'];
-            $rules['first_name'] = ['sometimes', 'string', 'max:255'];
-        }
-
-        return $rules;
     }
 
     public function messages(): array

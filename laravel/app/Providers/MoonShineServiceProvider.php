@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace App\Providers;
 
 use App\MoonShine\Resources\Gradebook\GradebookResource;
+use App\MoonShine\Resources\Gradebook\GradebookRowResource;
+use App\MoonShine\Resources\User\TeacherResource;
 use App\MoonShine\Resources\MoonShineUserResource;
 use App\MoonShine\Resources\MoonShineUserRoleResource;
 use App\MoonShine\Resources\User\StudentGroupResource;
@@ -25,9 +27,11 @@ class MoonShineServiceProvider extends ServiceProvider
                 MoonShineUserResource::class,
                 MoonShineUserRoleResource::class,
                 UserResource::class,
+                TeacherResource::class,
                 StudentGroupResource::class,
                 StudentProfileResource::class,
                 GradebookResource::class,
+                GradebookRowResource::class,
             ])
             ->pages([
                 ...$config->getPages(),

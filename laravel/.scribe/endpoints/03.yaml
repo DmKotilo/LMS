@@ -1,0 +1,323 @@
+name: 'Для преподавателя и администратора'
+description: 'Роли `teacher` и `administrator`. Студент получит 403.'
+endpoints:
+  -
+    httpMethods:
+      - GET
+    uri: api/gradebooks
+    metadata:
+      groupName: 'Для преподавателя и администратора'
+      groupDescription: 'Роли `teacher` и `administrator`. Студент получит 403.'
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Список ведомостей'
+      description: 'Преподаватель видит только свои ведомости; администратор — все.'
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters:
+      search:
+        name: search
+        description: 'Поиск по названию, дисциплине или группе.'
+        required: false
+        example: Математика
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      discipline:
+        name: discipline
+        description: 'Фильтр по дисциплине.'
+        required: false
+        example: Физика
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      group_name:
+        name: group_name
+        description: 'Фильтр по группе.'
+        required: false
+        example: ИВТ-21
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      semester:
+        name: semester
+        description: 'Фильтр по семестру.'
+        required: false
+        example: 2025-осень
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      teacher_id:
+        name: teacher_id
+        description: 'Фильтр по преподавателю (ID).'
+        required: false
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      per_page:
+        name: per_page
+        description: 'Количество записей на странице.'
+        required: false
+        example: 15
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+    cleanQueryParameters:
+      search: Математика
+      discipline: Физика
+      group_name: ИВТ-21
+      semester: 2025-осень
+      teacher_id: 1
+      per_page: 15
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: "{\r\n    \"data\": [\r\n        {\r\n            \"id\": 1,\r\n            \"title\": \"Математический анализ — ИВТ-401\",\r\n            \"discipline\": \"Математический анализ\",\r\n            \"group_name\": \"ИВТ-401\",\r\n            \"semester\": \"1\",\r\n            \"teacher\": {\r\n                \"id\": 2,\r\n                \"full_name\": \"Петров Иван Сергеевич\"\r\n            },\r\n            \"original_filename\": \"demo-gradebook.xlsx\",\r\n            \"rows_count\": 1,\r\n            \"uploaded_at\": \"2026-05-16T12:00:00+00:00\"\r\n        },\r\n        {\r\n            \"id\": 2,\r\n            \"title\": \"Программирование — ИВТ-401\",\r\n            \"discipline\": \"Программирование\",\r\n            \"group_name\": \"ИВТ-401\",\r\n            \"semester\": \"2\",\r\n            \"teacher\": {\r\n                \"id\": 2,\r\n                \"full_name\": \"Петров Иван Сергеевич\"\r\n            },\r\n            \"original_filename\": null,\r\n            \"rows_count\": 1,\r\n            \"uploaded_at\": \"2026-05-16T12:00:00+00:00\"\r\n        }\r\n    ],\r\n    \"links\": {\r\n        \"first\": \"http://localhost/api/gradebooks?page=1\",\r\n        \"last\": \"http://localhost/api/gradebooks?page=1\",\r\n        \"prev\": null,\r\n        \"next\": null\r\n    },\r\n    \"meta\": {\r\n        \"current_page\": 1,\r\n        \"from\": 1,\r\n        \"last_page\": 1,\r\n        \"path\": \"http://localhost/api/gradebooks\",\r\n        \"per_page\": 15,\r\n        \"to\": 2,\r\n        \"total\": 2\r\n    }\r\n}\r\n"
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 401
+        content: "{\r\n    \"message\": \"Необходима авторизация.\"\r\n}\r\n"
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 403
+        content: "{\r\n    \"message\": \"This action is unauthorized.\"\r\n}\r\n"
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer ZPE6Dc1f6b8aa3d5hgVv4ek'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/gradebooks/{gradebook_id}'
+    metadata:
+      groupName: 'Для преподавателя и администратора'
+      groupDescription: 'Роли `teacher` и `administrator`. Студент получит 403.'
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Просмотр ведомости'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      gradebook_id:
+        name: gradebook_id
+        description: 'The ID of the gradebook.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      gradebook:
+        name: gradebook
+        description: 'ID ведомости.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+    cleanUrlParameters:
+      gradebook_id: 1
+      gradebook: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: "{\r\n    \"data\": {\r\n        \"id\": 1,\r\n        \"title\": \"Математический анализ — ИВТ-401\",\r\n        \"discipline\": \"Математический анализ\",\r\n        \"group_name\": \"ИВТ-401\",\r\n        \"semester\": \"1\",\r\n        \"teacher\": {\r\n            \"id\": 2,\r\n            \"full_name\": \"Петров Иван Сергеевич\"\r\n        },\r\n        \"original_filename\": \"demo-gradebook.xlsx\",\r\n        \"rows_count\": 1,\r\n        \"uploaded_at\": \"2026-05-16T12:00:00+00:00\",\r\n        \"rows\": [\r\n            {\r\n                \"id\": 1,\r\n                \"student_name\": \"Иванов Алексей Дмитриевич\",\r\n                \"group_name\": \"ИВТ-401\",\r\n                \"semester\": \"1\",\r\n                \"module1_score\": \"42.00\",\r\n                \"module2_score\": \"45.00\",\r\n                \"total_score\": \"87.00\",\r\n                \"final_grade\": \"Отлично\"\r\n            }\r\n        ]\r\n    }\r\n}\r\n"
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 401
+        content: "{\r\n    \"message\": \"Необходима авторизация.\"\r\n}\r\n"
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 403
+        content: "{\r\n    \"message\": \"This action is unauthorized.\"\r\n}\r\n"
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer aEfkVdbh5Z6aD6ve8c134Pg'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - DELETE
+    uri: 'api/gradebooks/{gradebook_id}'
+    metadata:
+      groupName: 'Для преподавателя и администратора'
+      groupDescription: 'Роли `teacher` и `administrator`. Студент получит 403.'
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Удаление ведомости'
+      description: 'Только роль `administrator`.'
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      gradebook_id:
+        name: gradebook_id
+        description: 'The ID of the gradebook.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      gradebook:
+        name: gradebook
+        description: 'ID ведомости.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+    cleanUrlParameters:
+      gradebook_id: 1
+      gradebook: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: "{\r\n    \"message\": \"Ведомость удалена.\"\r\n}\r\n"
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 401
+        content: "{\r\n    \"message\": \"Необходима авторизация.\"\r\n}\r\n"
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 403
+        content: "{\r\n    \"message\": \"This action is unauthorized.\"\r\n}\r\n"
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer vb6P85a4DfZVekg6cahE31d'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/gradebooks/{gradebook_id}/export'
+    metadata:
+      groupName: 'Для преподавателя и администратора'
+      groupDescription: 'Роли `teacher` и `administrator`. Студент получит 403.'
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Экспорт ведомости'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      gradebook_id:
+        name: gradebook_id
+        description: 'The ID of the gradebook.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      gradebook:
+        name: gradebook
+        description: 'ID ведомости.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+    cleanUrlParameters:
+      gradebook_id: 1
+      gradebook: 1
+    queryParameters:
+      format:
+        name: format
+        description: 'Формат файла: csv или json.'
+        required: false
+        example: csv
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+    cleanQueryParameters:
+      format: csv
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer fDkPZ6ach1E5eg68dv3b4aV'
+    controller: null
+    method: null
+    route: null
+    custom: []

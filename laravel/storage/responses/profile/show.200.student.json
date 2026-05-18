@@ -1,0 +1,28 @@
+{
+    "data": {
+        "id": 3,
+        "role": "student",
+        "role_label": "Студент",
+        "first_name": "Алексей",
+        "second_name": "Дмитриевич",
+        "last_name": "Иванов",
+        "full_name": "Иванов Алексей Дмитриевич",
+        "email": "student@institute.local",
+        "email_verified_at": null,
+        "phone": null,
+        "is_active": true,
+        "default_path": "/api/student/results",
+        "student_profile": {
+            "student_id_number": "ST-2024-0001",
+            "group": {
+                "id": 1,
+                "name": "ИВТ-401",
+                "education_form": "full_time",
+                "education_form_label": "Очная",
+                "course": 4
+            }
+        },
+        "created_at": "2026-05-16T12:31:58+00:00",
+        "updated_at": "2026-05-16T12:31:58+00:00"
+    }
+}

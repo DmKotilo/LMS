@@ -10,7 +10,7 @@ class UserService
 {
     public function updateProfile(User $user, array $data): User
     {
-        $allowed = $this->editableProfileFields($user);
+        $allowed = $this->editableProfileFields();
 
         $payload = array_intersect_key($data, array_flip($allowed));
 
@@ -43,14 +43,13 @@ class UserService
     /**
      * @return list<string>
      */
-    private function editableProfileFields(User $user): array
+    private function editableProfileFields(): array
     {
-        $common = ['phone', 'second_name'];
-
-        if ($user->isAdministrator()) {
-            return array_merge($common, ['last_name', 'first_name']);
-        }
-
-        return $common;
+        return [
+            'last_name',
+            'first_name',
+            'second_name',
+            'phone',
+        ];
     }
 }

@@ -6,12 +6,13 @@ use Gradebook\Models\Gradebook;
 use Gradebook\Models\GradebookRow;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use User\Enums\UserRole;
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens, Notifiable;
 
@@ -44,6 +45,7 @@ class User extends Authenticatable
         'role' => UserRole::class,
         'password' => 'hashed',
         'is_active' => 'boolean',
+        'email_verified_at' => 'datetime',
     ];
 
     public function studentProfile(): HasOne
@@ -92,5 +94,15 @@ class User extends Authenticatable
             $this->first_name,
             $this->second_name,
         ])));
+    }
+
+    public function getEmailForVerification(): string
+    {
+        return $this->new_email ?? $this->email;
+    }
+
+    public function routeNotificationForMail(): ?string
+    {
+        return $this->new_email ?? $this->email;
     }
 }

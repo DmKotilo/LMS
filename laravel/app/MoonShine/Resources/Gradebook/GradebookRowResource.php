@@ -4,8 +4,11 @@ declare(strict_types=1);
 
 namespace App\MoonShine\Resources\Gradebook;
 
+use App\MoonShine\Resources\User\UserResource;
 use Gradebook\Models\GradebookRow;
 use MoonShine\Laravel\Fields\Relationships\BelongsTo;
+use User\Enums\UserRole;
+use User\Models\User;
 use MoonShine\Laravel\Resources\ModelResource;
 use MoonShine\UI\Components\Layout\Box;
 use MoonShine\UI\Fields\ID;
@@ -38,8 +41,16 @@ class GradebookRowResource extends ModelResource
     {
         return [
             Box::make([
-                BelongsTo::make('Ведомость', 'gradebook')->required(),
-                BelongsTo::make('Студент (аккаунт)', 'student')->nullable()->searchable(),
+                BelongsTo::make('Ведомость', 'gradebook', resource: GradebookResource::class)->required(),
+                BelongsTo::make(
+                    'Студент (аккаунт)',
+                    'student',
+                    formatted: static fn (?User $user) => $user?->fullName() ?? '—',
+                    resource: UserResource::class,
+                )
+                    ->nullable()
+                    ->searchable()
+                    ->valuesQuery(static fn ($q) => $q->where('role', UserRole::Student->value)),
                 Text::make('ФИО в ведомости', 'student_name')->required(),
                 Text::make('Группа', 'group_name'),
                 Text::make('Семестр', 'semester'),

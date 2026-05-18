@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\MoonShine\Resources\Gradebook;
 
+use App\MoonShine\Resources\User\TeacherResource;
 use Gradebook\Models\Gradebook;
 use MoonShine\Laravel\Fields\Relationships\BelongsTo;
 use MoonShine\Laravel\Fields\Relationships\HasMany;
@@ -12,7 +13,6 @@ use MoonShine\UI\Components\Layout\Box;
 use MoonShine\UI\Fields\Date;
 use MoonShine\UI\Fields\ID;
 use MoonShine\UI\Fields\Text;
-use User\Enums\UserRole;
 use User\Models\User;
 
 /**
@@ -34,7 +34,12 @@ class GradebookResource extends ModelResource
             Text::make('Дисциплина', 'discipline'),
             Text::make('Группа', 'group_name'),
             Text::make('Семестр', 'semester'),
-            BelongsTo::make('Преподаватель', 'teacher', formatted: static fn (?User $user) => $user?->fullName() ?? '—'),
+            BelongsTo::make(
+                'Преподаватель',
+                'teacher',
+                formatted: static fn (?User $user) => $user?->fullName() ?? '—',
+                resource: TeacherResource::class,
+            ),
             Date::make('Загружена', 'created_at')->format('d.m.Y H:i'),
         ];
     }
@@ -47,8 +52,7 @@ class GradebookResource extends ModelResource
                 Text::make('Дисциплина', 'discipline'),
                 Text::make('Группа', 'group_name'),
                 Text::make('Семестр', 'semester'),
-                BelongsTo::make('Преподаватель', 'teacher')
-                    ->valuesQuery(static fn ($q) => $q->where('role', UserRole::Teacher->value))
+                BelongsTo::make('Преподаватель', 'teacher', resource: TeacherResource::class)
                     ->searchable(),
                 Text::make('Исходный файл', 'original_filename'),
             ]),

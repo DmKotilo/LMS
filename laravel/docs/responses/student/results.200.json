@@ -1,0 +1,65 @@
+{
+    "data": [
+        {
+            "id": 1,
+            "student_name": "Иванов Алексей Дмитриевич",
+            "group_name": "ИВТ-401",
+            "semester": "1",
+            "module1_score": "42.00",
+            "module2_score": "45.00",
+            "total_score": "87.00",
+            "final_grade": "Отлично",
+            "gradebook": {
+                "id": 1,
+                "title": "Математический анализ — ИВТ-401",
+                "discipline": "Математический анализ",
+                "group_name": "ИВТ-401",
+                "semester": "1",
+                "teacher": {
+                    "id": 2,
+                    "full_name": "Петров Иван Сергеевич"
+                },
+                "original_filename": "demo-gradebook.xlsx",
+                "uploaded_at": "2026-05-16T12:00:00+00:00"
+            }
+        },
+        {
+            "id": 2,
+            "student_name": "Иванов Алексей Дмитриевич",
+            "group_name": "ИВТ-401",
+            "semester": "2",
+            "module1_score": "38.00",
+            "module2_score": "40.00",
+            "total_score": "78.00",
+            "final_grade": "Хорошо",
+            "gradebook": {
+                "id": 2,
+                "title": "Программирование — ИВТ-401",
+                "discipline": "Программирование",
+                "group_name": "ИВТ-401",
+                "semester": "2",
+                "teacher": {
+                    "id": 2,
+                    "full_name": "Петров Иван Сергеевич"
+                },
+                "original_filename": null,
+                "uploaded_at": "2026-05-16T12:00:00+00:00"
+            }
+        }
+    ],
+    "links": {
+        "first": "http://localhost/api/student/results?page=1",
+        "last": "http://localhost/api/student/results?page=1",
+        "prev": null,
+        "next": null
+    },
+    "meta": {
+        "current_page": 1,
+        "from": 1,
+        "last_page": 1,
+        "path": "http://localhost/api/student/results",
+        "per_page": 20,
+        "to": 2,
+        "total": 2
+    }
+}

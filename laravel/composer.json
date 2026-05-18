@@ -53,7 +53,7 @@
             "@publish-scribe-config"
         ],
         "publish-scribe-config": [
-            "@php -r \"$e=0; if (!is_file('config/scribe.php')) { passthru('php artisan vendor:publish --tag=scribe-config --ansi --force', $e); } exit($e);\""
+            "@php -r \"if (!is_file('config/scribe.php')) { passthru('php artisan vendor:publish --tag=scribe-config --ansi --force'); }\""
         ],
         "post-root-package-install": [
             "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""

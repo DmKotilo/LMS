@@ -1,0 +1,49 @@
+name: Служебные
+description: ''
+endpoints:
+  -
+    httpMethods:
+      - POST
+    uri: api/connect/check
+    metadata:
+      groupName: Служебные
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Проверка соединения'
+      description: 'Сохраняет отметку проверки доступности API.'
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      date_current:
+        name: date_current
+        description: 'Дата и время проверки соединения.'
+        required: true
+        example: '2026-05-16T12:00:00'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+    cleanBodyParameters:
+      date_current: '2026-05-16T12:00:00'
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: "{\r\n    \"id\": 1,\r\n    \"date_current\": \"2026-05-16T12:00:00\",\r\n    \"created_at\": \"2026-05-16T12:00:00.000000Z\",\r\n    \"updated_at\": \"2026-05-16T12:00:00.000000Z\"\r\n}\r\n"
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []

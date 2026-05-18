@@ -1,0 +1,21 @@
+{
+    "message": "Письмо с подтверждением отправлено на новый адрес.",
+    "user": {
+        "id": 2,
+        "role": "teacher",
+        "role_label": "Преподаватель",
+        "first_name": "Иван",
+        "second_name": "Сергеевич",
+        "last_name": "Петров",
+        "full_name": "Петров Иван Сергеевич",
+        "email": "teacher@institute.local",
+        "new_email": "new.teacher@institute.local",
+        "email_verified_at": null,
+        "phone": null,
+        "is_active": true,
+        "default_path": "/api/gradebooks",
+        "gradebooks_count": 2,
+        "created_at": "2026-05-16T12:00:00+00:00",
+        "updated_at": "2026-05-16T12:15:00+00:00"
+    }
+}

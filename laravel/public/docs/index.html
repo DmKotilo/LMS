@@ -26,7 +26,7 @@
             </style>
 
     <script>
-        var tryItOutBaseUrl = "http://localhost";
+        var tryItOutBaseUrl = "http://localhost:8085";
         var useCsrf = Boolean();
         var csrfUrl = "/sanctum/csrf-cookie";
     </script>
@@ -60,21 +60,16 @@
                 <li class="tocify-item level-1" data-unique="introduction">
                     <a href="#introduction">Introduction</a>
                 </li>
+                                    <ul id="tocify-subheader-introduction" class="tocify-subheader">
+                                                    <li class="tocify-item level-2" data-unique="roli">
+                                <a href="#roli">Роли</a>
+                            </li>
+                                                                        </ul>
                             </ul>
                     <ul id="tocify-header-authenticating-requests" class="tocify-header">
                 <li class="tocify-item level-1" data-unique="authenticating-requests">
                     <a href="#authenticating-requests">Authenticating requests</a>
                 </li>
-                            </ul>
-                    <ul id="tocify-header-endpoints" class="tocify-header">
-                <li class="tocify-item level-1" data-unique="endpoints">
-                    <a href="#endpoints">Endpoints</a>
-                </li>
-                                    <ul id="tocify-subheader-endpoints" class="tocify-subheader">
-                                                    <li class="tocify-item level-2" data-unique="endpoints-POSTapi-connect-check">
-                                <a href="#endpoints-POSTapi-connect-check">POST api/connect/check</a>
-                            </li>
-                                                                        </ul>
                             </ul>
                     <ul id="tocify-header-avtorizaciia" class="tocify-header">
                 <li class="tocify-item level-1" data-unique="avtorizaciia">
@@ -82,7 +77,7 @@
                 </li>
                                     <ul id="tocify-subheader-avtorizaciia" class="tocify-subheader">
                                                     <li class="tocify-item level-2" data-unique="avtorizaciia-POSTapi-auth-login">
-                                <a href="#avtorizaciia-POSTapi-auth-login">POST api/auth/login</a>
+                                <a href="#avtorizaciia-POSTapi-auth-login">Вход</a>
                             </li>
                                                                                 <li class="tocify-item level-2" data-unique="avtorizaciia-POSTapi-auth-logout">
                                 <a href="#avtorizaciia-POSTapi-auth-logout">Выход</a>
@@ -92,19 +87,67 @@
                             </li>
                                                                         </ul>
                             </ul>
-                    <ul id="tocify-header-profil" class="tocify-header">
-                <li class="tocify-item level-1" data-unique="profil">
-                    <a href="#profil">Профиль</a>
+                    <ul id="tocify-header-obshhee" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="obshhee">
+                    <a href="#obshhee">Общее</a>
                 </li>
-                                    <ul id="tocify-subheader-profil" class="tocify-subheader">
-                                                    <li class="tocify-item level-2" data-unique="profil-GETapi-profile">
-                                <a href="#profil-GETapi-profile">Просмотр профиля</a>
+                                    <ul id="tocify-subheader-obshhee" class="tocify-subheader">
+                                                    <li class="tocify-item level-2" data-unique="obshhee-GETapi-profile">
+                                <a href="#obshhee-GETapi-profile">Просмотр профиля</a>
                             </li>
-                                                                                <li class="tocify-item level-2" data-unique="profil-PATCHapi-profile">
-                                <a href="#profil-PATCHapi-profile">Обновление профиля</a>
+                                                                                <li class="tocify-item level-2" data-unique="obshhee-PATCHapi-profile">
+                                <a href="#obshhee-PATCHapi-profile">Обновление профиля</a>
                             </li>
-                                                                                <li class="tocify-item level-2" data-unique="profil-PUTapi-profile-password">
-                                <a href="#profil-PUTapi-profile-password">Смена пароля</a>
+                                                                                <li class="tocify-item level-2" data-unique="obshhee-PUTapi-profile-password">
+                                <a href="#obshhee-PUTapi-profile-password">Смена пароля</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="obshhee-POSTapi-profile-email">
+                                <a href="#obshhee-POSTapi-profile-email">Смена email</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="obshhee-GETapi-email-verify--id---hash-">
+                                <a href="#obshhee-GETapi-email-verify--id---hash-">Подтверждение email</a>
+                            </li>
+                                                                        </ul>
+                            </ul>
+                    <ul id="tocify-header-dlia-studenta" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="dlia-studenta">
+                    <a href="#dlia-studenta">Для студента</a>
+                </li>
+                                    <ul id="tocify-subheader-dlia-studenta" class="tocify-subheader">
+                                                    <li class="tocify-item level-2" data-unique="dlia-studenta-GETapi-student-results">
+                                <a href="#dlia-studenta-GETapi-student-results">Результаты</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="dlia-studenta-GETapi-student-semesters">
+                                <a href="#dlia-studenta-GETapi-student-semesters">Семестры</a>
+                            </li>
+                                                                        </ul>
+                            </ul>
+                    <ul id="tocify-header-dlia-prepodavatelia-i-administratora" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="dlia-prepodavatelia-i-administratora">
+                    <a href="#dlia-prepodavatelia-i-administratora">Для преподавателя и администратора</a>
+                </li>
+                                    <ul id="tocify-subheader-dlia-prepodavatelia-i-administratora" class="tocify-subheader">
+                                                    <li class="tocify-item level-2" data-unique="dlia-prepodavatelia-i-administratora-GETapi-gradebooks">
+                                <a href="#dlia-prepodavatelia-i-administratora-GETapi-gradebooks">Список ведомостей</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="dlia-prepodavatelia-i-administratora-GETapi-gradebooks--gradebook_id-">
+                                <a href="#dlia-prepodavatelia-i-administratora-GETapi-gradebooks--gradebook_id-">Просмотр ведомости</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="dlia-prepodavatelia-i-administratora-DELETEapi-gradebooks--gradebook_id-">
+                                <a href="#dlia-prepodavatelia-i-administratora-DELETEapi-gradebooks--gradebook_id-">Удаление ведомости</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="dlia-prepodavatelia-i-administratora-GETapi-gradebooks--gradebook_id--export">
+                                <a href="#dlia-prepodavatelia-i-administratora-GETapi-gradebooks--gradebook_id--export">Экспорт ведомости</a>
+                            </li>
+                                                                        </ul>
+                            </ul>
+                    <ul id="tocify-header-sluzebnye" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="sluzebnye">
+                    <a href="#sluzebnye">Служебные</a>
+                </li>
+                                    <ul id="tocify-subheader-sluzebnye" class="tocify-subheader">
+                                                    <li class="tocify-item level-2" data-unique="sluzebnye-POSTapi-connect-check">
+                                <a href="#sluzebnye-POSTapi-connect-check">Проверка соединения</a>
                             </li>
                                                                         </ul>
                             </ul>
@@ -125,162 +168,62 @@
     <div class="dark-box"></div>
     <div class="content">
         <h1 id="introduction">Introduction</h1>
-<p>REST API учебного портала института (LMS).</p>
+<p>REST API учебного портала (LMS). Роли: студент, преподаватель, администратор.</p>
 <aside>
-    <strong>Base URL</strong>: <code>http://localhost</code>
+    <strong>Base URL</strong>: <code>http://localhost:8085</code>
 </aside>
-<p>This documentation aims to provide all the information you need to work with our API.</p>
-<aside>As you scroll, you'll see code examples for working with the API in different programming languages in the dark area to the right (or as part of the content on mobile).
-You can switch the language used with the tabs at the top right (or from the nav menu at the top left on mobile).</aside>
+<h2 id="roli">Роли</h2>
+<table>
+<thead>
+<tr>
+<th>Роль</th>
+<th><code>user.role</code></th>
+<th>Раздел API</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Студент</td>
+<td><code>student</code></td>
+<td><strong>Для студента</strong> — оценки и семестры</td>
+</tr>
+<tr>
+<td>Преподаватель</td>
+<td><code>teacher</code></td>
+<td><strong>Для преподавателя и администратора</strong> — ведомости (только свои)</td>
+</tr>
+<tr>
+<td>Администратор</td>
+<td><code>administrator</code></td>
+<td>Ведомости (все), удаление</td>
+</tr>
+</tbody>
+</table>
+<p>После <code>POST /api/auth/login</code> смотрите <code>user.role</code>, <code>user.role_label</code> и <code>default_path</code> — по ним определяется тип пользователя.</p>
+<p>Один токен Sanctum для всех ролей; доступ к эндпоинтам проверяется политиками Laravel (403 при несовпадении роли).</p>
 
         <h1 id="authenticating-requests">Authenticating requests</h1>
 <p>To authenticate requests, include an <strong><code>Authorization</code></strong> header with the value <strong><code>"Bearer {TOKEN}"</code></strong>.</p>
 <p>All authenticated endpoints are marked with a <code>requires authentication</code> badge in the documentation below.</p>
 <p>Получите токен через <code>POST /api/auth/login</code> (email и пароль). Передавайте заголовок <code>Authorization: Bearer {TOKEN}</code>.</p>
 
-        <h1 id="endpoints">Endpoints</h1>
+        <h1 id="avtorizaciia">Авторизация</h1>
 
     
 
-                                <h2 id="endpoints-POSTapi-connect-check">POST api/connect/check</h2>
+                                <h2 id="avtorizaciia-POSTapi-auth-login">Вход</h2>
 
 <p>
 </p>
 
-
-
-<span id="example-requests-POSTapi-connect-check">
-<blockquote>Example request:</blockquote>
-
-
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request POST \
-    "http://localhost/api/connect/check" \
-    --header "Content-Type: application/json" \
-    --header "Accept: application/json" \
-    --data "{
-    \"date_current\": \"aliquid\"
-}"
-</code></pre></div>
-
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/connect/check"
-);
-
-const headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-let body = {
-    "date_current": "aliquid"
-};
-
-fetch(url, {
-    method: "POST",
-    headers,
-    body: JSON.stringify(body),
-}).then(response =&gt; response.json());</code></pre></div>
-
-</span>
-
-<span id="example-responses-POSTapi-connect-check">
-</span>
-<span id="execution-results-POSTapi-connect-check" hidden>
-    <blockquote>Received response<span
-                id="execution-response-status-POSTapi-connect-check"></span>:
-    </blockquote>
-    <pre class="json"><code id="execution-response-content-POSTapi-connect-check"
-      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
-</span>
-<span id="execution-error-POSTapi-connect-check" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-POSTapi-connect-check">
-
-Tip: Check that you&#039;re properly connected to the network.
-If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
-You can check the Dev Tools console for debugging information.</code></pre>
-</span>
-<form id="form-POSTapi-connect-check" data-method="POST"
-      data-path="api/connect/check"
-      data-authed="0"
-      data-hasfiles="0"
-      data-isarraybody="0"
-      autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('POSTapi-connect-check', this);">
-    <h3>
-        Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-POSTapi-connect-check"
-                    onclick="tryItOut('POSTapi-connect-check');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-POSTapi-connect-check"
-                    onclick="cancelTryOut('POSTapi-connect-check');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-POSTapi-connect-check"
-                    data-initial-text="Send Request 💥"
-                    data-loading-text="⏱ Sending..."
-                    hidden>Send Request 💥
-            </button>
-            </h3>
-            <p>
-            <small class="badge badge-black">POST</small>
-            <b><code>api/connect/check</code></b>
-        </p>
-                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="POSTapi-connect-check"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="POSTapi-connect-check"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                                <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
-        <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>date_current</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="date_current"                data-endpoint="POSTapi-connect-check"
-               value="aliquid"
-               data-component="body">
-    <br>
-<p>Example: <code>aliquid</code></p>
-        </div>
-        </form>
-
-                <h1 id="avtorizaciia">Авторизация</h1>
-
-    
-
-                                <h2 id="avtorizaciia-POSTapi-auth-login">POST api/auth/login</h2>
-
-<p>
-</p>
-
-
+<p>Авторизация по email и паролю. Возвращает Bearer-токен (Sanctum).</p>
+<p>В объекте <code>user</code> приходит роль:</p>
+<ul>
+<li><code>role</code>: <code>student</code> | <code>teacher</code> | <code>administrator</code></li>
+<li><code>role_label</code>: человекочитаемое название</li>
+<li><code>default_path</code>: стартовый путь API для этой роли (<code>/api/student/results</code>, <code>/api/gradebooks</code> и т.д.)</li>
+</ul>
+<p>По роли фронтенд выбирает раздел приложения; отдельного «типа входа» нет — один endpoint для всех.</p>
 
 <span id="example-requests-POSTapi-auth-login">
 <blockquote>Example request:</blockquote>
@@ -288,19 +231,19 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost/api/auth/login" \
+    "http://localhost:8085/api/auth/login" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"email\": \"kstiedemann@example.net\",
-    \"password\": \"YxbSxb$F=0\"
+    \"email\": \"teacher@example.com\",
+    \"password\": \"password\"
 }"
 </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/auth/login"
+    "http://localhost:8085/api/auth/login"
 );
 
 const headers = {
@@ -309,8 +252,8 @@ const headers = {
 };
 
 let body = {
-    "email": "kstiedemann@example.net",
-    "password": "YxbSxb$F=0"
+    "email": "teacher@example.com",
+    "password": "password"
 };
 
 fetch(url, {
@@ -322,7 +265,51 @@ fetch(url, {
 </span>
 
 <span id="example-responses-POSTapi-auth-login">
-</span>
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: {
+        &quot;token&quot;: &quot;1|exampleSanctumTokenForDocumentation&quot;,
+        &quot;token_type&quot;: &quot;Bearer&quot;,
+        &quot;default_path&quot;: &quot;/api/gradebooks&quot;,
+        &quot;user&quot;: {
+            &quot;id&quot;: 2,
+            &quot;role&quot;: &quot;teacher&quot;,
+            &quot;role_label&quot;: &quot;Преподаватель&quot;,
+            &quot;first_name&quot;: &quot;Иван&quot;,
+            &quot;second_name&quot;: &quot;Сергеевич&quot;,
+            &quot;last_name&quot;: &quot;Петров&quot;,
+            &quot;full_name&quot;: &quot;Петров Иван Сергеевич&quot;,
+            &quot;email&quot;: &quot;teacher@institute.local&quot;,
+            &quot;email_verified_at&quot;: &quot;2026-05-16T12:00:00+00:00&quot;,
+            &quot;phone&quot;: null,
+            &quot;is_active&quot;: true,
+            &quot;default_path&quot;: &quot;/api/gradebooks&quot;,
+            &quot;gradebooks_count&quot;: 2,
+            &quot;created_at&quot;: &quot;2026-05-16T12:00:00+00:00&quot;,
+            &quot;updated_at&quot;: &quot;2026-05-16T12:00:00+00:00&quot;
+        }
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (422):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Неверный email или пароль.&quot;,
+    &quot;errors&quot;: {
+        &quot;email&quot;: [
+            &quot;Неверный email или пароль.&quot;
+        ]
+    }
+}</code>
+ </pre>
+    </span>
 <span id="execution-results-POSTapi-auth-login" hidden>
     <blockquote>Received response<span
                 id="execution-response-status-POSTapi-auth-login"></span>:
@@ -399,10 +386,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="email"                data-endpoint="POSTapi-auth-login"
-               value="kstiedemann@example.net"
+               value="teacher@example.com"
                data-component="body">
     <br>
-<p>Must be a valid email address. Example: <code>kstiedemann@example.net</code></p>
+<p>Email пользователя. Example: <code>teacher@example.com</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>password</code></b>&nbsp;&nbsp;
@@ -410,16 +397,17 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="password"                data-endpoint="POSTapi-auth-login"
-               value="YxbSxb$F=0"
+               value="password"
                data-component="body">
     <br>
-<p>Example: <code>YxbSxb$F=0</code></p>
+<p>Пароль. Example: <code>password</code></p>
         </div>
         </form>
 
                     <h2 id="avtorizaciia-POSTapi-auth-logout">Выход</h2>
 
 <p>
+<small class="badge badge-darkred">requires authentication</small>
 </p>
 
 <p>Удаляет текущий токен доступа.</p>
@@ -430,17 +418,19 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost/api/auth/logout" \
+    "http://localhost:8085/api/auth/logout" \
+    --header "Authorization: Bearer {TOKEN}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/auth/logout"
+    "http://localhost:8085/api/auth/logout"
 );
 
 const headers = {
+    "Authorization": "Bearer {TOKEN}",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -453,7 +443,16 @@ fetch(url, {
 </span>
 
 <span id="example-responses-POSTapi-auth-logout">
-</span>
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Выход выполнен успешно.&quot;
+}</code>
+ </pre>
+    </span>
 <span id="execution-results-POSTapi-auth-logout" hidden>
     <blockquote>Received response<span
                 id="execution-response-status-POSTapi-auth-logout"></span>:
@@ -471,7 +470,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 </span>
 <form id="form-POSTapi-auth-logout" data-method="POST"
       data-path="api/auth/logout"
-      data-authed="0"
+      data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
       autocomplete="off"
@@ -502,6 +501,17 @@ You can check the Dev Tools console for debugging information.</code></pre>
         </p>
                 <h4 class="fancy-heading-panel"><b>Headers</b></h4>
                                 <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="POSTapi-auth-logout"
+               value="Bearer {TOKEN}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer {TOKEN}</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
@@ -528,6 +538,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                     <h2 id="avtorizaciia-GETapi-auth-me">Текущий пользователь</h2>
 
 <p>
+<small class="badge badge-darkred">requires authentication</small>
 </p>
 
 
@@ -538,17 +549,19 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/auth/me" \
+    --get "http://localhost:8085/api/auth/me" \
+    --header "Authorization: Bearer {TOKEN}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/auth/me"
+    "http://localhost:8085/api/auth/me"
 );
 
 const headers = {
+    "Authorization": "Bearer {TOKEN}",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -562,15 +575,43 @@ fetch(url, {
 
 <span id="example-responses-GETapi-auth-me">
             <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: {
+        &quot;id&quot;: 3,
+        &quot;role&quot;: &quot;student&quot;,
+        &quot;role_label&quot;: &quot;Студент&quot;,
+        &quot;first_name&quot;: &quot;Алексей&quot;,
+        &quot;second_name&quot;: &quot;Дмитриевич&quot;,
+        &quot;last_name&quot;: &quot;Иванов&quot;,
+        &quot;full_name&quot;: &quot;Иванов Алексей Дмитриевич&quot;,
+        &quot;email&quot;: &quot;student@institute.local&quot;,
+        &quot;email_verified_at&quot;: &quot;2026-05-16T12:00:00+00:00&quot;,
+        &quot;phone&quot;: null,
+        &quot;is_active&quot;: true,
+        &quot;default_path&quot;: &quot;/api/student/results&quot;,
+        &quot;student_profile&quot;: {
+            &quot;student_id_number&quot;: &quot;ST-2024-0001&quot;,
+            &quot;group&quot;: {
+                &quot;id&quot;: 1,
+                &quot;name&quot;: &quot;ИВТ-401&quot;,
+                &quot;education_form&quot;: &quot;full_time&quot;,
+                &quot;education_form_label&quot;: &quot;Очная&quot;,
+                &quot;course&quot;: 4
+            }
+        },
+        &quot;created_at&quot;: &quot;2026-05-16T12:00:00+00:00&quot;,
+        &quot;updated_at&quot;: &quot;2026-05-16T12:00:00+00:00&quot;
+    }
+}</code>
+ </pre>
+            <blockquote>
             <p>Example response (401):</p>
         </blockquote>
-                <details class="annotation">
-            <summary style="cursor: pointer;">
-                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
-            </summary>
-            <pre><code class="language-http">cache-control: no-cache, private
-content-type: application/json
- </code></pre></details>         <pre>
+                <pre>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;message&quot;: &quot;Необходима авторизация.&quot;
@@ -594,7 +635,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 </span>
 <form id="form-GETapi-auth-me" data-method="GET"
       data-path="api/auth/me"
-      data-authed="0"
+      data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
       autocomplete="off"
@@ -625,6 +666,17 @@ You can check the Dev Tools console for debugging information.</code></pre>
         </p>
                 <h4 class="fancy-heading-panel"><b>Headers</b></h4>
                                 <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="GETapi-auth-me"
+               value="Bearer {TOKEN}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer {TOKEN}</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
@@ -648,16 +700,17 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </div>
                         </form>
 
-                <h1 id="profil">Профиль</h1>
+                <h1 id="obshhee">Общее</h1>
 
-    
+    <p>Эндпоинты, доступные любой авторизованной роли (студент, преподаватель, администратор).</p>
 
-                                <h2 id="profil-GETapi-profile">Просмотр профиля</h2>
+                                <h2 id="obshhee-GETapi-profile">Просмотр профиля</h2>
 
 <p>
+<small class="badge badge-darkred">requires authentication</small>
 </p>
 
-
+<p>В ответе поле <code>role</code> (<code>student</code> | <code>teacher</code> | <code>administrator</code>) и <code>role_label</code> — текущая роль пользователя.</p>
 
 <span id="example-requests-GETapi-profile">
 <blockquote>Example request:</blockquote>
@@ -665,17 +718,19 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/profile" \
+    --get "http://localhost:8085/api/profile" \
+    --header "Authorization: Bearer {TOKEN}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/profile"
+    "http://localhost:8085/api/profile"
 );
 
 const headers = {
+    "Authorization": "Bearer {TOKEN}",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -689,15 +744,43 @@ fetch(url, {
 
 <span id="example-responses-GETapi-profile">
             <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: {
+        &quot;id&quot;: 3,
+        &quot;role&quot;: &quot;student&quot;,
+        &quot;role_label&quot;: &quot;Студент&quot;,
+        &quot;first_name&quot;: &quot;Алексей&quot;,
+        &quot;second_name&quot;: &quot;Дмитриевич&quot;,
+        &quot;last_name&quot;: &quot;Иванов&quot;,
+        &quot;full_name&quot;: &quot;Иванов Алексей Дмитриевич&quot;,
+        &quot;email&quot;: &quot;student@institute.local&quot;,
+        &quot;email_verified_at&quot;: &quot;2026-05-16T12:00:00+00:00&quot;,
+        &quot;phone&quot;: &quot;+79001234567&quot;,
+        &quot;is_active&quot;: true,
+        &quot;default_path&quot;: &quot;/api/student/results&quot;,
+        &quot;student_profile&quot;: {
+            &quot;student_id_number&quot;: &quot;ST-2024-0001&quot;,
+            &quot;group&quot;: {
+                &quot;id&quot;: 1,
+                &quot;name&quot;: &quot;ИВТ-401&quot;,
+                &quot;education_form&quot;: &quot;full_time&quot;,
+                &quot;education_form_label&quot;: &quot;Очная&quot;,
+                &quot;course&quot;: 4
+            }
+        },
+        &quot;created_at&quot;: &quot;2026-05-16T12:00:00+00:00&quot;,
+        &quot;updated_at&quot;: &quot;2026-05-16T12:00:00+00:00&quot;
+    }
+}</code>
+ </pre>
+            <blockquote>
             <p>Example response (401):</p>
         </blockquote>
-                <details class="annotation">
-            <summary style="cursor: pointer;">
-                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
-            </summary>
-            <pre><code class="language-http">cache-control: no-cache, private
-content-type: application/json
- </code></pre></details>         <pre>
+                <pre>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;message&quot;: &quot;Необходима авторизация.&quot;
@@ -721,7 +804,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 </span>
 <form id="form-GETapi-profile" data-method="GET"
       data-path="api/profile"
-      data-authed="0"
+      data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
       autocomplete="off"
@@ -752,6 +835,17 @@ You can check the Dev Tools console for debugging information.</code></pre>
         </p>
                 <h4 class="fancy-heading-panel"><b>Headers</b></h4>
                                 <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="GETapi-profile"
+               value="Bearer {TOKEN}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer {TOKEN}</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
@@ -775,12 +869,13 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </div>
                         </form>
 
-                    <h2 id="profil-PATCHapi-profile">Обновление профиля</h2>
+                    <h2 id="obshhee-PATCHapi-profile">Обновление профиля</h2>
 
 <p>
+<small class="badge badge-darkred">requires authentication</small>
 </p>
 
-
+<p>Можно изменить ФИО и телефон. Смена email: <code>POST /api/profile/email</code> (пароль + новый email, подтверждение по ссылке из письма).</p>
 
 <span id="example-requests-PATCHapi-profile">
 <blockquote>Example request:</blockquote>
@@ -788,29 +883,35 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PATCH \
-    "http://localhost/api/profile" \
+    "http://localhost:8085/api/profile" \
+    --header "Authorization: Bearer {TOKEN}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"phone\": \"wyldbxggtrscvvrfesrbyqb\",
-    \"second_name\": \"odbfdawkputhjjldcehwqi\"
+    \"last_name\": \"Иванов\",
+    \"first_name\": \"Иван\",
+    \"second_name\": \"Иванович\",
+    \"phone\": \"+79001234567\"
 }"
 </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/profile"
+    "http://localhost:8085/api/profile"
 );
 
 const headers = {
+    "Authorization": "Bearer {TOKEN}",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
 
 let body = {
-    "phone": "wyldbxggtrscvvrfesrbyqb",
-    "second_name": "odbfdawkputhjjldcehwqi"
+    "last_name": "Иванов",
+    "first_name": "Иван",
+    "second_name": "Иванович",
+    "phone": "+79001234567"
 };
 
 fetch(url, {
@@ -822,7 +923,50 @@ fetch(url, {
 </span>
 
 <span id="example-responses-PATCHapi-profile">
-</span>
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: {
+        &quot;id&quot;: 3,
+        &quot;role&quot;: &quot;student&quot;,
+        &quot;role_label&quot;: &quot;Студент&quot;,
+        &quot;first_name&quot;: &quot;Алексей&quot;,
+        &quot;second_name&quot;: &quot;Дмитриевич&quot;,
+        &quot;last_name&quot;: &quot;Иванов&quot;,
+        &quot;full_name&quot;: &quot;Иванов Алексей Дмитриевич&quot;,
+        &quot;email&quot;: &quot;student@institute.local&quot;,
+        &quot;email_verified_at&quot;: &quot;2026-05-16T12:00:00+00:00&quot;,
+        &quot;phone&quot;: &quot;+79001234567&quot;,
+        &quot;is_active&quot;: true,
+        &quot;default_path&quot;: &quot;/api/student/results&quot;,
+        &quot;student_profile&quot;: {
+            &quot;student_id_number&quot;: &quot;ST-2024-0001&quot;,
+            &quot;group&quot;: {
+                &quot;id&quot;: 1,
+                &quot;name&quot;: &quot;ИВТ-401&quot;,
+                &quot;education_form&quot;: &quot;full_time&quot;,
+                &quot;education_form_label&quot;: &quot;Очная&quot;,
+                &quot;course&quot;: 4
+            }
+        },
+        &quot;created_at&quot;: &quot;2026-05-16T12:00:00+00:00&quot;,
+        &quot;updated_at&quot;: &quot;2026-05-16T12:10:00+00:00&quot;
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (401):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Необходима авторизация.&quot;
+}</code>
+ </pre>
+    </span>
 <span id="execution-results-PATCHapi-profile" hidden>
     <blockquote>Received response<span
                 id="execution-response-status-PATCHapi-profile"></span>:
@@ -840,7 +984,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 </span>
 <form id="form-PATCHapi-profile" data-method="PATCH"
       data-path="api/profile"
-      data-authed="0"
+      data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
       autocomplete="off"
@@ -871,6 +1015,17 @@ You can check the Dev Tools console for debugging information.</code></pre>
         </p>
                 <h4 class="fancy-heading-panel"><b>Headers</b></h4>
                                 <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="PATCHapi-profile"
+               value="Bearer {TOKEN}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer {TOKEN}</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
@@ -894,15 +1049,26 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </div>
                                 <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>phone</code></b>&nbsp;&nbsp;
+            <b style="line-height: 2;"><code>last_name</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
-                              name="phone"                data-endpoint="PATCHapi-profile"
-               value="wyldbxggtrscvvrfesrbyqb"
+                              name="last_name"                data-endpoint="PATCHapi-profile"
+               value="Иванов"
                data-component="body">
     <br>
-<p>Must not be greater than 32 characters. Example: <code>wyldbxggtrscvvrfesrbyqb</code></p>
+<p>Фамилия. Example: <code>Иванов</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>first_name</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="first_name"                data-endpoint="PATCHapi-profile"
+               value="Иван"
+               data-component="body">
+    <br>
+<p>Имя. Example: <code>Иван</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>second_name</code></b>&nbsp;&nbsp;
@@ -910,16 +1076,28 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="second_name"                data-endpoint="PATCHapi-profile"
-               value="odbfdawkputhjjldcehwqi"
+               value="Иванович"
                data-component="body">
     <br>
-<p>Must not be greater than 255 characters. Example: <code>odbfdawkputhjjldcehwqi</code></p>
+<p>Отчество. Example: <code>Иванович</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>phone</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="phone"                data-endpoint="PATCHapi-profile"
+               value="+79001234567"
+               data-component="body">
+    <br>
+<p>Телефон. Example: <code>+79001234567</code></p>
         </div>
         </form>
 
-                    <h2 id="profil-PUTapi-profile-password">Смена пароля</h2>
+                    <h2 id="obshhee-PUTapi-profile-password">Смена пароля</h2>
 
 <p>
+<small class="badge badge-darkred">requires authentication</small>
 </p>
 
 
@@ -930,29 +1108,33 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://localhost/api/profile/password" \
+    "http://localhost:8085/api/profile/password" \
+    --header "Authorization: Bearer {TOKEN}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"current_password\": \"doloribus\",
-    \"password\": \"x\'r4YiUrL7Ju[\\/8jjP)\"
+    \"current_password\": \"old-password\",
+    \"password\": \"new-password\",
+    \"password_confirmation\": \"new-password\"
 }"
 </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/profile/password"
+    "http://localhost:8085/api/profile/password"
 );
 
 const headers = {
+    "Authorization": "Bearer {TOKEN}",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
 
 let body = {
-    "current_password": "doloribus",
-    "password": "x'r4YiUrL7Ju[\/8jjP)"
+    "current_password": "old-password",
+    "password": "new-password",
+    "password_confirmation": "new-password"
 };
 
 fetch(url, {
@@ -964,7 +1146,25 @@ fetch(url, {
 </span>
 
 <span id="example-responses-PUTapi-profile-password">
-</span>
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Пароль успешно изменён.&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (401):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Необходима авторизация.&quot;
+}</code>
+ </pre>
+    </span>
 <span id="execution-results-PUTapi-profile-password" hidden>
     <blockquote>Received response<span
                 id="execution-response-status-PUTapi-profile-password"></span>:
@@ -982,7 +1182,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 </span>
 <form id="form-PUTapi-profile-password" data-method="PUT"
       data-path="api/profile/password"
-      data-authed="0"
+      data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
       autocomplete="off"
@@ -1013,6 +1213,17 @@ You can check the Dev Tools console for debugging information.</code></pre>
         </p>
                 <h4 class="fancy-heading-panel"><b>Headers</b></h4>
                                 <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="PUTapi-profile-password"
+               value="Bearer {TOKEN}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer {TOKEN}</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
@@ -1041,10 +1252,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="current_password"                data-endpoint="PUTapi-profile-password"
-               value="doloribus"
+               value="old-password"
                data-component="body">
     <br>
-<p>Example: <code>doloribus</code></p>
+<p>Текущий пароль. Example: <code>old-password</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>password</code></b>&nbsp;&nbsp;
@@ -1052,10 +1263,1742 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="password"                data-endpoint="PUTapi-profile-password"
-               value="x'r4YiUrL7Ju[/8jjP)"
+               value="new-password"
                data-component="body">
     <br>
-<p>Example: <code>x'r4YiUrL7Ju[/8jjP)</code></p>
+<p>Новый пароль (не менее 8 символов). Example: <code>new-password</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>password_confirmation</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="password_confirmation"                data-endpoint="PUTapi-profile-password"
+               value="new-password"
+               data-component="body">
+    <br>
+<p>Подтверждение нового пароля. Example: <code>new-password</code></p>
+        </div>
+        </form>
+
+                    <h2 id="obshhee-POSTapi-profile-email">Смена email</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+<p>Сохраняет новый адрес в <code>new_email</code> и отправляет письмо с подтверждением. Текущий <code>email</code> не меняется, пока пользователь не перейдёт по ссылке из письма.</p>
+
+<span id="example-requests-POSTapi-profile-email">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://localhost:8085/api/profile/email" \
+    --header "Authorization: Bearer {TOKEN}" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"email\": \"new.user@example.com\",
+    \"password\": \"password\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost:8085/api/profile/email"
+);
+
+const headers = {
+    "Authorization": "Bearer {TOKEN}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "email": "new.user@example.com",
+    "password": "password"
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-profile-email">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Письмо с подтверждением отправлено на новый адрес.&quot;,
+    &quot;user&quot;: {
+        &quot;id&quot;: 2,
+        &quot;role&quot;: &quot;teacher&quot;,
+        &quot;role_label&quot;: &quot;Преподаватель&quot;,
+        &quot;first_name&quot;: &quot;Иван&quot;,
+        &quot;second_name&quot;: &quot;Сергеевич&quot;,
+        &quot;last_name&quot;: &quot;Петров&quot;,
+        &quot;full_name&quot;: &quot;Петров Иван Сергеевич&quot;,
+        &quot;email&quot;: &quot;teacher@institute.local&quot;,
+        &quot;new_email&quot;: &quot;new.teacher@institute.local&quot;,
+        &quot;email_verified_at&quot;: null,
+        &quot;phone&quot;: null,
+        &quot;is_active&quot;: true,
+        &quot;default_path&quot;: &quot;/api/gradebooks&quot;,
+        &quot;gradebooks_count&quot;: 2,
+        &quot;created_at&quot;: &quot;2026-05-16T12:00:00+00:00&quot;,
+        &quot;updated_at&quot;: &quot;2026-05-16T12:15:00+00:00&quot;
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (401):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Необходима авторизация.&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (422):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Этот email уже используется.&quot;,
+    &quot;errors&quot;: {
+        &quot;email&quot;: [
+            &quot;Этот email уже используется.&quot;
+        ]
+    }
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-POSTapi-profile-email" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-profile-email"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-profile-email"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-profile-email" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-profile-email">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-profile-email" data-method="POST"
+      data-path="api/profile/email"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-profile-email', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-profile-email"
+                    onclick="tryItOut('POSTapi-profile-email');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-profile-email"
+                    onclick="cancelTryOut('POSTapi-profile-email');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-profile-email"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/profile/email</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="POSTapi-profile-email"
+               value="Bearer {TOKEN}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer {TOKEN}</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-profile-email"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-profile-email"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>email</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="email"                data-endpoint="POSTapi-profile-email"
+               value="new.user@example.com"
+               data-component="body">
+    <br>
+<p>Новый email. Example: <code>new.user@example.com</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>password</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="password"                data-endpoint="POSTapi-profile-email"
+               value="password"
+               data-component="body">
+    <br>
+<p>Текущий пароль. Example: <code>password</code></p>
+        </div>
+        </form>
+
+                    <h2 id="obshhee-GETapi-email-verify--id---hash-">Подтверждение email</h2>
+
+<p>
+</p>
+
+<p>Ссылка из письма (signed URL). При смене почты переносит <code>new_email</code> в <code>email</code> и сбрасывает <code>new_email</code>.</p>
+
+<span id="example-requests-GETapi-email-verify--id---hash-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost:8085/api/email/verify/1/abc..." \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost:8085/api/email/verify/1/abc..."
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-email-verify--id---hash-">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Email успешно подтверждён.&quot;,
+    &quot;user&quot;: {
+        &quot;id&quot;: 2,
+        &quot;role&quot;: &quot;teacher&quot;,
+        &quot;role_label&quot;: &quot;Преподаватель&quot;,
+        &quot;first_name&quot;: &quot;Иван&quot;,
+        &quot;second_name&quot;: &quot;Сергеевич&quot;,
+        &quot;last_name&quot;: &quot;Петров&quot;,
+        &quot;full_name&quot;: &quot;Петров Иван Сергеевич&quot;,
+        &quot;email&quot;: &quot;new.teacher@institute.local&quot;,
+        &quot;email_verified_at&quot;: &quot;2026-05-16T12:20:00+00:00&quot;,
+        &quot;phone&quot;: null,
+        &quot;is_active&quot;: true,
+        &quot;default_path&quot;: &quot;/api/gradebooks&quot;,
+        &quot;gradebooks_count&quot;: 2,
+        &quot;created_at&quot;: &quot;2026-05-16T12:00:00+00:00&quot;,
+        &quot;updated_at&quot;: &quot;2026-05-16T12:20:00+00:00&quot;
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (403):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;This action is unauthorized.&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-email-verify--id---hash-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-email-verify--id---hash-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-email-verify--id---hash-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-email-verify--id---hash-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-email-verify--id---hash-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-email-verify--id---hash-" data-method="GET"
+      data-path="api/email/verify/{id}/{hash}"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-email-verify--id---hash-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-email-verify--id---hash-"
+                    onclick="tryItOut('GETapi-email-verify--id---hash-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-email-verify--id---hash-"
+                    onclick="cancelTryOut('GETapi-email-verify--id---hash-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-email-verify--id---hash-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/email/verify/{id}/{hash}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-email-verify--id---hash-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-email-verify--id---hash-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="id"                data-endpoint="GETapi-email-verify--id---hash-"
+               value="1"
+               data-component="url">
+    <br>
+<p>ID пользователя. Example: <code>1</code></p>
+            </div>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>hash</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="hash"                data-endpoint="GETapi-email-verify--id---hash-"
+               value="abc..."
+               data-component="url">
+    <br>
+<p>SHA1 хеш email для подтверждения. Example: <code>abc...</code></p>
+            </div>
+                    </form>
+
+                <h1 id="dlia-studenta">Для студента</h1>
+
+    <p>Требуется роль <code>student</code> и настроенный <code>student_profile</code>. Иначе — 403.</p>
+
+                                <h2 id="dlia-studenta-GETapi-student-results">Результаты</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+<p>Список оценок текущего студента. Доступно только при <code>user.role = student</code>.</p>
+
+<span id="example-requests-GETapi-student-results">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost:8085/api/student/results?semester=2025-%D0%BE%D1%81%D0%B5%D0%BD%D1%8C&amp;per_page=20" \
+    --header "Authorization: Bearer {TOKEN}" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost:8085/api/student/results"
+);
+
+const params = {
+    "semester": "2025-осень",
+    "per_page": "20",
+};
+Object.keys(params)
+    .forEach(key =&gt; url.searchParams.append(key, params[key]));
+
+const headers = {
+    "Authorization": "Bearer {TOKEN}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-student-results">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: [
+        {
+            &quot;id&quot;: 1,
+            &quot;student_name&quot;: &quot;Иванов Алексей Дмитриевич&quot;,
+            &quot;group_name&quot;: &quot;ИВТ-401&quot;,
+            &quot;semester&quot;: &quot;1&quot;,
+            &quot;module1_score&quot;: &quot;42.00&quot;,
+            &quot;module2_score&quot;: &quot;45.00&quot;,
+            &quot;total_score&quot;: &quot;87.00&quot;,
+            &quot;final_grade&quot;: &quot;Отлично&quot;,
+            &quot;gradebook&quot;: {
+                &quot;id&quot;: 1,
+                &quot;title&quot;: &quot;Математический анализ &mdash; ИВТ-401&quot;,
+                &quot;discipline&quot;: &quot;Математический анализ&quot;,
+                &quot;group_name&quot;: &quot;ИВТ-401&quot;,
+                &quot;semester&quot;: &quot;1&quot;,
+                &quot;teacher&quot;: {
+                    &quot;id&quot;: 2,
+                    &quot;full_name&quot;: &quot;Петров Иван Сергеевич&quot;
+                },
+                &quot;original_filename&quot;: &quot;demo-gradebook.xlsx&quot;,
+                &quot;uploaded_at&quot;: &quot;2026-05-16T12:00:00+00:00&quot;
+            }
+        },
+        {
+            &quot;id&quot;: 2,
+            &quot;student_name&quot;: &quot;Иванов Алексей Дмитриевич&quot;,
+            &quot;group_name&quot;: &quot;ИВТ-401&quot;,
+            &quot;semester&quot;: &quot;2&quot;,
+            &quot;module1_score&quot;: &quot;38.00&quot;,
+            &quot;module2_score&quot;: &quot;40.00&quot;,
+            &quot;total_score&quot;: &quot;78.00&quot;,
+            &quot;final_grade&quot;: &quot;Хорошо&quot;,
+            &quot;gradebook&quot;: {
+                &quot;id&quot;: 2,
+                &quot;title&quot;: &quot;Программирование &mdash; ИВТ-401&quot;,
+                &quot;discipline&quot;: &quot;Программирование&quot;,
+                &quot;group_name&quot;: &quot;ИВТ-401&quot;,
+                &quot;semester&quot;: &quot;2&quot;,
+                &quot;teacher&quot;: {
+                    &quot;id&quot;: 2,
+                    &quot;full_name&quot;: &quot;Петров Иван Сергеевич&quot;
+                },
+                &quot;original_filename&quot;: null,
+                &quot;uploaded_at&quot;: &quot;2026-05-16T12:00:00+00:00&quot;
+            }
+        }
+    ],
+    &quot;links&quot;: {
+        &quot;first&quot;: &quot;http://localhost/api/student/results?page=1&quot;,
+        &quot;last&quot;: &quot;http://localhost/api/student/results?page=1&quot;,
+        &quot;prev&quot;: null,
+        &quot;next&quot;: null
+    },
+    &quot;meta&quot;: {
+        &quot;current_page&quot;: 1,
+        &quot;from&quot;: 1,
+        &quot;last_page&quot;: 1,
+        &quot;path&quot;: &quot;http://localhost/api/student/results&quot;,
+        &quot;per_page&quot;: 20,
+        &quot;to&quot;: 2,
+        &quot;total&quot;: 2
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (401):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Необходима авторизация.&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (403):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;This action is unauthorized.&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-student-results" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-student-results"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-student-results"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-student-results" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-student-results">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-student-results" data-method="GET"
+      data-path="api/student/results"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-student-results', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-student-results"
+                    onclick="tryItOut('GETapi-student-results');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-student-results"
+                    onclick="cancelTryOut('GETapi-student-results');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-student-results"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/student/results</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="GETapi-student-results"
+               value="Bearer {TOKEN}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer {TOKEN}</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-student-results"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-student-results"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>semester</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="semester"                data-endpoint="GETapi-student-results"
+               value="2025-осень"
+               data-component="query">
+    <br>
+<p>Фильтр по семестру. Example: <code>2025-осень</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>per_page</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="per_page"                data-endpoint="GETapi-student-results"
+               value="20"
+               data-component="query">
+    <br>
+<p>Количество записей на странице. Example: <code>20</code></p>
+            </div>
+                </form>
+
+                    <h2 id="dlia-studenta-GETapi-student-semesters">Семестры</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+<p>Список семестров с результатами. Доступно только при <code>user.role = student</code>.</p>
+
+<span id="example-requests-GETapi-student-semesters">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost:8085/api/student/semesters" \
+    --header "Authorization: Bearer {TOKEN}" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost:8085/api/student/semesters"
+);
+
+const headers = {
+    "Authorization": "Bearer {TOKEN}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-student-semesters">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: [
+        &quot;1&quot;,
+        &quot;2&quot;
+    ]
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (401):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Необходима авторизация.&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (403):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;This action is unauthorized.&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-student-semesters" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-student-semesters"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-student-semesters"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-student-semesters" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-student-semesters">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-student-semesters" data-method="GET"
+      data-path="api/student/semesters"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-student-semesters', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-student-semesters"
+                    onclick="tryItOut('GETapi-student-semesters');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-student-semesters"
+                    onclick="cancelTryOut('GETapi-student-semesters');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-student-semesters"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/student/semesters</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="GETapi-student-semesters"
+               value="Bearer {TOKEN}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer {TOKEN}</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-student-semesters"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-student-semesters"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        </form>
+
+                <h1 id="dlia-prepodavatelia-i-administratora">Для преподавателя и администратора</h1>
+
+    <p>Роли <code>teacher</code> и <code>administrator</code>. Студент получит 403.</p>
+
+                                <h2 id="dlia-prepodavatelia-i-administratora-GETapi-gradebooks">Список ведомостей</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+<p>Преподаватель видит только свои ведомости; администратор — все.</p>
+
+<span id="example-requests-GETapi-gradebooks">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost:8085/api/gradebooks?search=%D0%9C%D0%B0%D1%82%D0%B5%D0%BC%D0%B0%D1%82%D0%B8%D0%BA%D0%B0&amp;discipline=%D0%A4%D0%B8%D0%B7%D0%B8%D0%BA%D0%B0&amp;group_name=%D0%98%D0%92%D0%A2-21&amp;semester=2025-%D0%BE%D1%81%D0%B5%D0%BD%D1%8C&amp;teacher_id=1&amp;per_page=15" \
+    --header "Authorization: Bearer {TOKEN}" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost:8085/api/gradebooks"
+);
+
+const params = {
+    "search": "Математика",
+    "discipline": "Физика",
+    "group_name": "ИВТ-21",
+    "semester": "2025-осень",
+    "teacher_id": "1",
+    "per_page": "15",
+};
+Object.keys(params)
+    .forEach(key =&gt; url.searchParams.append(key, params[key]));
+
+const headers = {
+    "Authorization": "Bearer {TOKEN}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-gradebooks">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: [
+        {
+            &quot;id&quot;: 1,
+            &quot;title&quot;: &quot;Математический анализ &mdash; ИВТ-401&quot;,
+            &quot;discipline&quot;: &quot;Математический анализ&quot;,
+            &quot;group_name&quot;: &quot;ИВТ-401&quot;,
+            &quot;semester&quot;: &quot;1&quot;,
+            &quot;teacher&quot;: {
+                &quot;id&quot;: 2,
+                &quot;full_name&quot;: &quot;Петров Иван Сергеевич&quot;
+            },
+            &quot;original_filename&quot;: &quot;demo-gradebook.xlsx&quot;,
+            &quot;rows_count&quot;: 1,
+            &quot;uploaded_at&quot;: &quot;2026-05-16T12:00:00+00:00&quot;
+        },
+        {
+            &quot;id&quot;: 2,
+            &quot;title&quot;: &quot;Программирование &mdash; ИВТ-401&quot;,
+            &quot;discipline&quot;: &quot;Программирование&quot;,
+            &quot;group_name&quot;: &quot;ИВТ-401&quot;,
+            &quot;semester&quot;: &quot;2&quot;,
+            &quot;teacher&quot;: {
+                &quot;id&quot;: 2,
+                &quot;full_name&quot;: &quot;Петров Иван Сергеевич&quot;
+            },
+            &quot;original_filename&quot;: null,
+            &quot;rows_count&quot;: 1,
+            &quot;uploaded_at&quot;: &quot;2026-05-16T12:00:00+00:00&quot;
+        }
+    ],
+    &quot;links&quot;: {
+        &quot;first&quot;: &quot;http://localhost/api/gradebooks?page=1&quot;,
+        &quot;last&quot;: &quot;http://localhost/api/gradebooks?page=1&quot;,
+        &quot;prev&quot;: null,
+        &quot;next&quot;: null
+    },
+    &quot;meta&quot;: {
+        &quot;current_page&quot;: 1,
+        &quot;from&quot;: 1,
+        &quot;last_page&quot;: 1,
+        &quot;path&quot;: &quot;http://localhost/api/gradebooks&quot;,
+        &quot;per_page&quot;: 15,
+        &quot;to&quot;: 2,
+        &quot;total&quot;: 2
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (401):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Необходима авторизация.&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (403):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;This action is unauthorized.&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-gradebooks" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-gradebooks"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-gradebooks"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-gradebooks" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-gradebooks">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-gradebooks" data-method="GET"
+      data-path="api/gradebooks"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-gradebooks', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-gradebooks"
+                    onclick="tryItOut('GETapi-gradebooks');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-gradebooks"
+                    onclick="cancelTryOut('GETapi-gradebooks');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-gradebooks"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/gradebooks</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="GETapi-gradebooks"
+               value="Bearer {TOKEN}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer {TOKEN}</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-gradebooks"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-gradebooks"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>search</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="search"                data-endpoint="GETapi-gradebooks"
+               value="Математика"
+               data-component="query">
+    <br>
+<p>Поиск по названию, дисциплине или группе. Example: <code>Математика</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>discipline</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="discipline"                data-endpoint="GETapi-gradebooks"
+               value="Физика"
+               data-component="query">
+    <br>
+<p>Фильтр по дисциплине. Example: <code>Физика</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>group_name</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="group_name"                data-endpoint="GETapi-gradebooks"
+               value="ИВТ-21"
+               data-component="query">
+    <br>
+<p>Фильтр по группе. Example: <code>ИВТ-21</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>semester</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="semester"                data-endpoint="GETapi-gradebooks"
+               value="2025-осень"
+               data-component="query">
+    <br>
+<p>Фильтр по семестру. Example: <code>2025-осень</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>teacher_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="teacher_id"                data-endpoint="GETapi-gradebooks"
+               value="1"
+               data-component="query">
+    <br>
+<p>Фильтр по преподавателю (ID). Example: <code>1</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>per_page</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="per_page"                data-endpoint="GETapi-gradebooks"
+               value="15"
+               data-component="query">
+    <br>
+<p>Количество записей на странице. Example: <code>15</code></p>
+            </div>
+                </form>
+
+                    <h2 id="dlia-prepodavatelia-i-administratora-GETapi-gradebooks--gradebook_id-">Просмотр ведомости</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+
+
+<span id="example-requests-GETapi-gradebooks--gradebook_id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost:8085/api/gradebooks/1" \
+    --header "Authorization: Bearer {TOKEN}" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost:8085/api/gradebooks/1"
+);
+
+const headers = {
+    "Authorization": "Bearer {TOKEN}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-gradebooks--gradebook_id-">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: {
+        &quot;id&quot;: 1,
+        &quot;title&quot;: &quot;Математический анализ &mdash; ИВТ-401&quot;,
+        &quot;discipline&quot;: &quot;Математический анализ&quot;,
+        &quot;group_name&quot;: &quot;ИВТ-401&quot;,
+        &quot;semester&quot;: &quot;1&quot;,
+        &quot;teacher&quot;: {
+            &quot;id&quot;: 2,
+            &quot;full_name&quot;: &quot;Петров Иван Сергеевич&quot;
+        },
+        &quot;original_filename&quot;: &quot;demo-gradebook.xlsx&quot;,
+        &quot;rows_count&quot;: 1,
+        &quot;uploaded_at&quot;: &quot;2026-05-16T12:00:00+00:00&quot;,
+        &quot;rows&quot;: [
+            {
+                &quot;id&quot;: 1,
+                &quot;student_name&quot;: &quot;Иванов Алексей Дмитриевич&quot;,
+                &quot;group_name&quot;: &quot;ИВТ-401&quot;,
+                &quot;semester&quot;: &quot;1&quot;,
+                &quot;module1_score&quot;: &quot;42.00&quot;,
+                &quot;module2_score&quot;: &quot;45.00&quot;,
+                &quot;total_score&quot;: &quot;87.00&quot;,
+                &quot;final_grade&quot;: &quot;Отлично&quot;
+            }
+        ]
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (401):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Необходима авторизация.&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (403):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;This action is unauthorized.&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-gradebooks--gradebook_id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-gradebooks--gradebook_id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-gradebooks--gradebook_id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-gradebooks--gradebook_id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-gradebooks--gradebook_id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-gradebooks--gradebook_id-" data-method="GET"
+      data-path="api/gradebooks/{gradebook_id}"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-gradebooks--gradebook_id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-gradebooks--gradebook_id-"
+                    onclick="tryItOut('GETapi-gradebooks--gradebook_id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-gradebooks--gradebook_id-"
+                    onclick="cancelTryOut('GETapi-gradebooks--gradebook_id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-gradebooks--gradebook_id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/gradebooks/{gradebook_id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="GETapi-gradebooks--gradebook_id-"
+               value="Bearer {TOKEN}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer {TOKEN}</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-gradebooks--gradebook_id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-gradebooks--gradebook_id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>gradebook_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="gradebook_id"                data-endpoint="GETapi-gradebooks--gradebook_id-"
+               value="1"
+               data-component="url">
+    <br>
+<p>The ID of the gradebook. Example: <code>1</code></p>
+            </div>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>gradebook</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="gradebook"                data-endpoint="GETapi-gradebooks--gradebook_id-"
+               value="1"
+               data-component="url">
+    <br>
+<p>ID ведомости. Example: <code>1</code></p>
+            </div>
+                    </form>
+
+                    <h2 id="dlia-prepodavatelia-i-administratora-DELETEapi-gradebooks--gradebook_id-">Удаление ведомости</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+<p>Только роль <code>administrator</code>.</p>
+
+<span id="example-requests-DELETEapi-gradebooks--gradebook_id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request DELETE \
+    "http://localhost:8085/api/gradebooks/1" \
+    --header "Authorization: Bearer {TOKEN}" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost:8085/api/gradebooks/1"
+);
+
+const headers = {
+    "Authorization": "Bearer {TOKEN}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "DELETE",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-DELETEapi-gradebooks--gradebook_id-">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Ведомость удалена.&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (401):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Необходима авторизация.&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (403):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;This action is unauthorized.&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-DELETEapi-gradebooks--gradebook_id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-DELETEapi-gradebooks--gradebook_id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-DELETEapi-gradebooks--gradebook_id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-DELETEapi-gradebooks--gradebook_id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-DELETEapi-gradebooks--gradebook_id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-DELETEapi-gradebooks--gradebook_id-" data-method="DELETE"
+      data-path="api/gradebooks/{gradebook_id}"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('DELETEapi-gradebooks--gradebook_id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-DELETEapi-gradebooks--gradebook_id-"
+                    onclick="tryItOut('DELETEapi-gradebooks--gradebook_id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-DELETEapi-gradebooks--gradebook_id-"
+                    onclick="cancelTryOut('DELETEapi-gradebooks--gradebook_id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-DELETEapi-gradebooks--gradebook_id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-red">DELETE</small>
+            <b><code>api/gradebooks/{gradebook_id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="DELETEapi-gradebooks--gradebook_id-"
+               value="Bearer {TOKEN}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer {TOKEN}</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="DELETEapi-gradebooks--gradebook_id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="DELETEapi-gradebooks--gradebook_id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>gradebook_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="gradebook_id"                data-endpoint="DELETEapi-gradebooks--gradebook_id-"
+               value="1"
+               data-component="url">
+    <br>
+<p>The ID of the gradebook. Example: <code>1</code></p>
+            </div>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>gradebook</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="gradebook"                data-endpoint="DELETEapi-gradebooks--gradebook_id-"
+               value="1"
+               data-component="url">
+    <br>
+<p>ID ведомости. Example: <code>1</code></p>
+            </div>
+                    </form>
+
+                    <h2 id="dlia-prepodavatelia-i-administratora-GETapi-gradebooks--gradebook_id--export">Экспорт ведомости</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+
+
+<span id="example-requests-GETapi-gradebooks--gradebook_id--export">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost:8085/api/gradebooks/1/export?format=csv" \
+    --header "Authorization: Bearer {TOKEN}" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost:8085/api/gradebooks/1/export"
+);
+
+const params = {
+    "format": "csv",
+};
+Object.keys(params)
+    .forEach(key =&gt; url.searchParams.append(key, params[key]));
+
+const headers = {
+    "Authorization": "Bearer {TOKEN}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-gradebooks--gradebook_id--export">
+    </span>
+<span id="execution-results-GETapi-gradebooks--gradebook_id--export" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-gradebooks--gradebook_id--export"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-gradebooks--gradebook_id--export"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-gradebooks--gradebook_id--export" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-gradebooks--gradebook_id--export">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-gradebooks--gradebook_id--export" data-method="GET"
+      data-path="api/gradebooks/{gradebook_id}/export"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-gradebooks--gradebook_id--export', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-gradebooks--gradebook_id--export"
+                    onclick="tryItOut('GETapi-gradebooks--gradebook_id--export');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-gradebooks--gradebook_id--export"
+                    onclick="cancelTryOut('GETapi-gradebooks--gradebook_id--export');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-gradebooks--gradebook_id--export"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/gradebooks/{gradebook_id}/export</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="GETapi-gradebooks--gradebook_id--export"
+               value="Bearer {TOKEN}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer {TOKEN}</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-gradebooks--gradebook_id--export"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-gradebooks--gradebook_id--export"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>gradebook_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="gradebook_id"                data-endpoint="GETapi-gradebooks--gradebook_id--export"
+               value="1"
+               data-component="url">
+    <br>
+<p>The ID of the gradebook. Example: <code>1</code></p>
+            </div>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>gradebook</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="gradebook"                data-endpoint="GETapi-gradebooks--gradebook_id--export"
+               value="1"
+               data-component="url">
+    <br>
+<p>ID ведомости. Example: <code>1</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>format</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="format"                data-endpoint="GETapi-gradebooks--gradebook_id--export"
+               value="csv"
+               data-component="query">
+    <br>
+<p>Формат файла: csv или json. Example: <code>csv</code></p>
+            </div>
+                </form>
+
+                <h1 id="sluzebnye">Служебные</h1>
+
+    
+
+                                <h2 id="sluzebnye-POSTapi-connect-check">Проверка соединения</h2>
+
+<p>
+</p>
+
+<p>Сохраняет отметку проверки доступности API.</p>
+
+<span id="example-requests-POSTapi-connect-check">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://localhost:8085/api/connect/check" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"date_current\": \"2026-05-16T12:00:00\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost:8085/api/connect/check"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "date_current": "2026-05-16T12:00:00"
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-connect-check">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;id&quot;: 1,
+    &quot;date_current&quot;: &quot;2026-05-16T12:00:00&quot;,
+    &quot;created_at&quot;: &quot;2026-05-16T12:00:00.000000Z&quot;,
+    &quot;updated_at&quot;: &quot;2026-05-16T12:00:00.000000Z&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-POSTapi-connect-check" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-connect-check"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-connect-check"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-connect-check" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-connect-check">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-connect-check" data-method="POST"
+      data-path="api/connect/check"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-connect-check', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-connect-check"
+                    onclick="tryItOut('POSTapi-connect-check');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-connect-check"
+                    onclick="cancelTryOut('POSTapi-connect-check');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-connect-check"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/connect/check</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-connect-check"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-connect-check"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>date_current</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="date_current"                data-endpoint="POSTapi-connect-check"
+               value="2026-05-16T12:00:00"
+               data-component="body">
+    <br>
+<p>Дата и время проверки соединения. Example: <code>2026-05-16T12:00:00</code></p>
         </div>
         </form>
 

@@ -22,6 +22,8 @@ class StudentGroupResource extends ModelResource
 
     protected string $title = 'Группы';
 
+    protected string $column = 'name';
+
     protected function indexFields(): iterable
     {
         return [

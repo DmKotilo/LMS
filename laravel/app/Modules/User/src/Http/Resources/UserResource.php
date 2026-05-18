@@ -18,6 +18,8 @@ class UserResource extends JsonResource
             'last_name' => $this->last_name,
             'full_name' => $this->fullName(),
             'email' => $this->email,
+            'new_email' => $this->when((bool) $this->new_email, $this->new_email),
+            'email_verified_at' => $this->email_verified_at?->toIso8601String(),
             'phone' => $this->phone,
             'is_active' => $this->is_active,
             'default_path' => $this->defaultApiPath(),
