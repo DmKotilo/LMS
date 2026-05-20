@@ -1,0 +1,18 @@
+{
+    "data": {
+        "id": 3,
+        "title": "Высшая математика (2) — ДМО-11",
+        "discipline": "Высшая математика (2)",
+        "direction_code": "09.03.01",
+        "group_name": "ДМО-11",
+        "semester": "1",
+        "academic_year": "2025/2026",
+        "teacher": {
+            "id": 2,
+            "full_name": "Петров Иван Сергеевич"
+        },
+        "original_filename": "mrk-gradebook.xlsx",
+        "rows_count": 27,
+        "uploaded_at": "2026-05-21T01:30:00+00:00"
+    }
+}

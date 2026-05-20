@@ -3,8 +3,10 @@
         "id": 1,
         "title": "Математический анализ — ИВТ-401",
         "discipline": "Математический анализ",
+        "direction_code": "09.03.01",
         "group_name": "ИВТ-401",
         "semester": "1",
+        "academic_year": "2025/2026",
         "teacher": {
             "id": 2,
             "full_name": "Петров Иван Сергеевич"
@@ -20,6 +22,12 @@
                 "semester": "1",
                 "module1_score": "42.00",
                 "module2_score": "45.00",
+                "module1_theory": 20,
+                "module1_practice": 22,
+                "module2_theory": 20,
+                "module2_practice": 25,
+                "mrs_score": 87,
+                "exam_score": "13.00",
                 "total_score": "87.00",
                 "final_grade": "Отлично"
             }

@@ -4,8 +4,10 @@
             "id": 1,
             "title": "Математический анализ — ИВТ-401",
             "discipline": "Математический анализ",
+            "direction_code": "09.03.01",
             "group_name": "ИВТ-401",
             "semester": "1",
+            "academic_year": "2025/2026",
             "teacher": {
                 "id": 2,
                 "full_name": "Петров Иван Сергеевич"
@@ -18,8 +20,10 @@
             "id": 2,
             "title": "Программирование — ИВТ-401",
             "discipline": "Программирование",
+            "direction_code": "09.03.01",
             "group_name": "ИВТ-401",
             "semester": "2",
+            "academic_year": "2025/2026",
             "teacher": {
                 "id": 2,
                 "full_name": "Петров Иван Сергеевич"

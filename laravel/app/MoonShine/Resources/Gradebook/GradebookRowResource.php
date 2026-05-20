@@ -32,6 +32,7 @@ class GradebookRowResource extends ModelResource
             Text::make('Группа', 'group_name'),
             Number::make('Модуль 1', 'module1_score'),
             Number::make('Модуль 2', 'module2_score'),
+            Number::make('Экзамен', 'exam_score'),
             Number::make('Итого', 'total_score'),
             Text::make('Оценка', 'final_grade'),
         ];
@@ -56,6 +57,7 @@ class GradebookRowResource extends ModelResource
                 Text::make('Семестр', 'semester'),
                 Number::make('Модуль 1', 'module1_score'),
                 Number::make('Модуль 2', 'module2_score'),
+                Number::make('Экзамен', 'exam_score'),
                 Number::make('Итого', 'total_score'),
                 Text::make('Оценка', 'final_grade'),
             ]),
@@ -74,6 +76,7 @@ class GradebookRowResource extends ModelResource
             'student_name' => ['required', 'string', 'max:255'],
             'module1_score' => ['nullable', 'numeric', 'min:0', 'max:50'],
             'module2_score' => ['nullable', 'numeric', 'min:0', 'max:50'],
+            'exam_score' => ['nullable', 'numeric', 'min:0', 'max:100'],
             'total_score' => ['nullable', 'numeric', 'min:0', 'max:100'],
         ];
     }

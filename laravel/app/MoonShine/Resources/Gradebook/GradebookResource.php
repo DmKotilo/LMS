@@ -32,8 +32,10 @@ class GradebookResource extends ModelResource
             ID::make()->sortable(),
             Text::make('Название', 'title'),
             Text::make('Дисциплина', 'discipline'),
+            Text::make('Направление', 'direction_code'),
             Text::make('Группа', 'group_name'),
             Text::make('Семестр', 'semester'),
+            Text::make('Учебный год', 'academic_year'),
             BelongsTo::make(
                 'Преподаватель',
                 'teacher',
@@ -50,8 +52,10 @@ class GradebookResource extends ModelResource
             Box::make([
                 Text::make('Название', 'title')->required(),
                 Text::make('Дисциплина', 'discipline'),
+                Text::make('Направление', 'direction_code'),
                 Text::make('Группа', 'group_name'),
                 Text::make('Семестр', 'semester'),
+                Text::make('Учебный год', 'academic_year'),
                 BelongsTo::make('Преподаватель', 'teacher', resource: TeacherResource::class)
                     ->searchable(),
                 Text::make('Исходный файл', 'original_filename'),
@@ -72,8 +76,10 @@ class GradebookResource extends ModelResource
         return [
             'title' => ['required', 'string', 'max:255'],
             'discipline' => ['nullable', 'string', 'max:255'],
+            'direction_code' => ['nullable', 'string', 'max:50'],
             'group_name' => ['nullable', 'string', 'max:255'],
             'semester' => ['nullable', 'string', 'max:50'],
+            'academic_year' => ['nullable', 'string', 'max:20'],
             'teacher_id' => ['nullable', 'exists:users,id'],
         ];
     }

@@ -13,6 +13,11 @@ class GradebookPolicy
         return in_array($user->role, [UserRole::Administrator, UserRole::Teacher], true);
     }
 
+    public function create(User $user): bool
+    {
+        return in_array($user->role, [UserRole::Administrator, UserRole::Teacher], true);
+    }
+
     public function view(User $user, Gradebook $gradebook): bool
     {
         return match ($user->role) {

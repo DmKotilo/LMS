@@ -867,6 +867,159 @@ paths:
         required: true
         schema:
           type: string
+  /api/student/summary:
+    get:
+      summary: 'Сводка студента'
+      operationId: ''
+      description: 'Карточка студента + агрегированные показатели (кол-во дисциплин, средний МРС, средний итог).'
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    student:
+                      id: 3
+                      role: student
+                      role_label: Студент
+                      first_name: Полина
+                      second_name: Васильевна
+                      last_name: Юсина
+                      full_name: 'Юсина Полина Васильевна'
+                      email: student@institute.local
+                      email_verified_at: '2026-05-16T12:00:00+00:00'
+                      phone: null
+                      is_active: true
+                      default_path: /api/student/results
+                      student_profile:
+                        student_id_number: ST-2024-0001
+                        group:
+                          id: 1
+                          name: ДБ2401
+                          education_form: full_time
+                          education_form_label: Очная
+                          course: 2
+                      created_at: '2026-05-16T12:00:00+00:00'
+                      updated_at: '2026-05-16T12:00:00+00:00'
+                    stats:
+                      disciplines_count: 2
+                      avg_mrs: 62.5
+                      avg_total: 31
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      student:
+                        type: object
+                        properties:
+                          id:
+                            type: integer
+                            example: 3
+                          role:
+                            type: string
+                            example: student
+                          role_label:
+                            type: string
+                            example: Студент
+                          first_name:
+                            type: string
+                            example: Полина
+                          second_name:
+                            type: string
+                            example: Васильевна
+                          last_name:
+                            type: string
+                            example: Юсина
+                          full_name:
+                            type: string
+                            example: 'Юсина Полина Васильевна'
+                          email:
+                            type: string
+                            example: student@institute.local
+                          email_verified_at:
+                            type: string
+                            example: '2026-05-16T12:00:00+00:00'
+                          phone:
+                            type: string
+                            example: null
+                          is_active:
+                            type: boolean
+                            example: true
+                          default_path:
+                            type: string
+                            example: /api/student/results
+                          student_profile:
+                            type: object
+                            properties:
+                              student_id_number:
+                                type: string
+                                example: ST-2024-0001
+                              group:
+                                type: object
+                                properties:
+                                  id:
+                                    type: integer
+                                    example: 1
+                                  name:
+                                    type: string
+                                    example: ДБ2401
+                                  education_form:
+                                    type: string
+                                    example: full_time
+                                  education_form_label:
+                                    type: string
+                                    example: Очная
+                                  course:
+                                    type: integer
+                                    example: 2
+                          created_at:
+                            type: string
+                            example: '2026-05-16T12:00:00+00:00'
+                          updated_at:
+                            type: string
+                            example: '2026-05-16T12:00:00+00:00'
+                      stats:
+                        type: object
+                        properties:
+                          disciplines_count:
+                            type: integer
+                            example: 2
+                          avg_mrs:
+                            type: number
+                            example: 62.5
+                          avg_total:
+                            type: integer
+                            example: 31
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'Необходима авторизация.'
+                properties:
+                  message:
+                    type: string
+                    example: 'Необходима авторизация.'
+        403:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'This action is unauthorized.'
+                properties:
+                  message:
+                    type: string
+                    example: 'This action is unauthorized.'
+      tags:
+        - 'Для студента'
   /api/student/results:
     get:
       summary: Результаты
@@ -909,14 +1062,22 @@ paths:
                       semester: '1'
                       module1_score: '42.00'
                       module2_score: '45.00'
+                      module1_theory: 20
+                      module1_practice: 22
+                      module2_theory: 20
+                      module2_practice: 25
+                      mrs_score: 87
+                      exam_score: '13.00'
                       total_score: '87.00'
                       final_grade: Отлично
                       gradebook:
                         id: 1
                         title: 'Математический анализ — ИВТ-401'
                         discipline: 'Математический анализ'
+                        direction_code: 09.03.01
                         group_name: ИВТ-401
                         semester: '1'
+                        academic_year: 2025/2026
                         teacher:
                           id: 2
                           full_name: 'Петров Иван Сергеевич'
@@ -929,14 +1090,22 @@ paths:
                       semester: '2'
                       module1_score: '38.00'
                       module2_score: '40.00'
+                      module1_theory: 10
+                      module1_practice: 28
+                      module2_theory: 12
+                      module2_practice: 20
+                      mrs_score: 78
+                      exam_score: '0.00'
                       total_score: '78.00'
-                      final_grade: Хорошо
+                      final_grade: Неявка
                       gradebook:
                         id: 2
                         title: 'Программирование — ИВТ-401'
                         discipline: Программирование
+                        direction_code: 09.03.01
                         group_name: ИВТ-401
                         semester: '2'
+                        academic_year: 2025/2026
                         teacher:
                           id: 2
                           full_name: 'Петров Иван Сергеевич'
@@ -966,14 +1135,22 @@ paths:
                         semester: '1'
                         module1_score: '42.00'
                         module2_score: '45.00'
+                        module1_theory: 20
+                        module1_practice: 22
+                        module2_theory: 20
+                        module2_practice: 25
+                        mrs_score: 87
+                        exam_score: '13.00'
                         total_score: '87.00'
                         final_grade: Отлично
                         gradebook:
                           id: 1
                           title: 'Математический анализ — ИВТ-401'
                           discipline: 'Математический анализ'
+                          direction_code: 09.03.01
                           group_name: ИВТ-401
                           semester: '1'
+                          academic_year: 2025/2026
                           teacher:
                             id: 2
                             full_name: 'Петров Иван Сергеевич'
@@ -986,14 +1163,22 @@ paths:
                         semester: '2'
                         module1_score: '38.00'
                         module2_score: '40.00'
+                        module1_theory: 10
+                        module1_practice: 28
+                        module2_theory: 12
+                        module2_practice: 20
+                        mrs_score: 78
+                        exam_score: '0.00'
                         total_score: '78.00'
-                        final_grade: Хорошо
+                        final_grade: Неявка
                         gradebook:
                           id: 2
                           title: 'Программирование — ИВТ-401'
                           discipline: Программирование
+                          direction_code: 09.03.01
                           group_name: ИВТ-401
                           semester: '2'
+                          academic_year: 2025/2026
                           teacher:
                             id: 2
                             full_name: 'Петров Иван Сергеевич'
@@ -1020,6 +1205,24 @@ paths:
                         module2_score:
                           type: string
                           example: '45.00'
+                        module1_theory:
+                          type: integer
+                          example: 20
+                        module1_practice:
+                          type: integer
+                          example: 22
+                        module2_theory:
+                          type: integer
+                          example: 20
+                        module2_practice:
+                          type: integer
+                          example: 25
+                        mrs_score:
+                          type: integer
+                          example: 87
+                        exam_score:
+                          type: string
+                          example: '13.00'
                         total_score:
                           type: string
                           example: '87.00'
@@ -1038,12 +1241,18 @@ paths:
                             discipline:
                               type: string
                               example: 'Математический анализ'
+                            direction_code:
+                              type: string
+                              example: 09.03.01
                             group_name:
                               type: string
                               example: ИВТ-401
                             semester:
                               type: string
                               example: '1'
+                            academic_year:
+                              type: string
+                              example: 2025/2026
                             teacher:
                               type: object
                               properties:
@@ -1175,6 +1384,309 @@ paths:
                     example: 'This action is unauthorized.'
       tags:
         - 'Для студента'
+  /api/gradebooks/import:
+    post:
+      summary: 'Загрузка ведомости XLSX'
+      operationId: XLSX
+      description: 'Загружает и парсит xlsx/xls ведомость МРС: читает шапку (дисциплина, группа, направление) и таблицу студентов. `semester` и `academic_year` берутся из body запроса.'
+      parameters: []
+      responses:
+        201:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    id: 3
+                    title: 'Высшая математика (2) — ДМО-11'
+                    discipline: 'Высшая математика (2)'
+                    direction_code: 09.03.01
+                    group_name: ДМО-11
+                    semester: '1'
+                    academic_year: 2025/2026
+                    teacher:
+                      id: 2
+                      full_name: 'Петров Иван Сергеевич'
+                    original_filename: mrk-gradebook.xlsx
+                    rows_count: 27
+                    uploaded_at: '2026-05-21T01:30:00+00:00'
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 3
+                      title:
+                        type: string
+                        example: 'Высшая математика (2) — ДМО-11'
+                      discipline:
+                        type: string
+                        example: 'Высшая математика (2)'
+                      direction_code:
+                        type: string
+                        example: 09.03.01
+                      group_name:
+                        type: string
+                        example: ДМО-11
+                      semester:
+                        type: string
+                        example: '1'
+                      academic_year:
+                        type: string
+                        example: 2025/2026
+                      teacher:
+                        type: object
+                        properties:
+                          id:
+                            type: integer
+                            example: 2
+                          full_name:
+                            type: string
+                            example: 'Петров Иван Сергеевич'
+                      original_filename:
+                        type: string
+                        example: mrk-gradebook.xlsx
+                      rows_count:
+                        type: integer
+                        example: 27
+                      uploaded_at:
+                        type: string
+                        example: '2026-05-21T01:30:00+00:00'
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'Необходима авторизация.'
+                properties:
+                  message:
+                    type: string
+                    example: 'Необходима авторизация.'
+        403:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'This action is unauthorized.'
+                properties:
+                  message:
+                    type: string
+                    example: 'This action is unauthorized.'
+        422:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'Этот email уже используется.'
+                  errors:
+                    email:
+                      - 'Этот email уже используется.'
+                properties:
+                  message:
+                    type: string
+                    example: 'Этот email уже используется.'
+                  errors:
+                    type: object
+                    properties:
+                      email:
+                        type: array
+                        example:
+                          - 'Этот email уже используется.'
+                        items:
+                          type: string
+      tags:
+        - 'Для преподавателя и администратора'
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+                  description: 'Файл ведомости .xlsx/.xls'
+                semester:
+                  type: string
+                  description: 'Семестр из формы загрузки.'
+                  example: '1'
+                academic_year:
+                  type: string
+                  description: 'Учебный год из формы загрузки.'
+                  example: 2025/2026
+                teacher_id:
+                  type: integer
+                  description: 'ID преподавателя (только для администратора).'
+                  example: 2
+              required:
+                - file
+                - semester
+                - academic_year
+  /api/gradebooks/filters:
+    get:
+      summary: 'Опции фильтров ведомостей'
+      operationId: ''
+      description: 'Возвращает списки семестров, учебных годов, групп, дисциплин и преподавателей для формы поиска/фильтрации.'
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    semesters:
+                      - '1'
+                      - '2'
+                      - '3'
+                    academic_years:
+                      - 2025/2026
+                      - 2024/2025
+                    groups:
+                      - ДМО-11
+                      - ИВТ-401
+                    disciplines:
+                      - 'Высшая математика (2)'
+                      - Программирование
+                    teachers:
+                      -
+                        id: 2
+                        full_name: 'Петров Иван Сергеевич'
+                    sort_options:
+                      -
+                        value: newest
+                        label: 'Сначала новые'
+                      -
+                        value: oldest
+                        label: 'Сначала старые'
+                      -
+                        value: discipline_asc
+                        label: 'Дисциплина А-Я'
+                      -
+                        value: discipline_desc
+                        label: 'Дисциплина Я-А'
+                      -
+                        value: group_asc
+                        label: 'Группа А-Я'
+                      -
+                        value: group_desc
+                        label: 'Группа Я-А'
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      semesters:
+                        type: array
+                        example:
+                          - '1'
+                          - '2'
+                          - '3'
+                        items:
+                          type: string
+                      academic_years:
+                        type: array
+                        example:
+                          - 2025/2026
+                          - 2024/2025
+                        items:
+                          type: string
+                      groups:
+                        type: array
+                        example:
+                          - ДМО-11
+                          - ИВТ-401
+                        items:
+                          type: string
+                      disciplines:
+                        type: array
+                        example:
+                          - 'Высшая математика (2)'
+                          - Программирование
+                        items:
+                          type: string
+                      teachers:
+                        type: array
+                        example:
+                          -
+                            id: 2
+                            full_name: 'Петров Иван Сергеевич'
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: integer
+                              example: 2
+                            full_name:
+                              type: string
+                              example: 'Петров Иван Сергеевич'
+                      sort_options:
+                        type: array
+                        example:
+                          -
+                            value: newest
+                            label: 'Сначала новые'
+                          -
+                            value: oldest
+                            label: 'Сначала старые'
+                          -
+                            value: discipline_asc
+                            label: 'Дисциплина А-Я'
+                          -
+                            value: discipline_desc
+                            label: 'Дисциплина Я-А'
+                          -
+                            value: group_asc
+                            label: 'Группа А-Я'
+                          -
+                            value: group_desc
+                            label: 'Группа Я-А'
+                        items:
+                          type: object
+                          properties:
+                            value:
+                              type: string
+                              example: newest
+                            label:
+                              type: string
+                              example: 'Сначала новые'
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'Необходима авторизация.'
+                properties:
+                  message:
+                    type: string
+                    example: 'Необходима авторизация.'
+        403:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'This action is unauthorized.'
+                properties:
+                  message:
+                    type: string
+                    example: 'This action is unauthorized.'
+      tags:
+        - 'Для преподавателя и администратора'
   /api/gradebooks:
     get:
       summary: 'Список ведомостей'
@@ -1223,6 +1735,16 @@ paths:
             example: 2025-осень
         -
           in: query
+          name: academic_year
+          description: 'Фильтр по учебному году.'
+          example: 2025/2026
+          required: false
+          schema:
+            type: string
+            description: 'Фильтр по учебному году.'
+            example: 2025/2026
+        -
+          in: query
           name: teacher_id
           description: 'Фильтр по преподавателю (ID).'
           example: 1
@@ -1231,6 +1753,16 @@ paths:
             type: integer
             description: 'Фильтр по преподавателю (ID).'
             example: 1
+        -
+          in: query
+          name: sort
+          description: 'Сортировка: newest, oldest, discipline_asc, discipline_desc, group_asc, group_desc.'
+          example: newest
+          required: false
+          schema:
+            type: string
+            description: 'Сортировка: newest, oldest, discipline_asc, discipline_desc, group_asc, group_desc.'
+            example: newest
         -
           in: query
           name: per_page
@@ -1254,8 +1786,10 @@ paths:
                       id: 1
                       title: 'Математический анализ — ИВТ-401'
                       discipline: 'Математический анализ'
+                      direction_code: 09.03.01
                       group_name: ИВТ-401
                       semester: '1'
+                      academic_year: 2025/2026
                       teacher:
                         id: 2
                         full_name: 'Петров Иван Сергеевич'
@@ -1266,8 +1800,10 @@ paths:
                       id: 2
                       title: 'Программирование — ИВТ-401'
                       discipline: Программирование
+                      direction_code: 09.03.01
                       group_name: ИВТ-401
                       semester: '2'
+                      academic_year: 2025/2026
                       teacher:
                         id: 2
                         full_name: 'Петров Иван Сергеевич'
@@ -1295,8 +1831,10 @@ paths:
                         id: 1
                         title: 'Математический анализ — ИВТ-401'
                         discipline: 'Математический анализ'
+                        direction_code: 09.03.01
                         group_name: ИВТ-401
                         semester: '1'
+                        academic_year: 2025/2026
                         teacher:
                           id: 2
                           full_name: 'Петров Иван Сергеевич'
@@ -1307,8 +1845,10 @@ paths:
                         id: 2
                         title: 'Программирование — ИВТ-401'
                         discipline: Программирование
+                        direction_code: 09.03.01
                         group_name: ИВТ-401
                         semester: '2'
+                        academic_year: 2025/2026
                         teacher:
                           id: 2
                           full_name: 'Петров Иван Сергеевич'
@@ -1327,12 +1867,18 @@ paths:
                         discipline:
                           type: string
                           example: 'Математический анализ'
+                        direction_code:
+                          type: string
+                          example: 09.03.01
                         group_name:
                           type: string
                           example: ИВТ-401
                         semester:
                           type: string
                           example: '1'
+                        academic_year:
+                          type: string
+                          example: 2025/2026
                         teacher:
                           type: object
                           properties:
@@ -1434,8 +1980,10 @@ paths:
                     id: 1
                     title: 'Математический анализ — ИВТ-401'
                     discipline: 'Математический анализ'
+                    direction_code: 09.03.01
                     group_name: ИВТ-401
                     semester: '1'
+                    academic_year: 2025/2026
                     teacher:
                       id: 2
                       full_name: 'Петров Иван Сергеевич'
@@ -1450,6 +1998,12 @@ paths:
                         semester: '1'
                         module1_score: '42.00'
                         module2_score: '45.00'
+                        module1_theory: 20
+                        module1_practice: 22
+                        module2_theory: 20
+                        module2_practice: 25
+                        mrs_score: 87
+                        exam_score: '13.00'
                         total_score: '87.00'
                         final_grade: Отлично
                 properties:
@@ -1465,12 +2019,18 @@ paths:
                       discipline:
                         type: string
                         example: 'Математический анализ'
+                      direction_code:
+                        type: string
+                        example: 09.03.01
                       group_name:
                         type: string
                         example: ИВТ-401
                       semester:
                         type: string
                         example: '1'
+                      academic_year:
+                        type: string
+                        example: 2025/2026
                       teacher:
                         type: object
                         properties:
@@ -1499,6 +2059,12 @@ paths:
                             semester: '1'
                             module1_score: '42.00'
                             module2_score: '45.00'
+                            module1_theory: 20
+                            module1_practice: 22
+                            module2_theory: 20
+                            module2_practice: 25
+                            mrs_score: 87
+                            exam_score: '13.00'
                             total_score: '87.00'
                             final_grade: Отлично
                         items:
@@ -1522,6 +2088,24 @@ paths:
                             module2_score:
                               type: string
                               example: '45.00'
+                            module1_theory:
+                              type: integer
+                              example: 20
+                            module1_practice:
+                              type: integer
+                              example: 22
+                            module2_theory:
+                              type: integer
+                              example: 20
+                            module2_practice:
+                              type: integer
+                              example: 25
+                            mrs_score:
+                              type: integer
+                              example: 87
+                            exam_score:
+                              type: string
+                              example: '13.00'
                             total_score:
                               type: string
                               example: '87.00'
@@ -1698,6 +2282,162 @@ paths:
               required:
                 - date_current
       security: []
+  /api/admin/teachers:
+    post:
+      summary: 'Добавить преподавателя'
+      operationId: ''
+      description: 'Создаёт учетную запись преподавателя (роль teacher). Доступно только администратору.'
+      parameters: []
+      responses:
+        201:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'Преподаватель добавлен.'
+                  data:
+                    id: 15
+                    role: teacher
+                    role_label: Преподаватель
+                    first_name: Сергей
+                    second_name: Анатольевич
+                    last_name: Докучаев
+                    full_name: 'Докучаев Сергей Анатольевич'
+                    email: teacher-new@institute.local
+                    email_verified_at: null
+                    phone: null
+                    is_active: true
+                    default_path: /api/gradebooks
+                    gradebooks_count: 0
+                    created_at: '2026-05-21T00:00:00+00:00'
+                    updated_at: '2026-05-21T00:00:00+00:00'
+                properties:
+                  message:
+                    type: string
+                    example: 'Преподаватель добавлен.'
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 15
+                      role:
+                        type: string
+                        example: teacher
+                      role_label:
+                        type: string
+                        example: Преподаватель
+                      first_name:
+                        type: string
+                        example: Сергей
+                      second_name:
+                        type: string
+                        example: Анатольевич
+                      last_name:
+                        type: string
+                        example: Докучаев
+                      full_name:
+                        type: string
+                        example: 'Докучаев Сергей Анатольевич'
+                      email:
+                        type: string
+                        example: teacher-new@institute.local
+                      email_verified_at:
+                        type: string
+                        example: null
+                      phone:
+                        type: string
+                        example: null
+                      is_active:
+                        type: boolean
+                        example: true
+                      default_path:
+                        type: string
+                        example: /api/gradebooks
+                      gradebooks_count:
+                        type: integer
+                        example: 0
+                      created_at:
+                        type: string
+                        example: '2026-05-21T00:00:00+00:00'
+                      updated_at:
+                        type: string
+                        example: '2026-05-21T00:00:00+00:00'
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'Необходима авторизация.'
+                properties:
+                  message:
+                    type: string
+                    example: 'Необходима авторизация.'
+        403:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'This action is unauthorized.'
+                properties:
+                  message:
+                    type: string
+                    example: 'This action is unauthorized.'
+        422:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'Этот email уже используется.'
+                  errors:
+                    email:
+                      - 'Этот email уже используется.'
+                properties:
+                  message:
+                    type: string
+                    example: 'Этот email уже используется.'
+                  errors:
+                    type: object
+                    properties:
+                      email:
+                        type: array
+                        example:
+                          - 'Этот email уже используется.'
+                        items:
+                          type: string
+      tags:
+        - Администрирование
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                full_name:
+                  type: string
+                  description: 'ФИО преподавателя.'
+                  example: 'Докучаев Сергей Анатольевич'
+                login:
+                  type: string
+                  description: 'Логин/email преподавателя.'
+                  example: teacher-new@institute.local
+                password:
+                  type: string
+                  description: 'Временный пароль.'
+                  example: teacher123
+              required:
+                - full_name
+                - login
+                - password
 tags:
   -
     name: Авторизация
@@ -1713,6 +2453,9 @@ tags:
     description: 'Роли `teacher` и `administrator`. Студент получит 403.'
   -
     name: Служебные
+    description: ''
+  -
+    name: Администрирование
     description: ''
 components:
   securitySchemes:

@@ -1,0 +1,35 @@
+{
+    "data": {
+        "student": {
+            "id": 3,
+            "role": "student",
+            "role_label": "Студент",
+            "first_name": "Полина",
+            "second_name": "Васильевна",
+            "last_name": "Юсина",
+            "full_name": "Юсина Полина Васильевна",
+            "email": "student@institute.local",
+            "email_verified_at": "2026-05-16T12:00:00+00:00",
+            "phone": null,
+            "is_active": true,
+            "default_path": "/api/student/results",
+            "student_profile": {
+                "student_id_number": "ST-2024-0001",
+                "group": {
+                    "id": 1,
+                    "name": "ДБ2401",
+                    "education_form": "full_time",
+                    "education_form_label": "Очная",
+                    "course": 2
+                }
+            },
+            "created_at": "2026-05-16T12:00:00+00:00",
+            "updated_at": "2026-05-16T12:00:00+00:00"
+        },
+        "stats": {
+            "disciplines_count": 2,
+            "avg_mrs": 62.5,
+            "avg_total": 31
+        }
+    }
+}

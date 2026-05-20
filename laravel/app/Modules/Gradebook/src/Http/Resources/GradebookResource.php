@@ -13,8 +13,10 @@ class GradebookResource extends JsonResource
             'id' => $this->id,
             'title' => $this->title,
             'discipline' => $this->discipline,
+            'direction_code' => $this->direction_code,
             'group_name' => $this->group_name,
             'semester' => $this->semester,
+            'academic_year' => $this->academic_year,
             'teacher' => $this->whenLoaded('teacher', fn () => [
                 'id' => $this->teacher->id,
                 'full_name' => $this->teacher->fullName(),

@@ -1,89 +1,87 @@
-name: 'Для студента'
-description: 'Требуется роль `student` и настроенный `student_profile`. Иначе — 403.'
+name: Авторизация
+description: ''
 endpoints:
   -
     httpMethods:
-      - GET
-    uri: api/student/results
+      - POST
+    uri: api/auth/login
     metadata:
-      groupName: 'Для студента'
-      groupDescription: 'Требуется роль `student` и настроенный `student_profile`. Иначе — 403.'
+      groupName: Авторизация
+      groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: Результаты
-      description: 'Список оценок текущего студента. Доступно только при `user.role = student`.'
-      authenticated: true
+      title: Вход
+      description: |-
+        Авторизация по email и паролю. Возвращает Bearer-токен (Sanctum).
+
+        В объекте `user` приходит роль:
+        - `role`: `student` | `teacher` | `administrator`
+        - `role_label`: человекочитаемое название
+        - `default_path`: стартовый путь API для этой роли (`/api/student/results`, `/api/gradebooks` и т.д.)
+
+        По роли фронтенд выбирает раздел приложения; отдельного «типа входа» нет — один endpoint для всех.
+      authenticated: false
       custom: []
     headers:
-      Authorization: 'Bearer {TOKEN}'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
     cleanUrlParameters: []
-    queryParameters:
-      semester:
-        name: semester
-        description: 'Фильтр по семестру.'
-        required: false
-        example: 2025-осень
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      email:
+        name: email
+        description: 'Email пользователя.'
+        required: true
+        example: teacher@example.com
         type: string
         enumValues: []
         exampleWasSpecified: false
         custom: []
-      per_page:
-        name: per_page
-        description: 'Количество записей на странице.'
-        required: false
-        example: 20
-        type: integer
+      password:
+        name: password
+        description: Пароль.
+        required: true
+        example: password
+        type: string
         enumValues: []
         exampleWasSpecified: false
         custom: []
-    cleanQueryParameters:
-      semester: 2025-осень
-      per_page: 20
-    bodyParameters: []
-    cleanBodyParameters: []
+    cleanBodyParameters:
+      email: teacher@example.com
+      password: password
     fileParameters: []
     responses:
       -
         status: 200
-        content: "{\r\n    \"data\": [\r\n        {\r\n            \"id\": 1,\r\n            \"student_name\": \"Иванов Алексей Дмитриевич\",\r\n            \"group_name\": \"ИВТ-401\",\r\n            \"semester\": \"1\",\r\n            \"module1_score\": \"42.00\",\r\n            \"module2_score\": \"45.00\",\r\n            \"total_score\": \"87.00\",\r\n            \"final_grade\": \"Отлично\",\r\n            \"gradebook\": {\r\n                \"id\": 1,\r\n                \"title\": \"Математический анализ — ИВТ-401\",\r\n                \"discipline\": \"Математический анализ\",\r\n                \"group_name\": \"ИВТ-401\",\r\n                \"semester\": \"1\",\r\n                \"teacher\": {\r\n                    \"id\": 2,\r\n                    \"full_name\": \"Петров Иван Сергеевич\"\r\n                },\r\n                \"original_filename\": \"demo-gradebook.xlsx\",\r\n                \"uploaded_at\": \"2026-05-16T12:00:00+00:00\"\r\n            }\r\n        },\r\n        {\r\n            \"id\": 2,\r\n            \"student_name\": \"Иванов Алексей Дмитриевич\",\r\n            \"group_name\": \"ИВТ-401\",\r\n            \"semester\": \"2\",\r\n            \"module1_score\": \"38.00\",\r\n            \"module2_score\": \"40.00\",\r\n            \"total_score\": \"78.00\",\r\n            \"final_grade\": \"Хорошо\",\r\n            \"gradebook\": {\r\n                \"id\": 2,\r\n                \"title\": \"Программирование — ИВТ-401\",\r\n                \"discipline\": \"Программирование\",\r\n                \"group_name\": \"ИВТ-401\",\r\n                \"semester\": \"2\",\r\n                \"teacher\": {\r\n                    \"id\": 2,\r\n                    \"full_name\": \"Петров Иван Сергеевич\"\r\n                },\r\n                \"original_filename\": null,\r\n                \"uploaded_at\": \"2026-05-16T12:00:00+00:00\"\r\n            }\r\n        }\r\n    ],\r\n    \"links\": {\r\n        \"first\": \"http://localhost/api/student/results?page=1\",\r\n        \"last\": \"http://localhost/api/student/results?page=1\",\r\n        \"prev\": null,\r\n        \"next\": null\r\n    },\r\n    \"meta\": {\r\n        \"current_page\": 1,\r\n        \"from\": 1,\r\n        \"last_page\": 1,\r\n        \"path\": \"http://localhost/api/student/results\",\r\n        \"per_page\": 20,\r\n        \"to\": 2,\r\n        \"total\": 2\r\n    }\r\n}\r\n"
+        content: "{\r\n    \"data\": {\r\n        \"token\": \"1|exampleSanctumTokenForDocumentation\",\r\n        \"token_type\": \"Bearer\",\r\n        \"default_path\": \"/api/gradebooks\",\r\n        \"user\": {\r\n            \"id\": 2,\r\n            \"role\": \"teacher\",\r\n            \"role_label\": \"Преподаватель\",\r\n            \"first_name\": \"Иван\",\r\n            \"second_name\": \"Сергеевич\",\r\n            \"last_name\": \"Петров\",\r\n            \"full_name\": \"Петров Иван Сергеевич\",\r\n            \"email\": \"teacher@institute.local\",\r\n            \"email_verified_at\": \"2026-05-16T12:00:00+00:00\",\r\n            \"phone\": null,\r\n            \"is_active\": true,\r\n            \"default_path\": \"/api/gradebooks\",\r\n            \"gradebooks_count\": 2,\r\n            \"created_at\": \"2026-05-16T12:00:00+00:00\",\r\n            \"updated_at\": \"2026-05-16T12:00:00+00:00\"\r\n        }\r\n    }\r\n}\r\n"
         headers: []
         description: ''
         custom: []
       -
-        status: 401
-        content: "{\r\n    \"message\": \"Необходима авторизация.\"\r\n}\r\n"
-        headers: []
-        description: ''
-        custom: []
-      -
-        status: 403
-        content: "{\r\n    \"message\": \"This action is unauthorized.\"\r\n}\r\n"
+        status: 422
+        content: "{\r\n    \"message\": \"Неверный email или пароль.\",\r\n    \"errors\": {\r\n        \"email\": [\r\n            \"Неверный email или пароль.\"\r\n        ]\r\n    }\r\n}\r\n"
         headers: []
         description: ''
         custom: []
     responseFields: []
-    auth:
-      - headers
-      - Authorization
-      - 'Bearer aZbP4E8f6d56Dv1haVge3ck'
+    auth: []
     controller: null
     method: null
     route: null
     custom: []
   -
     httpMethods:
-      - GET
-    uri: api/student/semesters
+      - POST
+    uri: api/auth/logout
     metadata:
-      groupName: 'Для студента'
-      groupDescription: 'Требуется роль `student` и настроенный `student_profile`. Иначе — 403.'
+      groupName: Авторизация
+      groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: Семестры
-      description: 'Список семестров с результатами. Доступно только при `user.role = student`.'
+      title: Выход
+      description: 'Удаляет текущий токен доступа.'
       authenticated: true
       custom: []
     headers:
@@ -100,7 +98,47 @@ endpoints:
     responses:
       -
         status: 200
-        content: "{\r\n    \"data\": [\r\n        \"1\",\r\n        \"2\"\r\n    ]\r\n}\r\n"
+        content: "{\r\n    \"message\": \"Выход выполнен успешно.\"\r\n}\r\n"
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer gac136ZVevfDP56bad4k8hE'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: api/auth/me
+    metadata:
+      groupName: Авторизация
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Текущий пользователь'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: "{\r\n    \"data\": {\r\n        \"id\": 3,\r\n        \"role\": \"student\",\r\n        \"role_label\": \"Студент\",\r\n        \"first_name\": \"Алексей\",\r\n        \"second_name\": \"Дмитриевич\",\r\n        \"last_name\": \"Иванов\",\r\n        \"full_name\": \"Иванов Алексей Дмитриевич\",\r\n        \"email\": \"student@institute.local\",\r\n        \"email_verified_at\": \"2026-05-16T12:00:00+00:00\",\r\n        \"phone\": null,\r\n        \"is_active\": true,\r\n        \"default_path\": \"/api/student/results\",\r\n        \"student_profile\": {\r\n            \"student_id_number\": \"ST-2024-0001\",\r\n            \"group\": {\r\n                \"id\": 1,\r\n                \"name\": \"ИВТ-401\",\r\n                \"education_form\": \"full_time\",\r\n                \"education_form_label\": \"Очная\",\r\n                \"course\": 4\r\n            }\r\n        },\r\n        \"created_at\": \"2026-05-16T12:00:00+00:00\",\r\n        \"updated_at\": \"2026-05-16T12:00:00+00:00\"\r\n    }\r\n}\r\n"
         headers: []
         description: ''
         custom: []
@@ -110,17 +148,11 @@ endpoints:
         headers: []
         description: ''
         custom: []
-      -
-        status: 403
-        content: "{\r\n    \"message\": \"This action is unauthorized.\"\r\n}\r\n"
-        headers: []
-        description: ''
-        custom: []
     responseFields: []
     auth:
       - headers
       - Authorization
-      - 'Bearer ba436k6fhgEe18ZaDvVcdP5'
+      - 'Bearer 6hb4a853kfP16acEZdVgvDe'
     controller: null
     method: null
     route: null

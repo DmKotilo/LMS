@@ -1,0 +1,22 @@
+{
+    "data": {
+        "semesters": ["1", "2", "3"],
+        "academic_years": ["2025/2026", "2024/2025"],
+        "groups": ["ДМО-11", "ИВТ-401"],
+        "disciplines": ["Высшая математика (2)", "Программирование"],
+        "teachers": [
+            {
+                "id": 2,
+                "full_name": "Петров Иван Сергеевич"
+            }
+        ],
+        "sort_options": [
+            {"value": "newest", "label": "Сначала новые"},
+            {"value": "oldest", "label": "Сначала старые"},
+            {"value": "discipline_asc", "label": "Дисциплина А-Я"},
+            {"value": "discipline_desc", "label": "Дисциплина Я-А"},
+            {"value": "group_asc", "label": "Группа А-Я"},
+            {"value": "group_desc", "label": "Группа Я-А"}
+        ]
+    }
+}

@@ -11,7 +11,8 @@
         "laravel/framework": "^10.10",
         "laravel/sanctum": "^3.2",
         "laravel/tinker": "^2.8",
-        "moonshine/moonshine": "^3.0"
+        "moonshine/moonshine": "^3.0",
+        "phpoffice/phpspreadsheet": "^5.7"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",

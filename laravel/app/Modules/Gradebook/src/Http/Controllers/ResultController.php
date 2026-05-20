@@ -13,6 +13,7 @@ use Knuckles\Scribe\Attributes\Endpoint;
 use Knuckles\Scribe\Attributes\Group;
 use Knuckles\Scribe\Attributes\QueryParam;
 use Knuckles\Scribe\Attributes\ResponseFromFile;
+use User\Http\Resources\UserResource;
 
 #[Group('Для студента', 'Требуется роль `student` и настроенный `student_profile`. Иначе — 403.')]
 #[Authenticated]
@@ -67,6 +68,38 @@ class ResultController extends Controller
 
         return response()->json([
             'data' => $semesters->values(),
+        ]);
+    }
+
+    #[Endpoint(
+        title: 'Сводка студента',
+        description: 'Карточка студента + агрегированные показатели (кол-во дисциплин, средний МРС, средний итог).',
+    )]
+    #[ResponseFromFile('docs/responses/student/summary.200.json')]
+    #[ResponseFromFile('docs/responses/errors/401.json', status: 401)]
+    #[ResponseFromFile('docs/responses/errors/403.json', status: 403)]
+    public function summary(Request $request): JsonResponse
+    {
+        $this->authorize('viewAny', GradebookRow::class);
+
+        $student = $request->user()->loadMissing(['studentProfile.group']);
+
+        $stats = GradebookRow::query()
+            ->forStudent($student)
+            ->selectRaw('COUNT(DISTINCT gradebook_id) as disciplines_count')
+            ->selectRaw('AVG(COALESCE((raw_data->>\'mrs_total\')::numeric, module1_score + module2_score)) as avg_mrs')
+            ->selectRaw('AVG(total_score) as avg_total')
+            ->first();
+
+        return response()->json([
+            'data' => [
+                'student' => (new UserResource($student))->resolve(),
+                'stats' => [
+                    'disciplines_count' => (int) ($stats->disciplines_count ?? 0),
+                    'avg_mrs' => round((float) ($stats->avg_mrs ?? 0), 2),
+                    'avg_total' => round((float) ($stats->avg_total ?? 0), 2),
+                ],
+            ],
         ]);
     }
 }

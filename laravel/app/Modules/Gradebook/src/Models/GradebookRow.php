@@ -18,6 +18,7 @@ class GradebookRow extends Model
         'module1_score',
         'module2_score',
         'total_score',
+        'exam_score',
         'final_grade',
         'raw_data',
     ];
@@ -26,6 +27,7 @@ class GradebookRow extends Model
         'module1_score' => 'decimal:2',
         'module2_score' => 'decimal:2',
         'total_score' => 'decimal:2',
+        'exam_score' => 'decimal:2',
         'raw_data' => 'array',
     ];
 
