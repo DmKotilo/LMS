@@ -367,13 +367,26 @@ class GradebookImportService
             return false;
         }
 
-        foreach ($parts as $part) {
-            if (! preg_match('/^\p{L}+(?:-\p{L}+)*$/u', $part)) {
+        if (! preg_match('/^\p{L}{2,}(?:-\p{L}+)*$/u', $parts[0])) {
+            return false;
+        }
+
+        for ($i = 1; $i < count($parts); $i++) {
+            if (! $this->isPersonNamePart($parts[$i])) {
                 return false;
             }
         }
 
         return true;
+    }
+
+    private function isPersonNamePart(string $part): bool
+    {
+        if (preg_match('/^\p{L}{2,}(?:-\p{L}+)*$/u', $part)) {
+            return true;
+        }
+
+        return (bool) preg_match('/^\p{L}\.(?:\p{L}\.)*$/u', $part);
     }
 
     private function normalizeGrade(string $value): ?string
