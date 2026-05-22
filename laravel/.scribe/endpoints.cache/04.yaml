@@ -30,19 +30,60 @@ endpoints:
     responses:
       -
         status: 200
-        content: "{\r\n    \"data\": {\r\n        \"student\": {\r\n            \"id\": 3,\r\n            \"role\": \"student\",\r\n            \"role_label\": \"Студент\",\r\n            \"first_name\": \"Полина\",\r\n            \"second_name\": \"Васильевна\",\r\n            \"last_name\": \"Юсина\",\r\n            \"full_name\": \"Юсина Полина Васильевна\",\r\n            \"email\": \"student@institute.local\",\r\n            \"email_verified_at\": \"2026-05-16T12:00:00+00:00\",\r\n            \"phone\": null,\r\n            \"is_active\": true,\r\n            \"default_path\": \"/api/student/results\",\r\n            \"student_profile\": {\r\n                \"student_id_number\": \"ST-2024-0001\",\r\n                \"group\": {\r\n                    \"id\": 1,\r\n                    \"name\": \"ДБ2401\",\r\n                    \"education_form\": \"full_time\",\r\n                    \"education_form_label\": \"Очная\",\r\n                    \"course\": 2\r\n                }\r\n            },\r\n            \"created_at\": \"2026-05-16T12:00:00+00:00\",\r\n            \"updated_at\": \"2026-05-16T12:00:00+00:00\"\r\n        },\r\n        \"stats\": {\r\n            \"disciplines_count\": 2,\r\n            \"avg_mrs\": 62.5,\r\n            \"avg_total\": 31\r\n        }\r\n    }\r\n}\r\n"
+        content: |
+          {
+              "data": {
+                  "student": {
+                      "id": 3,
+                      "role": "student",
+                      "role_label": "Студент",
+                      "first_name": "Полина",
+                      "second_name": "Васильевна",
+                      "last_name": "Юсина",
+                      "full_name": "Юсина Полина Васильевна",
+                      "email": "student@institute.local",
+                      "email_verified_at": "2026-05-16T12:00:00+00:00",
+                      "phone": null,
+                      "is_active": true,
+                      "default_path": "/api/student/results",
+                      "student_profile": {
+                          "student_id_number": "ST-2024-0001",
+                          "group": {
+                              "id": 1,
+                              "name": "ДБ2401",
+                              "education_form": "full_time",
+                              "education_form_label": "Очная",
+                              "course": 2
+                          }
+                      },
+                      "created_at": "2026-05-16T12:00:00+00:00",
+                      "updated_at": "2026-05-16T12:00:00+00:00"
+                  },
+                  "stats": {
+                      "disciplines_count": 2,
+                      "avg_mrs": 62.5,
+                      "avg_total": 31
+                  }
+              }
+          }
         headers: []
         description: ''
         custom: []
       -
         status: 401
-        content: "{\r\n    \"message\": \"Необходима авторизация.\"\r\n}\r\n"
+        content: |
+          {
+              "message": "Необходима авторизация."
+          }
         headers: []
         description: ''
         custom: []
       -
         status: 403
-        content: "{\r\n    \"message\": \"This action is unauthorized.\"\r\n}\r\n"
+        content: |
+          {
+              "message": "This action is unauthorized."
+          }
         headers: []
         description: ''
         custom: []
@@ -50,7 +91,7 @@ endpoints:
     auth:
       - headers
       - Authorization
-      - 'Bearer aE1cbk36dPD5haeg86VZf4v'
+      - 'Bearer E8V4dh6aaD51k3PbZcvge6f'
     controller: null
     method: null
     route: null
@@ -102,19 +143,106 @@ endpoints:
     responses:
       -
         status: 200
-        content: "{\r\n    \"data\": [\r\n        {\r\n            \"id\": 1,\r\n            \"student_name\": \"Иванов Алексей Дмитриевич\",\r\n            \"group_name\": \"ИВТ-401\",\r\n            \"semester\": \"1\",\r\n            \"module1_score\": \"42.00\",\r\n            \"module2_score\": \"45.00\",\r\n            \"module1_theory\": 20,\r\n            \"module1_practice\": 22,\r\n            \"module2_theory\": 20,\r\n            \"module2_practice\": 25,\r\n            \"mrs_score\": 87,\r\n            \"exam_score\": \"13.00\",\r\n            \"total_score\": \"87.00\",\r\n            \"final_grade\": \"Отлично\",\r\n            \"gradebook\": {\r\n                \"id\": 1,\r\n                \"title\": \"Математический анализ — ИВТ-401\",\r\n                \"discipline\": \"Математический анализ\",\r\n                \"direction_code\": \"09.03.01\",\r\n                \"group_name\": \"ИВТ-401\",\r\n                \"semester\": \"1\",\r\n                \"academic_year\": \"2025/2026\",\r\n                \"teacher\": {\r\n                    \"id\": 2,\r\n                    \"full_name\": \"Петров Иван Сергеевич\"\r\n                },\r\n                \"original_filename\": \"demo-gradebook.xlsx\",\r\n                \"uploaded_at\": \"2026-05-16T12:00:00+00:00\"\r\n            }\r\n        },\r\n        {\r\n            \"id\": 2,\r\n            \"student_name\": \"Иванов Алексей Дмитриевич\",\r\n            \"group_name\": \"ИВТ-401\",\r\n            \"semester\": \"2\",\r\n            \"module1_score\": \"38.00\",\r\n            \"module2_score\": \"40.00\",\r\n            \"module1_theory\": 10,\r\n            \"module1_practice\": 28,\r\n            \"module2_theory\": 12,\r\n            \"module2_practice\": 20,\r\n            \"mrs_score\": 78,\r\n            \"exam_score\": \"0.00\",\r\n            \"total_score\": \"78.00\",\r\n            \"final_grade\": \"Неявка\",\r\n            \"gradebook\": {\r\n                \"id\": 2,\r\n                \"title\": \"Программирование — ИВТ-401\",\r\n                \"discipline\": \"Программирование\",\r\n                \"direction_code\": \"09.03.01\",\r\n                \"group_name\": \"ИВТ-401\",\r\n                \"semester\": \"2\",\r\n                \"academic_year\": \"2025/2026\",\r\n                \"teacher\": {\r\n                    \"id\": 2,\r\n                    \"full_name\": \"Петров Иван Сергеевич\"\r\n                },\r\n                \"original_filename\": null,\r\n                \"uploaded_at\": \"2026-05-16T12:00:00+00:00\"\r\n            }\r\n        }\r\n    ],\r\n    \"links\": {\r\n        \"first\": \"http://localhost/api/student/results?page=1\",\r\n        \"last\": \"http://localhost/api/student/results?page=1\",\r\n        \"prev\": null,\r\n        \"next\": null\r\n    },\r\n    \"meta\": {\r\n        \"current_page\": 1,\r\n        \"from\": 1,\r\n        \"last_page\": 1,\r\n        \"path\": \"http://localhost/api/student/results\",\r\n        \"per_page\": 20,\r\n        \"to\": 2,\r\n        \"total\": 2\r\n    }\r\n}\r\n"
+        content: |
+          {
+              "data": [
+                  {
+                      "id": 1,
+                      "student_name": "Иванов Алексей Дмитриевич",
+                      "group_name": "ИВТ-401",
+                      "semester": "1",
+                      "module1_score": "42.00",
+                      "module2_score": "45.00",
+                      "module1_theory": 20,
+                      "module1_practice": 22,
+                      "module2_theory": 20,
+                      "module2_practice": 25,
+                      "mrs_score": 87,
+                      "exam_score": "13.00",
+                      "total_score": "87.00",
+                      "final_grade": "Отлично",
+                      "gradebook": {
+                          "id": 1,
+                          "title": "Математический анализ — ИВТ-401",
+                          "discipline": "Математический анализ",
+                          "direction_code": "09.03.01",
+                          "group_name": "ИВТ-401",
+                          "semester": "1",
+                          "academic_year": "2025/2026",
+                          "teacher": {
+                              "id": 2,
+                              "full_name": "Петров Иван Сергеевич"
+                          },
+                          "original_filename": "demo-gradebook.xlsx",
+                          "uploaded_at": "2026-05-16T12:00:00+00:00"
+                      }
+                  },
+                  {
+                      "id": 2,
+                      "student_name": "Иванов Алексей Дмитриевич",
+                      "group_name": "ИВТ-401",
+                      "semester": "2",
+                      "module1_score": "38.00",
+                      "module2_score": "40.00",
+                      "module1_theory": 10,
+                      "module1_practice": 28,
+                      "module2_theory": 12,
+                      "module2_practice": 20,
+                      "mrs_score": 78,
+                      "exam_score": "0.00",
+                      "total_score": "78.00",
+                      "final_grade": "Неявка",
+                      "gradebook": {
+                          "id": 2,
+                          "title": "Программирование — ИВТ-401",
+                          "discipline": "Программирование",
+                          "direction_code": "09.03.01",
+                          "group_name": "ИВТ-401",
+                          "semester": "2",
+                          "academic_year": "2025/2026",
+                          "teacher": {
+                              "id": 2,
+                              "full_name": "Петров Иван Сергеевич"
+                          },
+                          "original_filename": null,
+                          "uploaded_at": "2026-05-16T12:00:00+00:00"
+                      }
+                  }
+              ],
+              "links": {
+                  "first": "http://localhost/api/student/results?page=1",
+                  "last": "http://localhost/api/student/results?page=1",
+                  "prev": null,
+                  "next": null
+              },
+              "meta": {
+                  "current_page": 1,
+                  "from": 1,
+                  "last_page": 1,
+                  "path": "http://localhost/api/student/results",
+                  "per_page": 20,
+                  "to": 2,
+                  "total": 2
+              }
+          }
         headers: []
         description: ''
         custom: []
       -
         status: 401
-        content: "{\r\n    \"message\": \"Необходима авторизация.\"\r\n}\r\n"
+        content: |
+          {
+              "message": "Необходима авторизация."
+          }
         headers: []
         description: ''
         custom: []
       -
         status: 403
-        content: "{\r\n    \"message\": \"This action is unauthorized.\"\r\n}\r\n"
+        content: |
+          {
+              "message": "This action is unauthorized."
+          }
         headers: []
         description: ''
         custom: []
@@ -122,7 +250,7 @@ endpoints:
     auth:
       - headers
       - Authorization
-      - 'Bearer ehEDavPf43aZcVb185gd66k'
+      - 'Bearer DZe3h6b5ag641Vd8cfkvEaP'
     controller: null
     method: null
     route: null
@@ -154,19 +282,31 @@ endpoints:
     responses:
       -
         status: 200
-        content: "{\r\n    \"data\": [\r\n        \"1\",\r\n        \"2\"\r\n    ]\r\n}\r\n"
+        content: |
+          {
+              "data": [
+                  "1",
+                  "2"
+              ]
+          }
         headers: []
         description: ''
         custom: []
       -
         status: 401
-        content: "{\r\n    \"message\": \"Необходима авторизация.\"\r\n}\r\n"
+        content: |
+          {
+              "message": "Необходима авторизация."
+          }
         headers: []
         description: ''
         custom: []
       -
         status: 403
-        content: "{\r\n    \"message\": \"This action is unauthorized.\"\r\n}\r\n"
+        content: |
+          {
+              "message": "This action is unauthorized."
+          }
         headers: []
         description: ''
         custom: []
@@ -174,7 +314,7 @@ endpoints:
     auth:
       - headers
       - Authorization
-      - 'Bearer Pvg63d1kahD6a4b8Efec5VZ'
+      - 'Bearer gf1eE8av6bV4Pcd3a6h5DkZ'
     controller: null
     method: null
     route: null

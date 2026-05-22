@@ -2187,7 +2187,7 @@ paths:
         in: path
         name: gradebook_id
         description: 'The ID of the gradebook.'
-        example: 1
+        example: 16
         required: true
         schema:
           type: integer
@@ -2223,7 +2223,7 @@ paths:
         in: path
         name: gradebook_id
         description: 'The ID of the gradebook.'
-        example: 1
+        example: 11
         required: true
         schema:
           type: integer

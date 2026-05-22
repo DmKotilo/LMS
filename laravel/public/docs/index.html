@@ -179,7 +179,7 @@
     </ul>
 
     <ul class="toc-footer" id="last-updated">
-        <li>Last updated: May 20, 2026</li>
+        <li>Last updated: May 22, 2026</li>
     </ul>
 </div>
 
@@ -2291,7 +2291,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --form "semester=1"\
     --form "academic_year=2025/2026"\
     --form "teacher_id=2"\
-    --form "file=@/tmp/php6OQVs6" </code></pre></div>
+    --form "file=@/tmp/php8prqFM" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -2467,7 +2467,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>Файл ведомости .xlsx/.xls Example: <code>/tmp/php6OQVs6</code></p>
+<p>Файл ведомости .xlsx/.xls Example: <code>/tmp/php8prqFM</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>semester</code></b>&nbsp;&nbsp;
@@ -3016,7 +3016,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8085/api/gradebooks/1" \
+    --get "http://localhost:8085/api/gradebooks/16" \
     --header "Authorization: Bearer {TOKEN}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -3024,7 +3024,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8085/api/gradebooks/1"
+    "http://localhost:8085/api/gradebooks/16"
 );
 
 const headers = {
@@ -3189,10 +3189,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="gradebook_id"                data-endpoint="GETapi-gradebooks--gradebook_id-"
-               value="1"
+               value="16"
                data-component="url">
     <br>
-<p>The ID of the gradebook. Example: <code>1</code></p>
+<p>The ID of the gradebook. Example: <code>16</code></p>
             </div>
                     <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>gradebook</code></b>&nbsp;&nbsp;
@@ -3221,7 +3221,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost:8085/api/gradebooks/1" \
+    "http://localhost:8085/api/gradebooks/12" \
     --header "Authorization: Bearer {TOKEN}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -3229,7 +3229,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8085/api/gradebooks/1"
+    "http://localhost:8085/api/gradebooks/12"
 );
 
 const headers = {
@@ -3361,10 +3361,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="gradebook_id"                data-endpoint="DELETEapi-gradebooks--gradebook_id-"
-               value="1"
+               value="12"
                data-component="url">
     <br>
-<p>The ID of the gradebook. Example: <code>1</code></p>
+<p>The ID of the gradebook. Example: <code>12</code></p>
             </div>
                     <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>gradebook</code></b>&nbsp;&nbsp;
@@ -3393,7 +3393,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8085/api/gradebooks/1/export?format=csv" \
+    --get "http://localhost:8085/api/gradebooks/11/export?format=csv" \
     --header "Authorization: Bearer {TOKEN}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -3401,7 +3401,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8085/api/gradebooks/1/export"
+    "http://localhost:8085/api/gradebooks/11/export"
 );
 
 const params = {
@@ -3512,10 +3512,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="gradebook_id"                data-endpoint="GETapi-gradebooks--gradebook_id--export"
-               value="1"
+               value="11"
                data-component="url">
     <br>
-<p>The ID of the gradebook. Example: <code>1</code></p>
+<p>The ID of the gradebook. Example: <code>11</code></p>
             </div>
                     <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>gradebook</code></b>&nbsp;&nbsp;

@@ -57,13 +57,45 @@ endpoints:
     responses:
       -
         status: 200
-        content: "{\r\n    \"data\": {\r\n        \"token\": \"1|exampleSanctumTokenForDocumentation\",\r\n        \"token_type\": \"Bearer\",\r\n        \"default_path\": \"/api/gradebooks\",\r\n        \"user\": {\r\n            \"id\": 2,\r\n            \"role\": \"teacher\",\r\n            \"role_label\": \"Преподаватель\",\r\n            \"first_name\": \"Иван\",\r\n            \"second_name\": \"Сергеевич\",\r\n            \"last_name\": \"Петров\",\r\n            \"full_name\": \"Петров Иван Сергеевич\",\r\n            \"email\": \"teacher@institute.local\",\r\n            \"email_verified_at\": \"2026-05-16T12:00:00+00:00\",\r\n            \"phone\": null,\r\n            \"is_active\": true,\r\n            \"default_path\": \"/api/gradebooks\",\r\n            \"gradebooks_count\": 2,\r\n            \"created_at\": \"2026-05-16T12:00:00+00:00\",\r\n            \"updated_at\": \"2026-05-16T12:00:00+00:00\"\r\n        }\r\n    }\r\n}\r\n"
+        content: |
+          {
+              "data": {
+                  "token": "1|exampleSanctumTokenForDocumentation",
+                  "token_type": "Bearer",
+                  "default_path": "/api/gradebooks",
+                  "user": {
+                      "id": 2,
+                      "role": "teacher",
+                      "role_label": "Преподаватель",
+                      "first_name": "Иван",
+                      "second_name": "Сергеевич",
+                      "last_name": "Петров",
+                      "full_name": "Петров Иван Сергеевич",
+                      "email": "teacher@institute.local",
+                      "email_verified_at": "2026-05-16T12:00:00+00:00",
+                      "phone": null,
+                      "is_active": true,
+                      "default_path": "/api/gradebooks",
+                      "gradebooks_count": 2,
+                      "created_at": "2026-05-16T12:00:00+00:00",
+                      "updated_at": "2026-05-16T12:00:00+00:00"
+                  }
+              }
+          }
         headers: []
         description: ''
         custom: []
       -
         status: 422
-        content: "{\r\n    \"message\": \"Неверный email или пароль.\",\r\n    \"errors\": {\r\n        \"email\": [\r\n            \"Неверный email или пароль.\"\r\n        ]\r\n    }\r\n}\r\n"
+        content: |
+          {
+              "message": "Неверный email или пароль.",
+              "errors": {
+                  "email": [
+                      "Неверный email или пароль."
+                  ]
+              }
+          }
         headers: []
         description: ''
         custom: []
@@ -100,7 +132,10 @@ endpoints:
     responses:
       -
         status: 200
-        content: "{\r\n    \"message\": \"Выход выполнен успешно.\"\r\n}\r\n"
+        content: |
+          {
+              "message": "Выход выполнен успешно."
+          }
         headers: []
         description: ''
         custom: []
@@ -108,7 +143,7 @@ endpoints:
     auth:
       - headers
       - Authorization
-      - 'Bearer gac136ZVevfDP56bad4k8hE'
+      - 'Bearer hgV8kvdab5P4EcDa3Z66f1e'
     controller: null
     method: null
     route: null
@@ -140,13 +175,44 @@ endpoints:
     responses:
       -
         status: 200
-        content: "{\r\n    \"data\": {\r\n        \"id\": 3,\r\n        \"role\": \"student\",\r\n        \"role_label\": \"Студент\",\r\n        \"first_name\": \"Алексей\",\r\n        \"second_name\": \"Дмитриевич\",\r\n        \"last_name\": \"Иванов\",\r\n        \"full_name\": \"Иванов Алексей Дмитриевич\",\r\n        \"email\": \"student@institute.local\",\r\n        \"email_verified_at\": \"2026-05-16T12:00:00+00:00\",\r\n        \"phone\": null,\r\n        \"is_active\": true,\r\n        \"default_path\": \"/api/student/results\",\r\n        \"student_profile\": {\r\n            \"student_id_number\": \"ST-2024-0001\",\r\n            \"group\": {\r\n                \"id\": 1,\r\n                \"name\": \"ИВТ-401\",\r\n                \"education_form\": \"full_time\",\r\n                \"education_form_label\": \"Очная\",\r\n                \"course\": 4\r\n            }\r\n        },\r\n        \"created_at\": \"2026-05-16T12:00:00+00:00\",\r\n        \"updated_at\": \"2026-05-16T12:00:00+00:00\"\r\n    }\r\n}\r\n"
+        content: |
+          {
+              "data": {
+                  "id": 3,
+                  "role": "student",
+                  "role_label": "Студент",
+                  "first_name": "Алексей",
+                  "second_name": "Дмитриевич",
+                  "last_name": "Иванов",
+                  "full_name": "Иванов Алексей Дмитриевич",
+                  "email": "student@institute.local",
+                  "email_verified_at": "2026-05-16T12:00:00+00:00",
+                  "phone": null,
+                  "is_active": true,
+                  "default_path": "/api/student/results",
+                  "student_profile": {
+                      "student_id_number": "ST-2024-0001",
+                      "group": {
+                          "id": 1,
+                          "name": "ИВТ-401",
+                          "education_form": "full_time",
+                          "education_form_label": "Очная",
+                          "course": 4
+                      }
+                  },
+                  "created_at": "2026-05-16T12:00:00+00:00",
+                  "updated_at": "2026-05-16T12:00:00+00:00"
+              }
+          }
         headers: []
         description: ''
         custom: []
       -
         status: 401
-        content: "{\r\n    \"message\": \"Необходима авторизация.\"\r\n}\r\n"
+        content: |
+          {
+              "message": "Необходима авторизация."
+          }
         headers: []
         description: ''
         custom: []
@@ -154,7 +220,7 @@ endpoints:
     auth:
       - headers
       - Authorization
-      - 'Bearer 6hb4a853kfP16acEZdVgvDe'
+      - 'Bearer gPk56DaZ34d1f68cahEbevV'
     controller: null
     method: null
     route: null

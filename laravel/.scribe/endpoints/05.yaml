@@ -37,7 +37,13 @@ endpoints:
     responses:
       -
         status: 200
-        content: "{\r\n    \"id\": 1,\r\n    \"date_current\": \"2026-05-16T12:00:00\",\r\n    \"created_at\": \"2026-05-16T12:00:00.000000Z\",\r\n    \"updated_at\": \"2026-05-16T12:00:00.000000Z\"\r\n}\r\n"
+        content: |
+          {
+              "id": 1,
+              "date_current": "2026-05-16T12:00:00",
+              "created_at": "2026-05-16T12:00:00.000000Z",
+              "updated_at": "2026-05-16T12:00:00.000000Z"
+          }
         headers: []
         description: ''
         custom: []
