@@ -17,6 +17,7 @@ use Knuckles\Scribe\Attributes\BodyParam;
 use Knuckles\Scribe\Attributes\Endpoint;
 use Knuckles\Scribe\Attributes\Group;
 use Knuckles\Scribe\Attributes\QueryParam;
+use Knuckles\Scribe\Attributes\ResponseField;
 use Knuckles\Scribe\Attributes\ResponseFromFile;
 use Knuckles\Scribe\Attributes\UrlParam;
 
@@ -75,6 +76,33 @@ class GradebookController extends Controller
     #[ResponseFromFile('docs/responses/gradebooks/index.200.json')]
     #[ResponseFromFile('docs/responses/errors/401.json', status: 401)]
     #[ResponseFromFile('docs/responses/errors/403.json', status: 403)]
+    #[ResponseField('data', 'object[]', 'Список ведомостей.')]
+    #[ResponseField('data[].id', 'integer', 'ID ведомости.')]
+    #[ResponseField('data[].title', 'string', 'Название ведомости.')]
+    #[ResponseField('data[].discipline', 'string', 'Дисциплина.')]
+    #[ResponseField('data[].direction_code', 'string', 'Код направления.')]
+    #[ResponseField('data[].group_name', 'string', 'Группа.')]
+    #[ResponseField('data[].semester', 'string', 'Семестр.')]
+    #[ResponseField('data[].academic_year', 'string', 'Учебный год.')]
+    #[ResponseField('data[].teacher', 'object', 'Преподаватель.')]
+    #[ResponseField('data[].teacher.id', 'integer', 'ID преподавателя.')]
+    #[ResponseField('data[].teacher.full_name', 'string', 'ФИО преподавателя.')]
+    #[ResponseField('data[].original_filename', 'string|null', 'Имя загруженного файла.', required: false)]
+    #[ResponseField('data[].rows_count', 'integer', 'Количество строк (студентов).')]
+    #[ResponseField('data[].uploaded_at', 'string', 'Дата загрузки (ISO 8601).')]
+    #[ResponseField('links', 'object', 'Ссылки пагинации.')]
+    #[ResponseField('links.first', 'string', 'URL первой страницы.')]
+    #[ResponseField('links.last', 'string', 'URL последней страницы.')]
+    #[ResponseField('links.prev', 'string|null', 'URL предыдущей страницы.', required: false)]
+    #[ResponseField('links.next', 'string|null', 'URL следующей страницы.', required: false)]
+    #[ResponseField('meta', 'object', 'Метаданные пагинации.')]
+    #[ResponseField('meta.current_page', 'integer', 'Текущая страница.')]
+    #[ResponseField('meta.from', 'integer', 'Номер первой записи на странице.')]
+    #[ResponseField('meta.last_page', 'integer', 'Всего страниц.')]
+    #[ResponseField('meta.path', 'string', 'Базовый URL списка.')]
+    #[ResponseField('meta.per_page', 'integer', 'Записей на странице.')]
+    #[ResponseField('meta.to', 'integer', 'Номер последней записи на странице.')]
+    #[ResponseField('meta.total', 'integer', 'Всего записей.')]
     public function index(Request $request): AnonymousResourceCollection
     {
         $gradebooks = Gradebook::query()
@@ -95,6 +123,21 @@ class GradebookController extends Controller
     #[ResponseFromFile('docs/responses/gradebooks/filters.200.json')]
     #[ResponseFromFile('docs/responses/errors/401.json', status: 401)]
     #[ResponseFromFile('docs/responses/errors/403.json', status: 403)]
+    #[ResponseField('data', 'object', 'Опции для фильтров.')]
+    #[ResponseField('data.semesters', 'string[]', 'Доступные семестры.')]
+    #[ResponseField('data.semesters[]', 'string', 'Семестр.', example: '1')]
+    #[ResponseField('data.academic_years', 'string[]', 'Доступные учебные годы.')]
+    #[ResponseField('data.academic_years[]', 'string', 'Учебный год.', example: '2025/2026')]
+    #[ResponseField('data.groups', 'string[]', 'Доступные группы.')]
+    #[ResponseField('data.groups[]', 'string', 'Группа.', example: 'ИВТ-401')]
+    #[ResponseField('data.disciplines', 'string[]', 'Доступные дисциплины.')]
+    #[ResponseField('data.disciplines[]', 'string', 'Дисциплина.')]
+    #[ResponseField('data.teachers', 'object[]', 'Преподаватели.')]
+    #[ResponseField('data.teachers[].id', 'integer', 'ID преподавателя.')]
+    #[ResponseField('data.teachers[].full_name', 'string', 'ФИО преподавателя.')]
+    #[ResponseField('data.sort_options', 'object[]', 'Варианты сортировки.')]
+    #[ResponseField('data.sort_options[].value', 'string', 'Код сортировки: newest, oldest, discipline_asc, discipline_desc, group_asc, group_desc.')]
+    #[ResponseField('data.sort_options[].label', 'string', 'Подпись для UI.')]
     public function filterOptions(Request $request): JsonResponse
     {
         $base = Gradebook::query()->forUser($request->user());
@@ -169,6 +212,35 @@ class GradebookController extends Controller
     #[ResponseFromFile('docs/responses/gradebooks/show.200.json')]
     #[ResponseFromFile('docs/responses/errors/401.json', status: 401)]
     #[ResponseFromFile('docs/responses/errors/403.json', status: 403)]
+    #[ResponseField('data', 'object', 'Данные ведомости.')]
+    #[ResponseField('data.id', 'integer', 'ID ведомости.')]
+    #[ResponseField('data.title', 'string', 'Название ведомости.')]
+    #[ResponseField('data.discipline', 'string', 'Дисциплина.')]
+    #[ResponseField('data.direction_code', 'string', 'Код направления.')]
+    #[ResponseField('data.group_name', 'string', 'Группа.')]
+    #[ResponseField('data.semester', 'string', 'Семестр.')]
+    #[ResponseField('data.academic_year', 'string', 'Учебный год.')]
+    #[ResponseField('data.teacher', 'object', 'Преподаватель.')]
+    #[ResponseField('data.teacher.id', 'integer', 'ID преподавателя.')]
+    #[ResponseField('data.teacher.full_name', 'string', 'ФИО преподавателя.')]
+    #[ResponseField('data.original_filename', 'string|null', 'Имя загруженного файла.', required: false)]
+    #[ResponseField('data.rows_count', 'integer', 'Количество строк (студентов).')]
+    #[ResponseField('data.uploaded_at', 'string', 'Дата загрузки (ISO 8601).')]
+    #[ResponseField('data.rows', 'object[]', 'Строки ведомости (оценки студентов).')]
+    #[ResponseField('data.rows[].id', 'integer', 'ID строки ведомости.')]
+    #[ResponseField('data.rows[].student_name', 'string', 'ФИО студента.')]
+    #[ResponseField('data.rows[].group_name', 'string', 'Группа.')]
+    #[ResponseField('data.rows[].semester', 'string', 'Семестр.')]
+    #[ResponseField('data.rows[].module1_score', 'string', 'Балл за модуль 1.')]
+    #[ResponseField('data.rows[].module2_score', 'string', 'Балл за модуль 2.')]
+    #[ResponseField('data.rows[].module1_theory', 'integer', 'Теория модуля 1.')]
+    #[ResponseField('data.rows[].module1_practice', 'integer', 'Практика модуля 1.')]
+    #[ResponseField('data.rows[].module2_theory', 'integer', 'Теория модуля 2.')]
+    #[ResponseField('data.rows[].module2_practice', 'integer', 'Практика модуля 2.')]
+    #[ResponseField('data.rows[].mrs_score', 'integer', 'Сумма МРС.')]
+    #[ResponseField('data.rows[].exam_score', 'string', 'Балл за экзамен.')]
+    #[ResponseField('data.rows[].total_score', 'string', 'Итоговый балл.')]
+    #[ResponseField('data.rows[].final_grade', 'string', 'Итоговая оценка.')]
     public function show(Gradebook $gradebook): GradebookDetailResource
     {
         $gradebook->load([
