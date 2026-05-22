@@ -7,7 +7,7 @@ services:
     volumes:
       - ./laravel:/var/www/html
     ports:
-      - "8085:80"
+      - "80:80"
     depends_on:
       - db
       - redis

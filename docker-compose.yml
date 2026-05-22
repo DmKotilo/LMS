@@ -4,7 +4,7 @@ services:
     image: registry.grain.ru/${GROUP}/${PROJECT}-backend/app:$TAG
     restart: always
     ports:
-      - "8081:80"
+      - "80:80"
     environment:
       - DB_HOST=$DB_HOST
       - DB_PORT=$DB_PORT
