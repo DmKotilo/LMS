@@ -110,6 +110,31 @@ class GradebookImportService
      *   }>
      * }
      */
+    public function parseFromPath(string $absolutePath): array
+    {
+        $spreadsheet = IOFactory::load($absolutePath);
+
+        return $this->parseWorksheet($spreadsheet->getActiveSheet());
+    }
+
+    /**
+     * @return array{
+     *   title:string,
+     *   discipline:?string,
+     *   direction_code:?string,
+     *   group_name:?string,
+     *   rows:list<array{
+     *      student_name:string,
+     *      group_name:?string,
+     *      module1_score:float,
+     *      module2_score:float,
+     *      total_score:float,
+     *      exam_score:float,
+     *      final_grade:?string,
+     *      raw_data:array<string,mixed>
+     *   }>
+     * }
+     */
     private function parseWorksheet(Worksheet $sheet): array
     {
         $highestRow = $sheet->getHighestDataRow();
@@ -189,6 +214,8 @@ class GradebookImportService
         if ($headerRow === null || $studentNameCol === null) {
             throw new RuntimeException('Не удалось найти заголовок таблицы студентов в ведомости.');
         }
+
+        $studentNameCol = $this->resolveStudentNameColumn($sheet, $headerRow, $studentNameCol, $highestRow);
 
         $rows = [];
         for ($row = $headerRow + 1; $row <= $highestRow; $row++) {
@@ -294,6 +321,24 @@ class GradebookImportService
         return is_numeric($normalized) ? (float) $normalized : 0.0;
     }
 
+    private function resolveStudentNameColumn(Worksheet $sheet, int $headerRow, int $headerCol, int $highestRow): int
+    {
+        for ($row = $headerRow + 1; $row <= min($headerRow + 6, $highestRow); $row++) {
+            $current = $this->normalizeStudentName($this->cellString($sheet, $row, $headerCol));
+            $next = $this->normalizeStudentName($this->cellString($sheet, $row, $headerCol + 1));
+
+            if ($this->isStudentRow($next) && ! $this->isStudentRow($current)) {
+                return $headerCol + 1;
+            }
+
+            if ($this->isStudentRow($current)) {
+                return $headerCol;
+            }
+        }
+
+        return $headerCol;
+    }
+
     private function normalizeStudentName(string $value): string
     {
         $cleaned = preg_replace('/\s+/u', ' ', trim($value)) ?? '';
@@ -313,7 +358,22 @@ class GradebookImportService
             return false;
         }
 
-        return (bool) preg_match('/\p{L}/u', $name);
+        if (preg_match('/^\d+\./u', $name)) {
+            return false;
+        }
+
+        $parts = preg_split('/\s+/u', $name);
+        if (! is_array($parts) || count($parts) < 2 || count($parts) > 4) {
+            return false;
+        }
+
+        foreach ($parts as $part) {
+            if (! preg_match('/^\p{L}+(?:-\p{L}+)*$/u', $part)) {
+                return false;
+            }
+        }
+
+        return true;
     }
 
     private function normalizeGrade(string $value): ?string

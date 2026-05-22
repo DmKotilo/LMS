@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use Gradebook\Database\Seeders\GradebookSeeder;
 use Illuminate\Database\Seeder;
 use User\Database\Seeders\LmsUsersSeeder;
 
@@ -13,7 +12,6 @@ class DatabaseSeeder extends Seeder
         $this->call([
             MoonShineAdminSeeder::class,
             LmsUsersSeeder::class,
-            GradebookSeeder::class,
         ]);
     }
 }
