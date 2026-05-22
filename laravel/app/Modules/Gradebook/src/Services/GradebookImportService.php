@@ -52,7 +52,10 @@ class GradebookImportService
             ]);
 
             foreach ($parsed['rows'] as $row) {
-                $student = $this->resolveStudent($row['student_name'], $row['group_name']);
+                $student = $this->resolveStudent(
+                    $row['student_name'],
+                    $row['group_name'],
+                );
 
                 GradebookRow::query()->create([
                     'gradebook_id' => $gradebook->id,
@@ -406,27 +409,18 @@ class GradebookImportService
             return null;
         }
 
-        $parts = preg_split('/\s+/u', $fullName, 3);
-        if (! is_array($parts) || $parts === []) {
+        $nameParts = $this->parsePersonName($fullName);
+        if ($nameParts === null) {
             return null;
         }
 
-        $lastName = $parts[0] ?? '';
-        $firstName = $parts[1] ?? '';
-        $secondName = $parts[2] ?? null;
-
-        $user = User::query()
-            ->where('role', UserRole::Student)
-            ->where('last_name', $lastName)
-            ->where('first_name', $firstName)
-            ->where('second_name', $secondName)
-            ->first();
+        $user = $this->findExistingStudent($nameParts, $groupName);
 
         if (! $user) {
-        $slug = Str::slug($fullName, '.');
-        if ($slug === '') {
-            $slug = 'student';
-        }
+            $slug = Str::slug($fullName, '.');
+            if ($slug === '') {
+                $slug = 'student';
+            }
             $email = $slug.'@import.local';
             $counter = 1;
             while (User::query()->where('email', $email)->exists()) {
@@ -436,9 +430,9 @@ class GradebookImportService
 
             $user = User::query()->create([
                 'role' => UserRole::Student,
-                'last_name' => $lastName !== '' ? $lastName : 'Неизвестно',
-                'first_name' => $firstName !== '' ? $firstName : 'Студент',
-                'second_name' => $secondName,
+                'last_name' => $nameParts['last_name'] !== '' ? $nameParts['last_name'] : 'Неизвестно',
+                'first_name' => $nameParts['first_name'] !== '' ? $nameParts['first_name'] : 'Студент',
+                'second_name' => $nameParts['second_name'],
                 'email' => $email,
                 'password' => bcrypt(str()->random(32)),
                 'is_active' => true,
@@ -447,6 +441,11 @@ class GradebookImportService
 
         if ($groupName) {
             $group = StudentGroup::query()->where('name', $groupName)->first();
+            if (! $group) {
+                $group = StudentGroup::query()
+                    ->get()
+                    ->first(fn (StudentGroup $candidate) => $this->normalizeGroupName($candidate->name) === $this->normalizeGroupName($groupName));
+            }
             if (! $group) {
                 $group = StudentGroup::query()->create([
                     'name' => $groupName,
@@ -459,11 +458,207 @@ class GradebookImportService
                 ['user_id' => $user->id],
                 [
                     'group_id' => $group->id,
-                    'student_id_number' => 'AUTO-'.$user->id,
+                    'student_id_number' => $user->studentProfile?->student_id_number ?? 'AUTO-'.$user->id,
                 ],
             );
         }
 
         return $user;
+    }
+
+    /**
+     * @return array{
+     *   last_name: string,
+     *   first_name: string,
+     *   second_name: ?string,
+     *   first_initial: ?string,
+     *   second_initial: ?string,
+     *   is_initials: bool
+     * }|null
+     */
+    private function parsePersonName(string $fullName): ?array
+    {
+        $parts = preg_split('/\s+/u', trim($fullName), 3);
+        if (! is_array($parts) || $parts === [] || $parts[0] === '') {
+            return null;
+        }
+
+        $lastName = $parts[0];
+        $firstPart = $parts[1] ?? '';
+        $secondPart = $parts[2] ?? null;
+
+        if ($firstPart === '') {
+            return null;
+        }
+
+        if ($this->isInitialsPart($firstPart)) {
+            $initials = $this->extractInitials($firstPart);
+
+            return [
+                'last_name' => $lastName,
+                'first_name' => isset($initials[0]) ? $initials[0].'.' : '',
+                'second_name' => isset($initials[1]) ? $initials[1].'.' : null,
+                'first_initial' => $initials[0] ?? null,
+                'second_initial' => $initials[1] ?? null,
+                'is_initials' => true,
+            ];
+        }
+
+        return [
+            'last_name' => $lastName,
+            'first_name' => $firstPart,
+            'second_name' => $secondPart,
+            'first_initial' => $this->initialLetter($firstPart),
+            'second_initial' => $secondPart ? $this->initialLetter($secondPart) : null,
+            'is_initials' => false,
+        ];
+    }
+
+    /**
+     * @param array{
+     *   last_name: string,
+     *   first_name: string,
+     *   second_name: ?string,
+     *   first_initial: ?string,
+     *   second_initial: ?string,
+     *   is_initials: bool
+     * } $nameParts
+     */
+    private function findExistingStudent(array $nameParts, ?string $groupName): ?User
+    {
+        $candidates = User::query()
+            ->where('role', UserRole::Student)
+            ->where('last_name', $nameParts['last_name'])
+            ->with('studentProfile.group')
+            ->get();
+
+        if ($candidates->isEmpty()) {
+            return null;
+        }
+
+        if (! $nameParts['is_initials']) {
+            $exact = $candidates->first(function (User $user) use ($nameParts) {
+                return mb_strtolower($user->first_name) === mb_strtolower($nameParts['first_name'])
+                    && mb_strtolower((string) $user->second_name) === mb_strtolower((string) ($nameParts['second_name'] ?? ''));
+            });
+
+            if ($exact) {
+                return $exact;
+            }
+        }
+
+        $byInitials = $candidates->filter(fn (User $user) => $this->studentMatchesByInitials($nameParts, $user));
+
+        if ($byInitials->isEmpty()) {
+            return null;
+        }
+
+        if ($groupName) {
+            $normalizedGroup = $this->normalizeGroupName($groupName);
+            $inGroup = $byInitials->filter(function (User $user) use ($normalizedGroup) {
+                return $user->studentProfile?->group
+                    && $this->normalizeGroupName($user->studentProfile->group->name) === $normalizedGroup;
+            });
+
+            if ($inGroup->isNotEmpty()) {
+                return $this->pickBestStudentMatch($inGroup);
+            }
+
+            $sameDirection = $byInitials->filter(function (User $user) use ($normalizedGroup) {
+                if (! $user->studentProfile?->group) {
+                    return false;
+                }
+
+                $candidateGroup = $this->normalizeGroupName($user->studentProfile->group->name);
+
+                return $this->groupsBelongToSameProgram($normalizedGroup, $candidateGroup);
+            });
+
+            if ($sameDirection->isNotEmpty()) {
+                return $this->pickBestStudentMatch($sameDirection);
+            }
+        }
+
+        return $this->pickBestStudentMatch($byInitials);
+    }
+
+    /**
+     * @param array{
+     *   first_initial: ?string,
+     *   second_initial: ?string
+     * } $nameParts
+     */
+    private function studentMatchesByInitials(array $nameParts, User $user): bool
+    {
+        if ($nameParts['first_initial'] === null) {
+            return false;
+        }
+
+        if ($this->initialLetter($user->first_name) !== $nameParts['first_initial']) {
+            return false;
+        }
+
+        if ($nameParts['second_initial'] !== null) {
+            if ($user->second_name === null || $user->second_name === '') {
+                return false;
+            }
+
+            if ($this->initialLetter($user->second_name) !== $nameParts['second_initial']) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    private function pickBestStudentMatch($candidates): User
+    {
+        /** @var User $user */
+        return $candidates
+            ->sortByDesc(fn (User $user) => mb_strlen($user->first_name))
+            ->first();
+    }
+
+    private function normalizeGroupName(string $name): string
+    {
+        $normalized = preg_replace('/[\s\-_]/u', '', mb_strtoupper(trim($name))) ?? mb_strtoupper(trim($name));
+
+        return $normalized;
+    }
+
+    private function groupsBelongToSameProgram(string $importGroup, string $candidateGroup): bool
+    {
+        if ($importGroup === $candidateGroup) {
+            return true;
+        }
+
+        $importPrefix = preg_replace('/\d+/u', '', $importGroup) ?? $importGroup;
+        $candidatePrefix = preg_replace('/\d+/u', '', $candidateGroup) ?? $candidateGroup;
+
+        return $importPrefix !== '' && $importPrefix === $candidatePrefix;
+    }
+
+    private function extractInitials(string $part): array
+    {
+        preg_match_all('/\p{L}/u', $part, $matches);
+
+        return array_map(
+            fn (string $letter) => mb_strtoupper($letter),
+            $matches[0] ?? [],
+        );
+    }
+
+    private function initialLetter(?string $value): ?string
+    {
+        if ($value === null || $value === '') {
+            return null;
+        }
+
+        return mb_strtoupper(mb_substr(trim($value), 0, 1));
+    }
+
+    private function isInitialsPart(string $part): bool
+    {
+        return (bool) preg_match('/^\p{L}\.(?:\p{L}\.)*$/u', $part);
     }
 }
