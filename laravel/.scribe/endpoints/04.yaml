@@ -28,68 +28,279 @@ endpoints:
     responses:
       -
         status: 200
-        content: |
-          {
-              "data": {
-                  "student": {
-                      "id": 3,
-                      "role": "student",
-                      "role_label": "Студент",
-                      "first_name": "Полина",
-                      "second_name": "Васильевна",
-                      "last_name": "Юсина",
-                      "full_name": "Юсина Полина Васильевна",
-                      "email": "student@institute.local",
-                      "email_verified_at": "2026-05-16T12:00:00+00:00",
-                      "phone": null,
-                      "is_active": true,
-                      "default_path": "/api/student/results",
-                      "student_profile": {
-                          "student_id_number": "ST-2024-0001",
-                          "group": {
-                              "id": 1,
-                              "name": "ДБ2401",
-                              "education_form": "full_time",
-                              "education_form_label": "Очная",
-                              "course": 2
-                          }
-                      },
-                      "created_at": "2026-05-16T12:00:00+00:00",
-                      "updated_at": "2026-05-16T12:00:00+00:00"
-                  },
-                  "stats": {
-                      "disciplines_count": 2,
-                      "avg_mrs": 62.5,
-                      "avg_total": 31
-                  }
-              }
-          }
+        content: "{\r\n    \"data\": {\r\n        \"student\": {\r\n            \"id\": 3,\r\n            \"role\": \"student\",\r\n            \"role_label\": \"Студент\",\r\n            \"first_name\": \"Полина\",\r\n            \"second_name\": \"Васильевна\",\r\n            \"last_name\": \"Юсина\",\r\n            \"full_name\": \"Юсина Полина Васильевна\",\r\n            \"email\": \"student@institute.local\",\r\n            \"email_verified_at\": \"2026-05-16T12:00:00+00:00\",\r\n            \"phone\": null,\r\n            \"is_active\": true,\r\n            \"default_path\": \"/api/student/results\",\r\n            \"student_profile\": {\r\n                \"student_id_number\": \"ST-2024-0001\",\r\n                \"group\": {\r\n                    \"id\": 1,\r\n                    \"name\": \"ДБ2401\",\r\n                    \"education_form\": \"full_time\",\r\n                    \"education_form_label\": \"Очная\",\r\n                    \"course\": 2\r\n                }\r\n            },\r\n            \"created_at\": \"2026-05-16T12:00:00+00:00\",\r\n            \"updated_at\": \"2026-05-16T12:00:00+00:00\"\r\n        },\r\n        \"stats\": {\r\n            \"disciplines_count\": 2,\r\n            \"avg_mrs\": 62.5,\r\n            \"avg_total\": 31\r\n        }\r\n    }\r\n}\r\n"
         headers: []
         description: ''
         custom: []
       -
         status: 401
-        content: |
-          {
-              "message": "Необходима авторизация."
-          }
+        content: "{\r\n    \"message\": \"Необходима авторизация.\"\r\n}\r\n"
         headers: []
         description: ''
         custom: []
       -
         status: 403
-        content: |
-          {
-              "message": "This action is unauthorized."
-          }
+        content: "{\r\n    \"message\": \"This action is unauthorized.\"\r\n}\r\n"
         headers: []
         description: ''
         custom: []
-    responseFields: []
+    responseFields:
+      data:
+        name: data
+        description: 'Данные ответа.'
+        required: true
+        example: null
+        type: object
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      data.student:
+        name: data.student
+        description: 'Карточка текущего студента.'
+        required: true
+        example: null
+        type: object
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      data.student.id:
+        name: data.student.id
+        description: 'ID пользователя.'
+        required: true
+        example: null
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      data.student.role:
+        name: data.student.role
+        description: 'Роль: student.'
+        required: true
+        example: null
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      data.student.role_label:
+        name: data.student.role_label
+        description: 'Название роли.'
+        required: true
+        example: null
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      data.student.first_name:
+        name: data.student.first_name
+        description: Имя.
+        required: true
+        example: null
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      data.student.second_name:
+        name: data.student.second_name
+        description: Отчество.
+        required: true
+        example: null
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      data.student.last_name:
+        name: data.student.last_name
+        description: Фамилия.
+        required: true
+        example: null
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      data.student.full_name:
+        name: data.student.full_name
+        description: ФИО.
+        required: true
+        example: null
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      data.student.email:
+        name: data.student.email
+        description: Email.
+        required: true
+        example: null
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      data.student.email_verified_at:
+        name: data.student.email_verified_at
+        description: 'Дата подтверждения email (ISO 8601).'
+        required: false
+        example: null
+        type: string|null
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      data.student.phone:
+        name: data.student.phone
+        description: Телефон.
+        required: false
+        example: null
+        type: string|null
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      data.student.is_active:
+        name: data.student.is_active
+        description: 'Активен ли аккаунт.'
+        required: true
+        example: null
+        type: boolean
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      data.student.default_path:
+        name: data.student.default_path
+        description: 'Стартовый путь API для роли.'
+        required: true
+        example: null
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      data.student.student_profile:
+        name: data.student.student_profile
+        description: 'Профиль студента.'
+        required: true
+        example: null
+        type: object
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      data.student.student_profile.student_id_number:
+        name: data.student.student_profile.student_id_number
+        description: 'Номер студенческого билета.'
+        required: true
+        example: null
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      data.student.student_profile.group:
+        name: data.student.student_profile.group
+        description: 'Учебная группа.'
+        required: true
+        example: null
+        type: object
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      data.student.student_profile.group.id:
+        name: data.student.student_profile.group.id
+        description: 'ID группы.'
+        required: true
+        example: null
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      data.student.student_profile.group.name:
+        name: data.student.student_profile.group.name
+        description: 'Название группы.'
+        required: true
+        example: null
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      data.student.student_profile.group.education_form:
+        name: data.student.student_profile.group.education_form
+        description: 'Форма обучения: full_time | part_time | distance.'
+        required: true
+        example: null
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      data.student.student_profile.group.education_form_label:
+        name: data.student.student_profile.group.education_form_label
+        description: 'Название формы обучения.'
+        required: true
+        example: null
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      data.student.student_profile.group.course:
+        name: data.student.student_profile.group.course
+        description: Курс.
+        required: true
+        example: null
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      data.student.created_at:
+        name: data.student.created_at
+        description: 'Дата создания (ISO 8601).'
+        required: true
+        example: null
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      data.student.updated_at:
+        name: data.student.updated_at
+        description: 'Дата обновления (ISO 8601).'
+        required: true
+        example: null
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      data.stats:
+        name: data.stats
+        description: 'Агрегированные показатели.'
+        required: true
+        example: null
+        type: object
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      data.stats.disciplines_count:
+        name: data.stats.disciplines_count
+        description: 'Количество дисциплин с результатами.'
+        required: true
+        example: null
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      data.stats.avg_mrs:
+        name: data.stats.avg_mrs
+        description: 'Средний балл МРС.'
+        required: true
+        example: null
+        type: number
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      data.stats.avg_total:
+        name: data.stats.avg_total
+        description: 'Средний итоговый балл.'
+        required: true
+        example: null
+        type: number
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
     auth:
       - headers
       - Authorization
-      - 'Bearer E8V4dh6aaD51k3PbZcvge6f'
+      - 'Bearer f65advkhgD4ZVbP6c1E8ae3'
     controller: null
     method: null
     route: null
@@ -141,114 +352,396 @@ endpoints:
     responses:
       -
         status: 200
-        content: |
-          {
-              "data": [
-                  {
-                      "id": 1,
-                      "student_name": "Иванов Алексей Дмитриевич",
-                      "group_name": "ИВТ-401",
-                      "semester": "1",
-                      "module1_score": "42.00",
-                      "module2_score": "45.00",
-                      "module1_theory": 20,
-                      "module1_practice": 22,
-                      "module2_theory": 20,
-                      "module2_practice": 25,
-                      "mrs_score": 87,
-                      "exam_score": "13.00",
-                      "total_score": "87.00",
-                      "final_grade": "Отлично",
-                      "gradebook": {
-                          "id": 1,
-                          "title": "Математический анализ — ИВТ-401",
-                          "discipline": "Математический анализ",
-                          "direction_code": "09.03.01",
-                          "group_name": "ИВТ-401",
-                          "semester": "1",
-                          "academic_year": "2025/2026",
-                          "teacher": {
-                              "id": 2,
-                              "full_name": "Петров Иван Сергеевич"
-                          },
-                          "original_filename": "demo-gradebook.xlsx",
-                          "uploaded_at": "2026-05-16T12:00:00+00:00"
-                      }
-                  },
-                  {
-                      "id": 2,
-                      "student_name": "Иванов Алексей Дмитриевич",
-                      "group_name": "ИВТ-401",
-                      "semester": "2",
-                      "module1_score": "38.00",
-                      "module2_score": "40.00",
-                      "module1_theory": 10,
-                      "module1_practice": 28,
-                      "module2_theory": 12,
-                      "module2_practice": 20,
-                      "mrs_score": 78,
-                      "exam_score": "0.00",
-                      "total_score": "78.00",
-                      "final_grade": "Неявка",
-                      "gradebook": {
-                          "id": 2,
-                          "title": "Программирование — ИВТ-401",
-                          "discipline": "Программирование",
-                          "direction_code": "09.03.01",
-                          "group_name": "ИВТ-401",
-                          "semester": "2",
-                          "academic_year": "2025/2026",
-                          "teacher": {
-                              "id": 2,
-                              "full_name": "Петров Иван Сергеевич"
-                          },
-                          "original_filename": null,
-                          "uploaded_at": "2026-05-16T12:00:00+00:00"
-                      }
-                  }
-              ],
-              "links": {
-                  "first": "http://localhost/api/student/results?page=1",
-                  "last": "http://localhost/api/student/results?page=1",
-                  "prev": null,
-                  "next": null
-              },
-              "meta": {
-                  "current_page": 1,
-                  "from": 1,
-                  "last_page": 1,
-                  "path": "http://localhost/api/student/results",
-                  "per_page": 20,
-                  "to": 2,
-                  "total": 2
-              }
-          }
+        content: "{\r\n    \"data\": [\r\n        {\r\n            \"id\": 1,\r\n            \"student_name\": \"Иванов Алексей Дмитриевич\",\r\n            \"group_name\": \"ИВТ-401\",\r\n            \"semester\": \"1\",\r\n            \"module1_score\": \"42.00\",\r\n            \"module2_score\": \"45.00\",\r\n            \"module1_theory\": 20,\r\n            \"module1_practice\": 22,\r\n            \"module2_theory\": 20,\r\n            \"module2_practice\": 25,\r\n            \"mrs_score\": 87,\r\n            \"exam_score\": \"13.00\",\r\n            \"total_score\": \"87.00\",\r\n            \"final_grade\": \"Отлично\",\r\n            \"gradebook\": {\r\n                \"id\": 1,\r\n                \"title\": \"Математический анализ — ИВТ-401\",\r\n                \"discipline\": \"Математический анализ\",\r\n                \"direction_code\": \"09.03.01\",\r\n                \"group_name\": \"ИВТ-401\",\r\n                \"semester\": \"1\",\r\n                \"academic_year\": \"2025/2026\",\r\n                \"teacher\": {\r\n                    \"id\": 2,\r\n                    \"full_name\": \"Петров Иван Сергеевич\"\r\n                },\r\n                \"original_filename\": \"demo-gradebook.xlsx\",\r\n                \"uploaded_at\": \"2026-05-16T12:00:00+00:00\"\r\n            }\r\n        },\r\n        {\r\n            \"id\": 2,\r\n            \"student_name\": \"Иванов Алексей Дмитриевич\",\r\n            \"group_name\": \"ИВТ-401\",\r\n            \"semester\": \"2\",\r\n            \"module1_score\": \"38.00\",\r\n            \"module2_score\": \"40.00\",\r\n            \"module1_theory\": 10,\r\n            \"module1_practice\": 28,\r\n            \"module2_theory\": 12,\r\n            \"module2_practice\": 20,\r\n            \"mrs_score\": 78,\r\n            \"exam_score\": \"0.00\",\r\n            \"total_score\": \"78.00\",\r\n            \"final_grade\": \"Неявка\",\r\n            \"gradebook\": {\r\n                \"id\": 2,\r\n                \"title\": \"Программирование — ИВТ-401\",\r\n                \"discipline\": \"Программирование\",\r\n                \"direction_code\": \"09.03.01\",\r\n                \"group_name\": \"ИВТ-401\",\r\n                \"semester\": \"2\",\r\n                \"academic_year\": \"2025/2026\",\r\n                \"teacher\": {\r\n                    \"id\": 2,\r\n                    \"full_name\": \"Петров Иван Сергеевич\"\r\n                },\r\n                \"original_filename\": null,\r\n                \"uploaded_at\": \"2026-05-16T12:00:00+00:00\"\r\n            }\r\n        }\r\n    ],\r\n    \"links\": {\r\n        \"first\": \"http://localhost/api/student/results?page=1\",\r\n        \"last\": \"http://localhost/api/student/results?page=1\",\r\n        \"prev\": null,\r\n        \"next\": null\r\n    },\r\n    \"meta\": {\r\n        \"current_page\": 1,\r\n        \"from\": 1,\r\n        \"last_page\": 1,\r\n        \"path\": \"http://localhost/api/student/results\",\r\n        \"per_page\": 20,\r\n        \"to\": 2,\r\n        \"total\": 2\r\n    }\r\n}\r\n"
         headers: []
         description: ''
         custom: []
       -
         status: 401
-        content: |
-          {
-              "message": "Необходима авторизация."
-          }
+        content: "{\r\n    \"message\": \"Необходима авторизация.\"\r\n}\r\n"
         headers: []
         description: ''
         custom: []
       -
         status: 403
-        content: |
-          {
-              "message": "This action is unauthorized."
-          }
+        content: "{\r\n    \"message\": \"This action is unauthorized.\"\r\n}\r\n"
         headers: []
         description: ''
         custom: []
-    responseFields: []
+    responseFields:
+      data:
+        name: data
+        description: 'Список оценок студента.'
+        required: true
+        example: null
+        type: 'object[]'
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      'data[].id':
+        name: 'data[].id'
+        description: 'ID строки ведомости.'
+        required: true
+        example: null
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      'data[].student_name':
+        name: 'data[].student_name'
+        description: 'ФИО студента.'
+        required: true
+        example: null
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      'data[].group_name':
+        name: 'data[].group_name'
+        description: Группа.
+        required: true
+        example: null
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      'data[].semester':
+        name: 'data[].semester'
+        description: Семестр.
+        required: true
+        example: null
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      'data[].module1_score':
+        name: 'data[].module1_score'
+        description: 'Балл за модуль 1.'
+        required: true
+        example: null
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      'data[].module2_score':
+        name: 'data[].module2_score'
+        description: 'Балл за модуль 2.'
+        required: true
+        example: null
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      'data[].module1_theory':
+        name: 'data[].module1_theory'
+        description: 'Теория модуля 1.'
+        required: true
+        example: null
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      'data[].module1_practice':
+        name: 'data[].module1_practice'
+        description: 'Практика модуля 1.'
+        required: true
+        example: null
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      'data[].module2_theory':
+        name: 'data[].module2_theory'
+        description: 'Теория модуля 2.'
+        required: true
+        example: null
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      'data[].module2_practice':
+        name: 'data[].module2_practice'
+        description: 'Практика модуля 2.'
+        required: true
+        example: null
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      'data[].mrs_score':
+        name: 'data[].mrs_score'
+        description: 'Сумма МРС.'
+        required: true
+        example: null
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      'data[].exam_score':
+        name: 'data[].exam_score'
+        description: 'Балл за экзамен.'
+        required: true
+        example: null
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      'data[].total_score':
+        name: 'data[].total_score'
+        description: 'Итоговый балл.'
+        required: true
+        example: null
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      'data[].final_grade':
+        name: 'data[].final_grade'
+        description: 'Итоговая оценка.'
+        required: true
+        example: null
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      'data[].gradebook':
+        name: 'data[].gradebook'
+        description: 'Краткие данные ведомости.'
+        required: true
+        example: null
+        type: object
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      'data[].gradebook.id':
+        name: 'data[].gradebook.id'
+        description: 'ID ведомости.'
+        required: true
+        example: null
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      'data[].gradebook.title':
+        name: 'data[].gradebook.title'
+        description: 'Название ведомости.'
+        required: true
+        example: null
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      'data[].gradebook.discipline':
+        name: 'data[].gradebook.discipline'
+        description: Дисциплина.
+        required: true
+        example: null
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      'data[].gradebook.direction_code':
+        name: 'data[].gradebook.direction_code'
+        description: 'Код направления.'
+        required: true
+        example: null
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      'data[].gradebook.group_name':
+        name: 'data[].gradebook.group_name'
+        description: Группа.
+        required: true
+        example: null
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      'data[].gradebook.semester':
+        name: 'data[].gradebook.semester'
+        description: Семестр.
+        required: true
+        example: null
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      'data[].gradebook.academic_year':
+        name: 'data[].gradebook.academic_year'
+        description: 'Учебный год.'
+        required: true
+        example: null
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      'data[].gradebook.teacher':
+        name: 'data[].gradebook.teacher'
+        description: Преподаватель.
+        required: true
+        example: null
+        type: object
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      'data[].gradebook.teacher.id':
+        name: 'data[].gradebook.teacher.id'
+        description: 'ID преподавателя.'
+        required: true
+        example: null
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      'data[].gradebook.teacher.full_name':
+        name: 'data[].gradebook.teacher.full_name'
+        description: 'ФИО преподавателя.'
+        required: true
+        example: null
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      'data[].gradebook.original_filename':
+        name: 'data[].gradebook.original_filename'
+        description: 'Имя загруженного файла.'
+        required: false
+        example: null
+        type: string|null
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      'data[].gradebook.uploaded_at':
+        name: 'data[].gradebook.uploaded_at'
+        description: 'Дата загрузки (ISO 8601).'
+        required: true
+        example: null
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      links:
+        name: links
+        description: 'Ссылки пагинации.'
+        required: true
+        example: null
+        type: object
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      links.first:
+        name: links.first
+        description: 'URL первой страницы.'
+        required: true
+        example: null
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      links.last:
+        name: links.last
+        description: 'URL последней страницы.'
+        required: true
+        example: null
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      links.prev:
+        name: links.prev
+        description: 'URL предыдущей страницы.'
+        required: false
+        example: null
+        type: string|null
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      links.next:
+        name: links.next
+        description: 'URL следующей страницы.'
+        required: false
+        example: null
+        type: string|null
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      meta:
+        name: meta
+        description: 'Метаданные пагинации.'
+        required: true
+        example: null
+        type: object
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      meta.current_page:
+        name: meta.current_page
+        description: 'Текущая страница.'
+        required: true
+        example: null
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      meta.from:
+        name: meta.from
+        description: 'Номер первой записи на странице.'
+        required: true
+        example: null
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      meta.last_page:
+        name: meta.last_page
+        description: 'Всего страниц.'
+        required: true
+        example: null
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      meta.path:
+        name: meta.path
+        description: 'Базовый URL списка.'
+        required: true
+        example: null
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      meta.per_page:
+        name: meta.per_page
+        description: 'Записей на странице.'
+        required: true
+        example: null
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      meta.to:
+        name: meta.to
+        description: 'Номер последней записи на странице.'
+        required: true
+        example: null
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      meta.total:
+        name: meta.total
+        description: 'Всего записей.'
+        required: true
+        example: null
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
     auth:
       - headers
       - Authorization
-      - 'Bearer DZe3h6b5ag641Vd8cfkvEaP'
+      - 'Bearer dv8gea6kVE645a31ZbfhPcD'
     controller: null
     method: null
     route: null
@@ -280,39 +773,45 @@ endpoints:
     responses:
       -
         status: 200
-        content: |
-          {
-              "data": [
-                  "1",
-                  "2"
-              ]
-          }
+        content: "{\r\n    \"data\": [\r\n        \"1\",\r\n        \"2\"\r\n    ]\r\n}\r\n"
         headers: []
         description: ''
         custom: []
       -
         status: 401
-        content: |
-          {
-              "message": "Необходима авторизация."
-          }
+        content: "{\r\n    \"message\": \"Необходима авторизация.\"\r\n}\r\n"
         headers: []
         description: ''
         custom: []
       -
         status: 403
-        content: |
-          {
-              "message": "This action is unauthorized."
-          }
+        content: "{\r\n    \"message\": \"This action is unauthorized.\"\r\n}\r\n"
         headers: []
         description: ''
         custom: []
-    responseFields: []
+    responseFields:
+      data:
+        name: data
+        description: 'Список семестров, в которых есть результаты.'
+        required: true
+        example: null
+        type: 'string[]'
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      'data[]':
+        name: 'data[]'
+        description: 'Название семестра.'
+        required: true
+        example: '1'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
     auth:
       - headers
       - Authorization
-      - 'Bearer gf1eE8av6bV4Pcd3a6h5DkZ'
+      - 'Bearer abc5af8143ZVPekDghd6E6v'
     controller: null
     method: null
     route: null
