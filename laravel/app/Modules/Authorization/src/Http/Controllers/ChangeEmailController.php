@@ -55,12 +55,14 @@ class ChangeEmailController extends Controller
             ]);
         }
 
+        $newEmail = $validated['email'];
+
         $user->update([
-            'new_email' => $validated['email'],
+            'new_email' => $newEmail,
             'email_verified_at' => null,
         ]);
 
-        $user->notify(new VerifyNewEmail($user->new_email));
+        $user->notify(new VerifyNewEmail($newEmail));
 
         return response()->json([
             'message' => 'Письмо с подтверждением отправлено на новый адрес.',
