@@ -1,0 +1,14 @@
+{
+    "data": [
+        {
+            "id": 2,
+            "full_name": "Докучаев Сергей Анатольевич",
+            "email": "dokuchaev@institute.local"
+        },
+        {
+            "id": 5,
+            "full_name": "Костецкая Галина Сергеевна",
+            "email": "kostetskaya@institute.local"
+        }
+    ]
+}

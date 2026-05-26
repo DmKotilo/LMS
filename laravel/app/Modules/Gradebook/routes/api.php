@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware(['auth:sanctum', 'active'])->group(function () {
     Route::post('gradebooks/import', [GradebookController::class, 'import']);
     Route::get('gradebooks/filters', [GradebookController::class, 'filterOptions']);
+    Route::get('gradebooks/teachers', [GradebookController::class, 'teachers']);
     Route::get('student/summary', [ResultController::class, 'summary']);
     Route::get('student/results', [ResultController::class, 'index']);
     Route::get('student/semesters', [ResultController::class, 'semesters']);

@@ -20,6 +20,8 @@ use Knuckles\Scribe\Attributes\QueryParam;
 use Knuckles\Scribe\Attributes\ResponseField;
 use Knuckles\Scribe\Attributes\ResponseFromFile;
 use Knuckles\Scribe\Attributes\UrlParam;
+use User\Enums\UserRole;
+use User\Models\User;
 
 #[Group('Для преподавателя и администратора', 'Роли `teacher` и `administrator`. Студент получит 403.')]
 #[Authenticated]
@@ -39,7 +41,7 @@ class GradebookController extends Controller
     #[BodyParam('file', 'file', 'Файл ведомости .xlsx/.xls', example: 'No-example')]
     #[BodyParam('semester', 'string', 'Семестр из формы загрузки.', example: '1')]
     #[BodyParam('academic_year', 'string', 'Учебный год из формы загрузки.', example: '2025/2026')]
-    #[BodyParam('teacher_id', 'integer', 'ID преподавателя (только для администратора).', required: false, example: 2)]
+    #[BodyParam('teacher_id', 'integer', 'ID преподавателя (обязательно для администратора).', required: false, example: 2)]
     #[ResponseFromFile('docs/responses/gradebooks/import.201.json', 201)]
     #[ResponseFromFile('docs/responses/errors/401.json', 401)]
     #[ResponseFromFile('docs/responses/errors/403.json', 403)]
@@ -114,6 +116,40 @@ class GradebookController extends Controller
             ->paginate($request->integer('per_page', 15));
 
         return GradebookResource::collection($gradebooks);
+    }
+
+    #[Endpoint(
+        title: 'Список преподавателей',
+        description: 'Все активные преподаватели для выбора при загрузке ведомости (`teacher_id` в `POST /api/gradebooks/import`). Администратор выбирает из списка; преподаватель загружает ведомость от своего имени без `teacher_id`.',
+    )]
+    #[ResponseFromFile('docs/responses/gradebooks/teachers.200.json')]
+    #[ResponseFromFile('docs/responses/errors/401.json', status: 401)]
+    #[ResponseFromFile('docs/responses/errors/403.json', status: 403)]
+    #[ResponseField('data', 'object[]', 'Список преподавателей.')]
+    #[ResponseField('data[].id', 'integer', 'ID преподавателя.')]
+    #[ResponseField('data[].full_name', 'string', 'ФИО.')]
+    #[ResponseField('data[].email', 'string', 'Email (логин).')]
+    public function teachers(Request $request): JsonResponse
+    {
+        $this->authorize('create', Gradebook::class);
+
+        $teachers = User::query()
+            ->where('role', UserRole::Teacher)
+            ->where('is_active', true)
+            ->orderBy('last_name')
+            ->orderBy('first_name')
+            ->orderBy('second_name')
+            ->get(['id', 'last_name', 'first_name', 'second_name', 'email'])
+            ->map(fn (User $teacher) => [
+                'id' => $teacher->id,
+                'full_name' => $teacher->fullName(),
+                'email' => $teacher->email,
+            ])
+            ->values();
+
+        return response()->json([
+            'data' => $teachers,
+        ]);
     }
 
     #[Endpoint(

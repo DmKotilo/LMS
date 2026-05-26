@@ -3,6 +3,7 @@
 namespace Gradebook\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 use User\Enums\UserRole;
 
 class ImportGradebookRequest extends FormRequest
@@ -23,7 +24,13 @@ class ImportGradebookRequest extends FormRequest
         ];
 
         if ($this->user()?->isAdministrator()) {
-            $rules['teacher_id'] = ['nullable', 'integer', 'exists:users,id'];
+            $rules['teacher_id'] = [
+                'required',
+                'integer',
+                Rule::exists('users', 'id')->where(function ($query) {
+                    $query->where('role', UserRole::Teacher->value)->where('is_active', true);
+                }),
+            ];
         }
 
         return $rules;
@@ -37,6 +44,7 @@ class ImportGradebookRequest extends FormRequest
             'file.max' => 'Размер файла не должен превышать 10 МБ.',
             'semester.required' => 'Выберите семестр.',
             'academic_year.required' => 'Выберите учебный год.',
+            'teacher_id.required' => 'Выберите преподавателя.',
             'teacher_id.exists' => 'Выбранный преподаватель не найден.',
         ];
     }
