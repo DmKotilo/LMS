@@ -4,6 +4,7 @@ namespace Authorization\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Auth\Events\Verified;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Knuckles\Scribe\Attributes\Endpoint;
@@ -26,7 +27,7 @@ class VerifyEmailController extends Controller
     #[UrlParam('hash', 'string', 'SHA1 хеш email для подтверждения.', example: 'abc...')]
     #[ResponseFromFile('docs/responses/profile/email-verify.200.json')]
     #[ResponseFromFile('docs/responses/errors/403.json', status: 403)]
-    public function __invoke(Request $request, int $id, string $hash): JsonResponse
+    public function __invoke(Request $request, int $id, string $hash): JsonResponse|RedirectResponse
     {
         $user = User::query()->findOrFail($id);
 
@@ -45,6 +46,10 @@ class VerifyEmailController extends Controller
             }
         } else {
             $user->save();
+        }
+
+        if (! $request->expectsJson()) {
+            return redirect()->away('https://skf-mtuci-lms.ru/profile');
         }
 
         return response()->json([
